@@ -1,0 +1,139 @@
+/* ===== CONTACT FORM ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form__group label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+.form__group input,
+.form__group textarea,
+.select__wrapper select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  width: 100%;
+}
+
+.form__group textarea {
+  resize: vertical;
+}
+
+.form__group input::placeholder,
+.form__group textarea::placeholder {
+  color: rgba(0, 88, 64, 0.4);
+  font-size: 0.95rem;
+}
+
+.form__group input:focus,
+.form__group textarea:focus,
+.select__wrapper select:focus {
+  border-color: var(--accent);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(209, 248, 67, 0.2);
+}
+
+/* Select */
+.select__wrapper {
+  position: relative;
+}
+
+.select__wrapper select {
+  padding-right: 3rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+.select__icon {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-sub);
+  fill: none;
+  pointer-events: none;
+}
+
+/* Submit */
+.submit__btn {
+  align-self: flex-start;
+  min-width: 180px;
+  justify-content: center;
+}
+
+/* Success */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-5);
+  padding: var(--space-12) var(--space-8);
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.success__icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border-radius: 50%;
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.success__icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--text);
+  fill: none;
+}
+
+.success h3 {
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.success p {
+  font-size: 1rem;
+  color: var(--text-sub);
+  max-width: 40ch;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .form__grid { grid-template-columns: 1fr; }
+}

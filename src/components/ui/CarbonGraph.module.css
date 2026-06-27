@@ -1,0 +1,86 @@
+.widget {
+  background: rgba(14, 21, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 241, 53, 0.15);
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem 0.9rem;
+  width: 300px;
+  color: var(--white, #fff);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(200, 241, 53, 0.06) inset;
+  user-select: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+
+.badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #C8F135;
+  background: rgba(200, 241, 53, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: 60px;
+}
+
+.total {
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #C8F135;
+  letter-spacing: -0.03em;
+}
+
+.period {
+  font-size: 0.65rem;
+  color: rgba(242, 243, 240, 0.4);
+  margin-bottom: 0.75rem;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.axisLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 7px;
+  fill: rgba(242, 243, 240, 0.35);
+}
+
+.tooltip {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  fill: #C8F135;
+}
+
+.footer {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trend {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #C8F135;
+}
+
+.sub {
+  font-size: 0.65rem;
+  color: rgba(242, 243, 240, 0.4);
+}
