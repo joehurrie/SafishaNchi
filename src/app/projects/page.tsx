@@ -162,30 +162,33 @@ export default function ProjectsPage() {
 
           <RevealGroup className={styles.projects__grid}>
             {projects.map((proj) => (
-              <RevealItem
-                key={proj.id}
-                className={styles.project__card}
-                onClick={() => setSelectedProject(proj)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e: React.KeyboardEvent) => { if (e.key === "Enter") setSelectedProject(proj); }}
-              >
-                <div className={styles.project__img}>
-                  <Image src={proj.image} alt={proj.title} fill style={{ objectFit: "cover" }} />
-                  <div className={styles.project__imgOverlay} />
-                  <span className={styles.project__tag}>{proj.tag}</span>
-                  <span className={styles.project__open}>View Project →</span>
-                </div>
-                <div className={styles.project__body}>
-                  <h3 className={styles.project__title}>{proj.title}</h3>
-                  <p className={styles.project__desc}>{proj.overview}</p>
-                  <div className={styles.project__metrics}>
-                    {proj.metrics.map((m) => (
-                      <div key={m.lbl} className={styles.metric}>
-                        <span className={styles.metric__val}>{m.val}</span>
-                        <span className={styles.metric__lbl}>{m.lbl}</span>
-                      </div>
-                    ))}
+              <RevealItem key={proj.id}>
+                <div
+                  className={styles.project__card}
+                  onClick={() => setSelectedProject(proj)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key === "Enter") setSelectedProject(proj);
+                  }}
+                >
+                  <div className={styles.project__img}>
+                    <Image src={proj.image} alt={proj.title} fill style={{ objectFit: "cover" }} />
+                    <div className={styles.project__imgOverlay} />
+                    <span className={styles.project__tag}>{proj.tag}</span>
+                    <span className={styles.project__open}>View Project →</span>
+                  </div>
+                  <div className={styles.project__body}>
+                    <h3 className={styles.project__title}>{proj.title}</h3>
+                    <p className={styles.project__desc}>{proj.overview}</p>
+                    <div className={styles.project__metrics}>
+                      {proj.metrics.map((m) => (
+                        <div key={m.lbl} className={styles.metric}>
+                          <span className={styles.metric__val}>{m.val}</span>
+                          <span className={styles.metric__lbl}>{m.lbl}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </RevealItem>
