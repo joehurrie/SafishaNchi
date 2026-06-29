@@ -135,5 +135,101 @@
 }
 
 @media (max-width: 640px) {
-  .form__grid { grid-template-columns: 1fr; }
+  .form__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .form__group {
+    gap: 0.4rem;
+  }
+
+  .form__group label {
+    font-size: 0.7rem;
+  }
+
+  .form__group input,
+  .form__group textarea,
+  .select__wrapper select {
+    font-size: 16px;
+    padding: 0.875rem 1rem;
+  }
+
+  .submit__btn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .success {
+    padding: var(--space-10) var(--space-6);
+  }
+
+  .success__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .success__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .success h3 {
+    font-size: 1.25rem;
+  }
+
+  .success p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form__grid {
+    gap: var(--space-3);
+  }
+
+  .form__group {
+    gap: 0.3rem;
+  }
+
+  .form__group label {
+    font-size: 0.65rem;
+  }
+
+  .form__group input,
+  .form__group textarea,
+  .select__wrapper select {
+    font-size: 16px;
+    padding: 0.75rem 0.875rem;
+    border-radius: 4px;
+  }
+
+  .select__icon {
+    right: 1rem;
+    width: 18px;
+    height: 18px;
+  }
+
+  .success {
+    padding: var(--space-8) var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .success__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .success__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .success h3 {
+    font-size: 1rem;
+  }
+
+  .success p {
+    font-size: 0.85rem;
+  }
 }

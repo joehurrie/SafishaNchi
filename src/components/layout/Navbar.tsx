@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.css";
@@ -32,10 +33,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -56,13 +53,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className={styles.logo} aria-label="Safisha Nchi home">
           <div className={styles.logo__mark} aria-hidden="true">
-            {/* Leaf / recycle icon — thin stroke style */}
-            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M2 22c1-1 2.5-2 4-2 1.5 0 2.5 1 4 1s2.5-1 4-1c1.5 0 3 1 4 2" />
-              <path d="M12 2C7 2 4 6 4 10c0 5 4 8 8 8s8-3 8-8c0-4-3-8-8-8z" />
-              <path d="M12 2v18" />
-              <path d="M7.5 7C9 8.5 10 10 12 10s3-1.5 4.5-3" />
-            </svg>
+            <Image src="/assets/logo.png" alt="" width={32} height={32} className={styles.logo__image} />
           </div>
           <span className={styles.logo__text}>
             Safisha Nchi
@@ -78,6 +69,7 @@ export default function Navbar() {
                   href={link.href}
                   className={pathname === link.href ? styles.active : ""}
                   aria-current={pathname === link.href ? "page" : undefined}
+                  onClick={() => setOpen(false)}
                 >
                   {link.label}
                 </Link>

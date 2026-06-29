@@ -10,6 +10,14 @@
   background: var(--bg);
 }
 
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.14) 100%);
+  pointer-events: none;
+}
+
 .hero__inner {
   position: relative;
   z-index: 1;
@@ -296,53 +304,157 @@
   .lifecycle__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .lifecycle__step {
     border-right: none;
     border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem;
   }
+
   .lifecycle__step:nth-child(odd) {
     border-right: 1px solid var(--border);
   }
+
   .lifecycle__step:nth-last-child(-n+2) {
     border-bottom: none;
   }
+
   .processing__grid {
     grid-template-columns: 1fr;
+    gap: var(--space-12);
   }
+
   .processing__img {
     min-height: 400px;
+  }
+
+  .network__card {
+    padding: 2rem;
   }
 }
 
 @media (max-width: 900px) {
   .mats__grid {
     grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .network__grid {
     grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .lifecycle__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .lifecycle__step {
+    padding: 1.5rem 1.25rem;
+    border-right: none !important;
+  }
+
+  .lifecycle__step:nth-child(odd) {
+    border-right: none;
+  }
+
+  .processing__img {
+    min-height: 350px;
+  }
+
+  .network__card {
+    padding: 1.5rem;
+  }
+
+  .network__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .network__title {
+    font-size: 1.1rem;
+  }
+
+  .heroInner {
+    padding-block: 6rem 4rem;
   }
 }
 
 @media (max-width: 540px) {
   .network__grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
+
   .lifecycle__grid {
     grid-template-columns: 1fr;
   }
+
   .lifecycle__step:nth-child(odd) {
     border-right: none;
   }
+
   .lifecycle__step {
     border-bottom: 1px solid var(--border) !important;
+    padding: 1.25rem 1rem;
   }
+
   .lifecycle__step:last-child {
     border-bottom: none !important;
   }
+
   .mats__grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .network__card {
+    padding: 1.25rem;
+  }
+
+  .network__icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .network__title {
+    font-size: 1rem;
+  }
+
+  .processing__img {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 360px) {
+  .network__grid {
+    gap: 1rem;
+  }
+
+  .network__card {
+    padding: 1rem;
+  }
+
+  .network__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .network__title {
+    font-size: 0.9rem;
+  }
+
+  .lifecycle__step {
+    padding: 1rem 0.75rem;
+  }
+
+  .mats__grid {
+    gap: 1rem;
+  }
+
+  .processing__img {
+    min-height: 250px;
   }
 }

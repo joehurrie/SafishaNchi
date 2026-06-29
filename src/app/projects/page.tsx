@@ -6,85 +6,9 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import ProjectModal, { type ProjectData } from "@/components/ui/ProjectModal";
+import { projectsData } from "@/components/ui/projectsData";
 
-const projects: (ProjectData & { tag: string; metrics: { val: string; lbl: string }[] })[] = [
-  {
-    id: "waste-pickers",
-    tag: "Social Impact",
-    title: "Waste Pickers Initiative",
-    image: "/assets/waste pickers.jpg",
-    overview:
-      "Directly empowering 150+ informal collectors — paying transparent prices, distributing PPE, and funding preschool education for their families.",
-    stakeholders: ["Safisha Nchi Training Wing", "Health Partners", "Local Community Leadership"],
-    impact: [
-      { label: "Collectors Supported", value: "150+" },
-      { label: "PPE Distributed", value: "To All" },
-    ],
-    story:
-      "Informal waste pickers are the backbone of recycling in Kenya. This initiative provides them with high-visibility PPE, health and safety training, and financial literacy workshops, elevating their crucial environmental work into dignified, safe livelihoods.",
-    metrics: [
-      { val: "150+", lbl: "Collectors Supported" },
-      { val: "PPE", lbl: "Supplied to All" },
-    ],
-  },
-  {
-    id: "kisumu-hub",
-    tag: "Value Addition",
-    title: "Kisumu Central Hub",
-    image: "/assets/operations.png",
-    overview:
-      "Our flagship sorting, crushing, and baling facility — the backbone of our circular materials supply chain in the Lake Victoria region.",
-    stakeholders: ["County Government of Kisumu", "NEMA", "Industrial Partners"],
-    impact: [
-      { label: "Weekly Throughput", value: "3–5T" },
-      { label: "Processing Site", value: "1 Main" },
-    ],
-    story:
-      "Established to solve the critical bottleneck in waste aggregation, the Kisumu Hub serves as the central node for 7 satellite centers. It features industrial balers and sorting lines, creating a direct link between informal collectors and large-scale manufacturing.",
-    metrics: [
-      { val: "3–5T", lbl: "Weekly Throughput" },
-      { val: "1 Main", lbl: "Processing Site" },
-    ],
-  },
-  {
-    id: "nyalenda-bbc",
-    tag: "Community Hub",
-    title: "Nyalenda Buy-Back Centre",
-    image: "/assets/buyback.jpg",
-    overview:
-      "A community-embedded centre operating in one of Kisumu's most densely populated settlements, keeping plastic and glass out of the natural environment.",
-    stakeholders: ["Nyalenda Community Leadership", "Women's Groups"],
-    impact: [
-      { label: "Waste Diverted", value: "120T+" },
-      { label: "Operations", value: "Daily" },
-    ],
-    story:
-      "By placing the buy-back center directly within the community, we've eliminated transport costs for local collectors. This facility empowers women and youth by offering fair, transparent pricing and immediate payment for sorted materials.",
-    metrics: [
-      { val: "120T+", lbl: "Waste Diverted" },
-      { val: "Daily", lbl: "Operations" },
-    ],
-  },
-  {
-    id: "kiwan-network",
-    tag: "Policy & Networks",
-    title: "KIWAN Waste Network",
-    image: "/assets/cleanup.jpg",
-    overview:
-      "Our membership in the Kisumu County Waste Actors Network — enabling collaborative infrastructure, shared advocacy, and NEMA Act compliance across the county.",
-    stakeholders: ["Regional Logistics Partners", "Municipal Councils", "NEMA"],
-    impact: [
-      { label: "Network Scale", value: "County" },
-      { label: "Compliant", value: "NEMA" },
-    ],
-    story:
-      "The Kisumu Waste Actors Network (KIWAN) integration has allowed us to standardise pricing and collection methodologies across the region. This project scales our impact, bringing structured recycling infrastructure to underserved municipalities.",
-    metrics: [
-      { val: "County", lbl: "Network Scale" },
-      { val: "NEMA", lbl: "Compliant" },
-    ],
-  },
-];
+const projects = projectsData;
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
@@ -95,7 +19,7 @@ export default function ProjectsPage() {
       <section className={`section-100 zone-light ${styles.hero}`}>
         <div className={styles.hero__bg}>
           <Image
-            src="/assets/buyback1.jpeg"
+            src="/assets/project.JPG"
             alt="Community waste collection"
             fill
             priority
@@ -109,8 +33,8 @@ export default function ProjectsPage() {
               <span className={styles.heroLabel}>All Projects</span>
             </RevealItem>
             <RevealItem>
-              <h1 className={`display-xl ${styles.heroHeadline}`}>
-                Work happening<br />on the ground.
+              <h1 className={`display-xl`}>
+                Bringing change<br />to communities and Environment
               </h1>
             </RevealItem>
             <RevealItem>
@@ -201,7 +125,7 @@ export default function ProjectsPage() {
       <section className={`section-100 zone-light`}>
         <div className="container--narrow" style={{ textAlign: "center" }}>
           <RevealGroup>
-            <RevealItem><span className="overline">Let's Build Together</span></RevealItem>
+            <RevealItem><span className="overline">Let&apos;s Build Together</span></RevealItem>
             <RevealItem>
               <h2 className="display-md" style={{ marginBottom: "1.5rem" }}>
                 Want to partner on a project?
@@ -214,7 +138,7 @@ export default function ProjectsPage() {
               </p>
             </RevealItem>
             <RevealItem>
-              <Link href="/contact" className="btn btn-primary">
+              <Link href="/contact" className="btn btn-accent">
                 Get in Touch
                 <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>

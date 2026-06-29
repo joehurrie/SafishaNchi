@@ -1,8 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -51,21 +49,21 @@ const materials = [
     title: "Plastics Recovery",
     types: ["PET Bottles", "HDPE Jugs", "LDPE Film", "PP Containers"],
     output: "Pellets & Flakes",
-    img: "/assets/plastic bootle.jpg",
+    img: "/assets/pellets.png",
   },
   {
     num: "02",
     title: "Glass Sorting",
     types: ["Wine Bottles", "Beverage Glass", "Clear Glass", "Coloured Glass"],
     output: "Crushed Cullet",
-    img: "/assets/buyback1.jpeg",
+    img: "/assets/glass.png",
   },
   {
     num: "03",
     title: "Cartons & Paper",
     types: ["Cardboard", "Office Paper", "Tetra Pak", "Newsprint"],
     output: "Baled Grades",
-    img: "/assets/bins.jpg",
+    img: "/assets/bales.jpg",
   },
 ];
 
@@ -75,7 +73,8 @@ export default function MaterialsPage() {
       {/* 1. HERO (100vh, Light Surface) */}
       <section className={`section-100 zone-light ${styles.hero}`}>
         <div className={styles.hero__bg}>
-          <Image src="/assets/operations.png" alt="Recycling processing operations" fill priority style={{ objectFit: "cover", opacity: 0.1 }} />
+          <Image src="/assets/pellets.png" alt="Recycling processing operations" fill priority style={{ objectFit: "cover" }} />
+          <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
@@ -93,6 +92,29 @@ export default function MaterialsPage() {
         </div>
       </section>
 
+      
+      {/* 3. LIFECYCLE (Light Surface) */}
+      <section className={`section-100 zone-light`}>
+        <div className="container">
+          <div className="section-header--center">
+            <RevealGroup>
+              <RevealItem><span className="overline">How It Works</span></RevealItem>
+              <RevealItem><h2 className="display-lg">The full recycling lifecycle.</h2></RevealItem>
+            </RevealGroup>
+          </div>
+
+          <RevealGroup className={styles.lifecycle__grid}>
+            {lifecycle.map((step) => (
+              <RevealItem key={step.num} className={styles.lifecycle__step}>
+                <span className={styles.step__num}>{step.num}</span>
+                <div className={styles.step__connector} />
+                <h3 className={styles.step__title}>{step.title}</h3>
+                <p className={styles.step__desc}>{step.desc}</p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
       {/* 2. NETWORK (100vh, Dark Panel) */}
       <section className={`section-100 zone-dark`}>
         <div className="container">
@@ -100,7 +122,7 @@ export default function MaterialsPage() {
             <RevealGroup>
               <RevealItem><span className="overline overline--dark">Our Network</span></RevealItem>
               <RevealItem>
-                <h2 className="display-lg">1 Main Hub.<br />7 Satellite Centres.</h2>
+                <h2 className="display-lg">1 Main Hub.<br />7 Collection Mini Hubs.</h2>
               </RevealItem>
               <RevealItem>
                 <p className="body-lg" style={{ color: "var(--dark-sub)", marginTop: "1rem" }}>
@@ -126,28 +148,6 @@ export default function MaterialsPage() {
         </div>
       </section>
 
-      {/* 3. LIFECYCLE (Light Surface) */}
-      <section className={`section-100 zone-light`}>
-        <div className="container">
-          <div className="section-header--center">
-            <RevealGroup>
-              <RevealItem><span className="overline">How It Works</span></RevealItem>
-              <RevealItem><h2 className="display-lg">The full recycling lifecycle.</h2></RevealItem>
-            </RevealGroup>
-          </div>
-
-          <RevealGroup className={styles.lifecycle__grid}>
-            {lifecycle.map((step) => (
-              <RevealItem key={step.num} className={styles.lifecycle__step}>
-                <span className={styles.step__num}>{step.num}</span>
-                <div className={styles.step__connector} />
-                <h3 className={styles.step__title}>{step.title}</h3>
-                <p className={styles.step__desc}>{step.desc}</p>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
-      </section>
 
       {/* 4. MATERIALS CATEGORIES (Light Surface) */}
       <section className={`section-100 zone-light`}>
@@ -205,7 +205,7 @@ export default function MaterialsPage() {
                       <span className={styles.spec__val}>500 Kg / Hr</span>
                     </div>
                     <div className={styles.spec__row}>
-                      <span className={styles.spec__lbl}>Pelletizer Output</span>
+                      <span className={styles.spec__lbl}>Flakes Output</span>
                       <span className={styles.spec__val}>300 Kg / Hr</span>
                     </div>
                     <div className={styles.spec__row}>
@@ -217,7 +217,7 @@ export default function MaterialsPage() {
               </RevealGroup>
             </div>
             <Reveal className={styles.processing__img}>
-              <Image src="/assets/bales.jpg" alt="Baled plastics ready for transport" fill style={{ objectFit: "cover", filter: "grayscale(100%)" }} />
+              <Image src="/assets/sacks.png" alt="Plastics ready for processing" fill style={{ objectFit: "cover",  }} />
             </Reveal>
           </div>
         </div>

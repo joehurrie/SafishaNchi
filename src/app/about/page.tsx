@@ -25,13 +25,66 @@ const timeline = [
   { year: "2026+", label: "The Future", desc: "Household collection, BSF organic waste processing, and expansion to 15+ hubs across Western Kenya." },
 ];
 
+const impactItems = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="3" />
+        <path d="M12 11v7" />
+        <path d="M9 14h6" />
+      </svg>
+    ),
+    title: "Empowerment",
+    desc: "Providing dignified green jobs and stable income for youth and women in our collection network.",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="5" width="16" height="14" rx="2" />
+        <path d="M4 9h16" />
+        <path d="M9 13h6" />
+      </svg>
+    ),
+    title: "Safety & Training",
+    desc: "Equipping our teams with PPE, safe handling practices, and ongoing health awareness programs.",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 12h16" />
+        <path d="M4 7h16" />
+        <path d="M4 17h16" />
+        <path d="M8 7v10" />
+        <path d="M16 7v10" />
+      </svg>
+    ),
+    title: "Awareness",
+    desc: "Delivering clear community education that drives better sorting, less litter, and more recycling.",
+  },
+];
+
+const gallery = [
+  { src: "/assets/partnerships.JPG", alt: "Community and corporate partnership" },
+  { src: "/assets/tree planting.jpg", alt: "Tree planting and environmental restoration" },
+  { src: "/assets/bales.jpg", alt: "Baled recyclables ready for processing" },
+  { src: "/assets/site.jpg", alt: "Safisha Nchi collection site" },
+];
+
+const partners = [
+  { name: "County Government of Kisumu", src: "/assets/County%20Government%20of%20Kisumu-logo.jfif" },
+  { name: "NEMA", src: "/assets/nema%20logo.jfif" },
+  { name: "Kepro", src: "/assets/kepro-logo.png" },
+  { name: "New Life Mission", src: "/assets/New%20Life%20Mission%20Aid.jfif" },
+];
+
 export default function AboutPage() {
   return (
     <>
       {/* 1. HERO (100vh, Light Surface) */}
       <section className={`section-100 zone-light ${styles.hero}`}>
         <div className={styles.hero__bg}>
-          <Image src="/assets/about.png" alt="Safisha Nchi team at work" fill priority style={{ objectFit: "cover", opacity: 0.1 }} />
+          <Image src="/assets/about.png" alt="Safisha Nchi team at work" fill priority style={{ objectFit: "cover" }} />
+          <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
@@ -96,11 +149,7 @@ export default function AboutPage() {
                   </h2>
                 </RevealItem>
                 
-                {[
-                  { icon: "👷", title: "Youth & Women Empowerment", desc: "Providing dignified green jobs and financial independence for vulnerable youth and women across Kisumu." },
-                  { icon: "🦺", title: "Health, Safety & PPE Provision", desc: "Equipping all our collectors and staff with comprehensive PPE and regular health and safety training." },
-                  { icon: "📢", title: "Community Education Initiatives", desc: "Over 5.5 Million impressions generated through our grassroots environmental awareness campaigns." },
-                ].map((item, i) => (
+                {impactItems.map((item) => (
                   <RevealItem key={item.title} className={styles.impact__item}>
                     <div className={styles.impact__icon}>{item.icon}</div>
                     <div>
@@ -160,7 +209,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. TEAM (Light Surface) */}
+      {/* 6. GALLERY (Light Surface) */}
+      <section className={`section-100 zone-light`}>
+        <div className="container">
+          <div className="section-header--center">
+            <RevealGroup>
+              <RevealItem><span className="overline">Gallery</span></RevealItem>
+              <RevealItem><h2 className="display-lg">Scenes from our work.</h2></RevealItem>
+            </RevealGroup>
+          </div>
+          <div className={styles.gallery__grid}>
+            {gallery.map((item) => (
+              <div key={item.src} className={styles.gallery__item}>
+                <Image src={item.src} alt={item.alt} fill style={{ objectFit: "cover" }} />
+                <div className={styles.gallery__caption}>{item.alt}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. PARTNERS (Light Surface) */}
+      <section className={`section zone-light`}>
+        <div className="container">
+          <div className="section-header--center">
+            <RevealGroup>
+              <RevealItem><span className="overline">Partners</span></RevealItem>
+              <RevealItem><h2 className="display-lg">Local and regulatory support.</h2></RevealItem>
+            </RevealGroup>
+          </div>
+          <div className={styles.partner__logos}>
+            {partners.map((partner) => (
+              <div key={partner.name} className={styles.partner__logo}>
+                <Image src={partner.src} alt={partner.name} fill style={{ objectFit: "contain" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. TEAM (Light Surface) */}
       <section className={`section-100 zone-light`}>
         <div className="container">
           <div className="section-header--center">
@@ -174,8 +262,8 @@ export default function AboutPage() {
               </RevealItem>
             </RevealGroup>
           </div>
-          <Reveal className={styles.team__photo}>
-            <Image src="/assets/about.png" alt="Safisha Nchi Team" fill style={{ objectFit: "cover", filter: "grayscale(100%)" }} />
+          <Reveal>
+            <Image src="/assets/team.png" alt="Safisha Nchi Team" fill style={{ objectFit: "cover", filter: "grayscale(100%)" }} />
             <div className={styles.team__caption}>
               <p>Our founder and the core operations team on-site at the Kisumu Central Hub, actively transforming waste management practices.</p>
             </div>

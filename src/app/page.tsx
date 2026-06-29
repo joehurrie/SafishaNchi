@@ -3,17 +3,22 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import ProjectShowcase from "@/components/ui/ProjectShowcase";
 import CarbonGraph from "@/components/ui/CarbonGraph";
+import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Safisha Nchi | Professional Waste Management & Recycling in Kenya",
   description:
-    "Professional Waste Management and Recycling Company in Kenya. We transform waste into high-value resources.",
+    "Professional Waste Management and Recycling Company in Kenya. We transform waste into valueble resources.",
 };
 
-const partners = Array(6).fill("");
+const partners = [
+  { name: "County Government of Kisumu", src: "/assets/County%20Government%20of%20Kisumu-logo.jfif" },
+  { name: "NEMA", src: "/assets/nema%20logo.jfif" },
+  { name: "Kepro", src: "/assets/kepro-logo.png" },
+  { name: "New Life Mission", src: "/assets/New%20Life%20Mission%20Aid.jfif" },
+];
 
 const services = [
   {
@@ -43,7 +48,7 @@ const services = [
   {
     num: "03",
     title: "Recycling",
-    desc: "Transforming waste into high-value materials — plastic pellets and crushed flakes — ready for manufacturing.",
+    desc: "Transforming waste into resources — plastic for manufacturing industries.",
     icon: (
       <svg viewBox="0 0 24 24" className="icon">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
@@ -71,21 +76,56 @@ const services = [
 const materials = [
   {
     num: "01",
-    title: "PET Flakes",
-    desc: "Crushed and washed post-consumer PET bottles, ready for fibre and packaging manufacturers.",
-    tag: "Plastic",
+    title: "Plastic",
+    desc: "Collected bottles and film are washed and reprocessed into durable pellets and flakes.",
+    tag: "Recovered", 
+    icon: (
+      <svg viewBox="0 0 24 24" className="icon">
+        <path d="M7 3h10l2 4-2 4H7L5 7z" />
+        <path d="M5 11h14l-2 8H7z" />
+      </svg>
+    ),
   },
   {
     num: "02",
-    title: "HDPE Pellets",
-    desc: "Processed high-density polyethylene granules for injection moulding and pipe manufacturing.",
-    tag: "Plastic",
+    title: "Cartons",
+    desc: "Clean cardboard and paperboard are baled for reuse in packaging and fibre-based manufacturing.",
+    tag: "Recovered",
+    icon: (
+      <svg viewBox="0 0 24 24" className="icon">
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <path d="M8 8h8" />
+        <path d="M8 12h8" />
+        <path d="M8 16h5" />
+      </svg>
+    ),
   },
   {
     num: "03",
-    title: "Mixed Cullet",
-    desc: "Sorted and crushed glass recovered from bottles and jars, supplied to glassworks.",
-    tag: "Glass",
+    title: "Metals",
+    desc: "Sorted steel and aluminium are compacted and supplied to processors for high-value remelting.",
+    tag: "Recovered",
+    icon: (
+      <svg viewBox="0 0 24 24" className="icon">
+        <path d="M4 8h16" />
+        <path d="M7 4h10l3 4v8l-3 4H7l-3-4V8z" />
+        <path d="M9 12h6" />
+      </svg>
+    ),
+  },
+  {
+    num: "04",
+    title: "Glass",
+    desc: "Broken bottles and jars are sorted into cullet for clean remanufacturing into new glass products.",
+    tag: "Recovered",
+    icon: (
+      <svg viewBox="0 0 24 24" className="icon">
+        <path d="M7 3h10v4H7z" />
+        <path d="M7 7h10v10H7z" />
+        <path d="M8 11h8" />
+        <path d="M8 15h8" />
+      </svg>
+    ),
   },
 ];
 
@@ -97,7 +137,7 @@ export default function Home() {
         {/* Background Image */}
         <div className={styles.heroBg}>
           <Image
-            src="/assets/site.jpg"
+            src="/assets/img.png"
             alt="Recycling plant in action at Safisha Nchi processing facility"
             fill
             priority
@@ -116,7 +156,7 @@ export default function Home() {
               </RevealItem>
               <RevealItem>
                 <h1 className={`display-xl ${styles.heroHeadline}`}>
-                  Transforming waste<br />into clean resources.
+                  Transforming waste into resources.
                 </h1>
               </RevealItem>
               <RevealItem>
@@ -182,20 +222,20 @@ export default function Home() {
               </RevealItem>
               <RevealItem>
                 <h2 className="display-md">
-                  Building Kenya's circular materials economy.
+                  Building Kenya&apos;s circular materials economy.
                 </h2>
               </RevealItem>
               <RevealItem>
                 <p className="body-lg" style={{ marginTop: "1.5rem" }}>
                   Safisha Nchi operates an integrated network of buy-back centres,
-                  satellite hubs, and a central processing facility in Kisumu —
-                  connecting informal collectors to industrial manufacturers.
+                  collection hubs, and a central processing facility in Kisumu 
+                  to manage and recycle waste.
                 </p>
               </RevealItem>
               <RevealItem>
                 <p className="body-md" style={{ marginTop: "1rem" }}>
                   We formalise the informal sector, pay fair prices for clean
-                  materials, and transform recovered waste into high-value outputs
+                  materials, and transform recovered waste into valuable resources
                   that displace virgin plastic and reduce landfill pressure.
                 </p>
               </RevealItem>
@@ -207,21 +247,13 @@ export default function Home() {
               </RevealItem>
             </RevealGroup>
 
-            {/* Image grid */}
-            <RevealGroup className={styles.aboutImgGrid}>
-              <div className={`${styles.imgCell} ${styles.imgLarge}`}>
-                <Image src="/assets/operations.png" alt="Operations at Safisha Nchi" fill style={{ objectFit: "cover" }} />
-              </div>
-              <div className={`${styles.imgCell} ${styles.imgSmall}`}>
-                <Image src="/assets/buyback.jpg" alt="Community buy-back centre" fill style={{ objectFit: "cover" }} />
-              </div>
-              <div className={`${styles.imgCell} ${styles.imgAccent}`}>
-                <div className={styles.imgAccentInner}>
-                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-                    <path d="M8 12l2.5 2.5L16 9" />
-                  </svg>
-                  <span>NEMA Compliant</span>
+            {/* Single image with overlay text */}
+            <RevealGroup>
+              <div className={styles.aboutImageWrap}>
+                <Image src="/assets/collection.png" alt="Operations at Safisha Nchi" fill style={{ objectFit: "cover" }} />
+                <div className={styles.aboutImageOverlay} />
+                <div className={styles.aboutImageText}>
+                  Waste Management For A Greener Environment
                 </div>
               </div>
             </RevealGroup>
@@ -266,10 +298,9 @@ export default function Home() {
 
           <RevealGroup className={styles.materialsGrid}>
             {materials.map((m) => (
-              <RevealItem key={m.num} className={styles.materialCard}>
-                <span className={styles.materialNum}>{m.num}</span>
+              <RevealItem key={m.title} className={styles.materialCard}>
+                <div className={styles.materialIcon}>{m.icon}</div>
                 <div className={styles.materialBody}>
-                  <span className={styles.materialTag}>{m.tag}</span>
                   <h3 className={styles.materialTitle}>{m.title}</h3>
                   <p className={styles.materialDesc}>{m.desc}</p>
                 </div>
@@ -321,12 +352,14 @@ export default function Home() {
         <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" }}>
           <RevealGroup>
             <RevealItem><span className="overline overline--dark" style={{ textAlign: "center", display: "block" }}>Trusted By</span></RevealItem>
-            <RevealItem><h2 className="display-md" style={{ textAlign: "center", marginBottom: "5rem" }}>Strategic Partners</h2></RevealItem>
+            <RevealItem><h2 className="display-md" style={{ textAlign: "center", marginBottom: "5rem" }}>Our Partners</h2></RevealItem>
           </RevealGroup>
           <RevealGroup className={styles.partnersGrid}>
-            {partners.map((_, i) => (
-              <RevealItem key={i} className={styles.partnerPlaceholder}>
-                <div className={styles.geometricLogo} />
+            {partners.map((partner) => (
+              <RevealItem key={partner.name} className={styles.partnerPlaceholder}>
+                <div className={styles.partnerLogoWrap}>
+                  <Image src={partner.src} alt={partner.name} fill style={{ objectFit: "cover" }} />
+                </div>
               </RevealItem>
             ))}
           </RevealGroup>

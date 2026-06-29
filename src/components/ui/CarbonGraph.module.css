@@ -84,3 +84,99 @@
   font-size: 0.65rem;
   color: rgba(242, 243, 240, 0.4);
 }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .widget {
+    width: 280px;
+    padding: 1rem 1.15rem 0.85rem;
+  }
+
+  .total {
+    font-size: 1.05rem;
+  }
+
+  .badge {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .widget {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.95rem 1rem 0.8rem;
+  }
+
+  .header {
+    margin-bottom: 0.15rem;
+  }
+
+  .total {
+    font-size: 1rem;
+  }
+
+  .badge {
+    font-size: 0.5rem;
+    padding: 0.12rem 0.45rem;
+  }
+
+  .period {
+    font-size: 0.6rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .trend {
+    font-size: 0.7rem;
+  }
+
+  .sub {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .widget {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.85rem 0.9rem 0.75rem;
+    border-radius: 12px;
+  }
+
+  .header {
+    margin-bottom: 0.1rem;
+  }
+
+  .total {
+    font-size: 0.95rem;
+  }
+
+  .badge {
+    font-size: 0.45rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .period {
+    font-size: 0.55rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .svg {
+    max-height: 150px;
+  }
+
+  .footer {
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .trend {
+    font-size: 0.65rem;
+  }
+
+  .sub {
+    font-size: 0.55rem;
+  }
+}

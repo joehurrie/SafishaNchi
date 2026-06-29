@@ -95,19 +95,20 @@ export default function ContactPage() {
       <section className={`section-100 zone-light ${styles.hero}`}>
         <div className={styles.hero__bg}>
           <Image
-            src="/assets/cleanup.jpg"
+            src="/assets/contact.png"
             alt="Safisha Nchi community cleanup"
             fill
             priority
-            style={{ objectFit: "cover", opacity: 0.1 }}
+            style={{ objectFit: "cover" }}
           />
+          <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
             <RevealItem><span className="overline">Get In Touch</span></RevealItem>
             <RevealItem>
               <h1 className="display-xl">
-                Let's build a cleaner Kenya together.
+                Let&apos;s build a cleaner Kenya together.
               </h1>
             </RevealItem>
           </RevealGroup>
@@ -141,7 +142,7 @@ export default function ContactPage() {
                 Reach us directly.
               </h2>
               <p className="body-md" style={{ marginBottom: "2.5rem", maxWidth: "450px" }}>
-                We're always open to conversations about partnerships,
+                We&apos;re always open to conversations about partnerships,
                 sponsorship, and community initiatives. Our team responds
                 within 24–48 hours.
               </p>
@@ -176,7 +177,7 @@ export default function ContactPage() {
               <div className={styles.form__card}>
                 <h3 className={styles.form__title}>Send us a Message</h3>
                 <p className={styles.form__sub}>
-                  Fill in the form and we'll get back to you shortly.
+                  Fill in the form and we&apos;ll get back to you shortly.
                 </p>
                 <ContactForm />
               </div>
@@ -189,7 +190,7 @@ export default function ContactPage() {
       <section className={styles.map__section} aria-label="Our location">
         <div className={styles.map__img}>
           <Image
-            src="/assets/operations.png"
+            src="/assets/.png"
             alt="Safisha Nchi Kisumu Central Hub operations"
             fill
             style={{ objectFit: "cover", filter: "grayscale(100%)" }}

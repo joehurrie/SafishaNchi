@@ -8,6 +8,13 @@
   z-index: 0;
   background: var(--bg);
 }
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.14) 100%);
+  pointer-events: none;
+}
 .hero__inner {
   position: relative;
   z-index: 1;
@@ -253,12 +260,135 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .interests__grid { grid-template-columns: repeat(2, 1fr); }
-  .contact__grid { grid-template-columns: 1fr; gap: var(--space-12); }
-  .contact__info { position: static; }
+  .interests__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .contact__info {
+    position: static;
+  }
+
+  .form__card {
+    max-width: 100%;
+  }
 }
+
+@media (max-width: 768px) {
+  .interests__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  .contact__grid {
+    gap: var(--space-10);
+  }
+
+  .form__card {
+    padding: 1.5rem;
+  }
+
+  .form__group {
+    gap: 0.75rem;
+  }
+
+  .form__label {
+    font-size: 0.9rem;
+  }
+
+  .map__overlay {
+    padding: 1.5rem;
+  }
+
+  .map__badge {
+    padding: 0.75rem;
+  }
+}
+
 @media (max-width: 640px) {
-  .interests__grid { grid-template-columns: 1fr; }
-  .form__card { padding: 2rem 1.5rem; }
-  .map__overlay { padding: 2rem 1.5rem; }
+  .interests__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form__card {
+    padding: 1.25rem;
+  }
+
+  .form__input,
+  .form__textarea {
+    font-size: 16px;
+    padding: 0.75rem 1rem;
+  }
+
+  .form__button {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+  }
+
+  .map__overlay {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .map__title {
+    font-size: 1.1rem;
+  }
+
+  .map__badge {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .map__badge strong {
+    font-size: 1rem;
+  }
+
+  .map__badge span {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interests__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .contact__grid {
+    gap: var(--space-8);
+  }
+
+  .form__card {
+    padding: 1rem;
+  }
+
+  .form__group {
+    gap: 0.5rem;
+  }
+
+  .form__label {
+    font-size: 0.8rem;
+  }
+
+  .form__input,
+  .form__textarea {
+    padding: 0.65rem 0.875rem;
+  }
+
+  .form__button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .map__overlay {
+    padding: 0.75rem;
+  }
+
+  .map__title {
+    font-size: 1rem;
+  }
 }
