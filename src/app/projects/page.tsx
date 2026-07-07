@@ -31,7 +31,7 @@ export default function ProjectsPage() {
               <span className={styles.heroLabel}>All Projects</span>
             </RevealItem>
             <RevealItem>
-              <h1 id="projects-h1" className="display-xl" style={{ color: "var(--white)" }}>
+              <h1 id="projects-h1" className={`display-xl ${styles.heroTitle}`}>
                 Bringing change<br />to communities and<br />environment.
               </h1>
             </RevealItem>
@@ -70,12 +70,12 @@ export default function ProjectsPage() {
         <div className="container">
           <div className="section-header--center">
             <RevealGroup>
-              <RevealItem><span className="overline overline--dark">Our Projects</span></RevealItem>
+              <RevealItem><span className="overline overline--lime">Our Projects</span></RevealItem>
               <RevealItem>
-                <h2 className="display-lg">Initiatives driving change.</h2>
+                <h2 className="display-lg" style={{ color: "var(--white)" }}>Initiatives driving change.</h2>
               </RevealItem>
               <RevealItem>
-                <p className="body-md" style={{ color: "var(--dark-sub)", marginTop: "1rem" }}>
+                <p className="body-md" style={{ color: "var(--on-dark-muted)", marginTop: "1rem" }}>
                   Click any project to explore the full story.
                 </p>
               </RevealItem>

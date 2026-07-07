@@ -89,7 +89,7 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* CTA */}
+        {/* CTA + Mobile toggle */}
         <div className={styles.navbar__actions}>
           <div className={styles["nav-cta"]}>
             <Link href="/contact" className="btn btn-primary btn-md">

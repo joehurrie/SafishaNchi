@@ -1,7 +1,8 @@
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 100svh;
+  max-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,6 +20,21 @@
   z-index: 1;
   background: linear-gradient(135deg, rgba(19, 50, 33, 0.88) 0%, rgba(10, 28, 18, 0.4) 100%);
   pointer-events: none;
+}
+
+.heroTitle {
+  color: var(--white);
+  transition: color var(--dur) var(--ease);
+}
+
+.heroSubtitle {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--dur) var(--ease);
+}
+
+.highlightKeyword {
+  color: inherit;
+  transition: color var(--dur) var(--ease);
 }
 .hero__inner {
   position: relative;
@@ -303,6 +319,25 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 50svh;
+    max-height: 50svh;
+  }
+  .hero__overlay {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .heroTitle {
+    color: var(--forest);
+  }
+  .heroSubtitle {
+    color: var(--text);
+  }
+  .heroLabel {
+    color: var(--text) !important;
+  }
+  .heroLabel::before {
+    background: var(--text) !important;
+  }
   .interests__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1px;

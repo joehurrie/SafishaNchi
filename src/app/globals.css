@@ -126,14 +126,14 @@ input, textarea, select {
 /* ── DISPLAY TYPOGRAPHY ──────────────────────────────────────────── */
 .display-xl {
   font-family: var(--font-sans);
-  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  font-size: clamp(2.6rem, 8vw, 7.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
 .display-lg {
   font-family: var(--font-sans);
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2rem, 6vw, 5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -408,12 +408,33 @@ input, textarea, select {
   :root { --pad: 1.5rem; --sp-24: 5rem; --sp-32: 6rem; }
 }
 @media (max-width: 768px) {
-  :root { --pad: 1.25rem; --sp-24: 4rem; --sp-20: 3.5rem; --sp-32: 5rem; }
-  .section { padding-block: var(--sp-12); }
+  :root {
+    --pad: 1.25rem;
+    --sp-24: 4rem;
+    --sp-20: 3.5rem;
+    --sp-32: 5rem;
+  }
+  html, body {
+    font-size: 16px; /* scale down from 18px on mobile */
+  }
+  .section     { padding-block: var(--sp-12); }
   .section--lg { padding-block: var(--sp-20); }
   .section--sm { padding-block: var(--sp-10); }
+  /* Typography scale down */
+  .display-xl  { font-size: clamp(2.2rem, 9vw, 4rem); }
+  .display-lg  { font-size: clamp(1.8rem, 7vw, 3rem); }
+  .display-md  { font-size: clamp(1.5rem, 6vw, 2.4rem); }
+  .display-sm  { font-size: clamp(1.2rem, 5vw, 1.7rem); }
+  .body-lg     { font-size: clamp(0.95rem, 2.5vw, 1.1rem); }
+  .body-md     { font-size: 0.95rem; }
 }
 @media (max-width: 480px) {
   :root { --pad: 1rem; --sp-16: 3rem; }
+  html, body { font-size: 15px; }
   .section { padding-block: var(--sp-10); }
+  /* Tighten typography further on very small phones */
+  .display-xl { font-size: clamp(2rem, 10vw, 3rem); line-height: 1.1; }
+  .display-lg { font-size: clamp(1.6rem, 8vw, 2.4rem); }
+  .display-md { font-size: clamp(1.3rem, 7vw, 2rem); }
+  .display-sm { font-size: clamp(1.1rem, 5.5vw, 1.5rem); }
 }

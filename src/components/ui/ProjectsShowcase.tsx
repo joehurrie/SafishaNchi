@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,6 +10,14 @@ import styles from "./ProjectsShowcase.module.css";
 export default function ProjectsShowcase() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = projectsData.find((p) => p.id === activeId) ?? null;
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Scroll panel into view when a project is selected
+  useEffect(() => {
+    if (activeId && panelRef.current) {
+      panelRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [activeId]);
 
   const handleSelect = (id: string) => {
     setActiveId((prev) => (prev === id ? null : id));
@@ -89,6 +97,7 @@ export default function ProjectsShowcase() {
           {active && (
             <motion.div
               key={active.id}
+              ref={panelRef}
               className={styles.panel}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}

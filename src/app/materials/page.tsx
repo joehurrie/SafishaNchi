@@ -86,12 +86,12 @@ export default function MaterialsPage() {
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
-            <RevealItem><span className="overline overline--lime">Our Operations</span></RevealItem>
+            <RevealItem><span className={`overline overline--lime ${styles.heroLabel}`}>Our Operations</span></RevealItem>
             <RevealItem>
-              <h1 id="materials-h1" className="display-xl" style={{ color: "var(--white)" }}>Materials Lifecycle.</h1>
+              <h1 id="materials-h1" className={`display-xl ${styles.heroTitle}`}>Materials Lifecycle.</h1>
             </RevealItem>
             <RevealItem>
-              <p className="body-lg" style={{ marginTop: "1.5rem", maxWidth: "600px", color: "rgba(255, 255, 255, 0.8)" }}>
+              <p className={`body-lg ${styles.heroSubtitle}`} style={{ marginTop: "1.5rem", maxWidth: "600px" }}>
                 From community collection to quality plastic flakes — follow the full journey of how Safisha Nchi transforms recovered waste into verified industrial value.
               </p>
             </RevealItem>

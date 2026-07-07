@@ -1,7 +1,8 @@
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 100svh;
+  max-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,11 +52,23 @@
 }
 
 .heroSub {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.72);
-  max-width: 560px;
-  line-height: 1.7;
-  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  max-width: 50ch;
+  margin-top: var(--sp-5);
+  transition: color var(--dur) var(--ease);
+}
+
+.heroTitle {
+  color: var(--white);
+  transition: color var(--dur) var(--ease);
+}
+
+.highlightKeyword {
+  color: inherit;
+  transition: color var(--dur) var(--ease);
 }
 
 /* ===== SCALE ===== */
@@ -105,7 +118,7 @@
 .scale__desc {
   display: block;
   font-size: 0.95rem;
-  color: var(--text-sub);
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
@@ -137,7 +150,7 @@
   position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
-  border-bottom: 1px solid var(--dark-border);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .project__imgOverlay {
@@ -182,7 +195,7 @@
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  background: var(--accent);
+  background: var(--lime);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 0.75rem;
@@ -214,8 +227,9 @@
 }
 
 .project__desc {
+  font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--dark-sub);
+  color: var(--on-dark-muted);
   line-height: 1.6;
   margin-bottom: 2rem;
   flex-grow: 1;
@@ -225,7 +239,7 @@
   display: flex;
   gap: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--dark-border);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .metric {
@@ -279,6 +293,30 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 50svh;
+    max-height: 50svh;
+  }
+  .hero__overlay {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .heroTitle {
+    color: var(--forest);
+  }
+  .heroSub {
+    color: var(--text);
+  }
+  .highlightKeyword {
+    color: var(--lime);
+  }
+
+  .heroLabel {
+    color: var(--text-muted);
+  }
+  .heroLabel::before {
+    background: var(--lime);
+  }
+
   .projects__grid {
     grid-template-columns: 1fr;
     gap: 2rem;

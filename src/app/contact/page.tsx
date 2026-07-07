@@ -113,14 +113,14 @@ export default function ContactPage() {
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
-            <RevealItem><span className="overline overline--lime">Get In Touch</span></RevealItem>
+            <RevealItem><span className={`overline overline--lime ${styles.heroLabel}`}>Get In Touch</span></RevealItem>
             <RevealItem>
-              <h1 id="contact-h1" className="display-xl" style={{ color: "var(--white)" }}>
+              <h1 id="contact-h1" className={`display-xl ${styles.heroTitle}`}>
                 Let&apos;s build a cleaner<br />Kenya together.
               </h1>
             </RevealItem>
             <RevealItem>
-              <p className="body-lg" style={{ color: "rgba(255,255,255,0.75)", maxWidth: "50ch", marginTop: "var(--sp-5)" }}>
+              <p className={`body-lg ${styles.heroSubtitle}`} style={{ maxWidth: "50ch", marginTop: "var(--sp-5)" }}>
                 Whether you&apos;re a business, community, investor, or individual — we&apos;d love to hear from you.
               </p>
             </RevealItem>

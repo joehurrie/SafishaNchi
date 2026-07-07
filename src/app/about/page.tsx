@@ -95,19 +95,19 @@ export default function AboutPage() {
       {/* 1. HERO */}
       <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="about-h1">
         <div className={styles.hero__bg}>
-          <Image src="/assets/project1.JPG" alt="Safisha Nchi team at work" fill priority style={{ objectFit: "cover" }} />
+          <Image src="/assets/project1.JPG" alt="Safisha Nchi team at work" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 20%" }} />
           <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
             <RevealItem><span className="overline overline--lime">About Us</span></RevealItem>
             <RevealItem>
-              <h1 id="about-h1" className="display-xl" style={{ maxWidth: "800px", color: "var(--white)" }}>
+              <h1 id="about-h1" className={`display-xl ${styles.heroTitle}`} style={{ maxWidth: "800px" }}>
                 Our journey toward<br />a cleaner future.
               </h1>
             </RevealItem>
             <RevealItem>
-              <p className="body-lg" style={{ color: "rgba(255,255,255,0.75)", maxWidth: "54ch", marginTop: "1.5rem" }}>
+              <p className={`body-lg ${styles.heroSubtitle}`} style={{ maxWidth: "54ch", marginTop: "1.5rem" }}>
                 A decade of building community-powered circular infrastructure in Kenya — turning hazardous waste into verified value.
               </p>
             </RevealItem>
