@@ -89,11 +89,7 @@ export default function Home() {
 
         <div className={`container ${styles.hero__body}`}>
           <RevealGroup className={styles.hero__copy}>
-            <RevealItem>
-              <span className={`overline overline--lime`}>
-                Waste Management · Circular Economy · Kisumu, Kenya
-              </span>
-            </RevealItem>
+
             <RevealItem>
               <h1 className={`display-xl ${styles.hero__h1}`} id="hero-h1">
                 Recycling Waste,  Improving <span style={{ color: "var(--lime)" }}>Livelihoods</span>
