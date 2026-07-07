@@ -36,8 +36,8 @@ const contactDetails = [
       </svg>
     ),
     label: "Headquarters",
-    value: "P.O. BOX 63916 00619 Muthaiga Nairobi, Kenya",
-    href: "https://maps.google.com/?q=Nairobi,Kenya",
+    value: "Kisumu, Kenya",
+    href: "https://maps.google.com/?Kisumu,Kenya",
   },
   {
     icon: (
