@@ -15,10 +15,40 @@ const options = [
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
-    setTimeout(() => setStatus("success"), 1500);
+    setErrorMessage("");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      interest: formData.get("interest"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to send message.");
+      }
+
+      setStatus("success");
+    } catch (err: any) {
+      console.error("Form submission error:", err);
+      setStatus("error");
+      setErrorMessage(err.message || "An unexpected error occurred.");
+    }
   };
 
   if (status === "success") {
@@ -45,6 +75,11 @@ export default function ContactForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
+      {status === "error" && (
+        <div style={{ padding: "1rem", backgroundColor: "#ffebee", color: "#c62828", borderRadius: "8px", marginBottom: "1rem" }}>
+          <strong>Error:</strong> {errorMessage}
+        </div>
+      )}
       <div className={styles.form__grid}>
         <div className={styles.form__group}>
           <label htmlFor="cf-name">Full Name</label>

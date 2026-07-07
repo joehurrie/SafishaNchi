@@ -1,0 +1,187 @@
+/* ══════════════════════════════════════════════════════════
+   IMPACT CARD — Full-height image column with hover reveal
+   ══════════════════════════════════════════════════════════ */
+
+/* The card is a flex child in a horizontal strip */
+.card {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  cursor: default;
+  transition:
+    flex 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Expand on hover */
+.card__expanded {
+  flex: 3.2;
+}
+
+/* Slightly compress non-hovered cards */
+.card__compressed {
+  flex: 0.6;
+  filter: brightness(0.7);
+}
+
+/* ── Full image ── */
+.card__img {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Gradient veil — always present at bottom, deepens on hover ── */
+.card__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8, 22, 14, 0.92) 0%,
+    rgba(8, 22, 14, 0.45) 40%,
+    rgba(8, 22, 14, 0.12) 100%
+  );
+  transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card__veil__deep {
+  background: linear-gradient(
+    to top,
+    rgba(8, 22, 14, 0.97) 0%,
+    rgba(8, 22, 14, 0.75) 50%,
+    rgba(8, 22, 14, 0.35) 100%
+  );
+}
+
+/* ── Default state: number + label at bottom ── */
+.card__default {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: opacity 0.4s ease-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.card__default__hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+.default__num {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: var(--lime);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.default__label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Hover reveal: full content slides up ── */
+.card__reveal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.4s ease-out 0.1s,
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.card__reveal__visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.reveal__metric {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--lime);
+  margin-bottom: 0.2rem;
+}
+
+.reveal__stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.reveal__num {
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: var(--lime);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.reveal__label {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+  margin-top: 0.2rem;
+}
+
+.reveal__detail {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.65;
+  max-width: 34ch;
+}
+
+/* ── Mobile: stack vertically, each card is a fixed height ── */
+@media (max-width: 768px) {
+  .card {
+    flex: none;
+    width: 100%;
+    height: 220px;
+  }
+
+  .card__expanded {
+    height: 440px;
+  }
+
+  .card__compressed {
+    height: 130px;
+    filter: brightness(0.7);
+  }
+
+  .reveal__num {
+    font-size: 2.8rem;
+  }
+}

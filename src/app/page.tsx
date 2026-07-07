@@ -1,368 +1,474 @@
+"use client";
+
+import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
 import styles from "./page.module.css";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import ProjectShowcase from "@/components/ui/ProjectShowcase";
-import CarbonGraph from "@/components/ui/CarbonGraph";
+import ImpactCard, { ImpactCardData } from "@/components/ui/ImpactCard";
+import ExpertiseAccordion from "@/components/ui/ExpertiseAccordion";
+import PartnerMarquee from "@/components/ui/PartnerMarquee";
+import ProjectsShowcase from "@/components/ui/ProjectsShowcase";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
-export const metadata: Metadata = {
-  title: "Safisha Nchi | Professional Waste Management & Recycling in Kenya",
-  description:
-    "Professional Waste Management and Recycling Company in Kenya. We transform waste into valueble resources.",
-};
-
+// ─── Static data ────────────────────────────────────────────────
 const partners = [
-  { name: "County Government of Kisumu", src: "/assets/County%20Government%20of%20Kisumu-logo.jfif" },
-  { name: "NEMA", src: "/assets/nema%20logo.jfif" },
-  { name: "Kepro", src: "/assets/kepro-logo.png" },
-  { name: "New Life Mission", src: "/assets/New%20Life%20Mission%20Aid.jfif" },
+  { name: "Kisumu County Government", src: "/assets/County Government of Kisumu-logo.jfif" },
+  { name: "NEMA Kenya", src: "/assets/nema logo.jfif" },
+  { name: "KEPRO", src: "/assets/kepro-logo.png" },
+  { name: "New Life Mission Aid", src: "/assets/New Life Mission Aid.jfif" },
 ];
 
-const services = [
+const impactCards: ImpactCardData[] = [
   {
-    num: "01",
-    title: "Collection",
-    desc: "Recovering post-consumer recyclables directly from communities, businesses, and informal collector networks.",
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <path d="M3 6h18M3 6l1.5 14h15L21 6M3 6l3-3h12l3 3" />
-        <path d="M9 11v6M15 11v6" />
-      </svg>
-    ),
+    id: "diverted",
+    label: "Waste Diverted from Landfills",
+    value: 360,
+    suffix: "T+",
+    metric: "Tonnes",
+    detail:
+      "360+ metric tonnes of post-consumer plastics, glass, and fibre recovered from Kisumu communities — material that would otherwise enter waterways or open dumps.",
+    img: "/assets/bales2.jpeg",
+    imgAlt: "Baled plastics at Safisha Nchi processing hub",
   },
   {
-    num: "02",
-    title: "Aggregation",
-    desc: "Consolidating volumes at our Central Kisumu Hub and satellite collection centres for efficient bulk processing.",
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <rect x="3" y="3" width="7" height="7" rx="1.5" />
-        <rect x="14" y="3" width="7" height="7" rx="1.5" />
-        <rect x="3" y="14" width="7" height="7" rx="1.5" />
-        <path d="M17.5 14v7M14 17.5h7" />
-      </svg>
-    ),
+    id: "collectors",
+    label: "Informal Collectors Supported",
+    value: 150,
+    suffix: "+",
+    metric: "People",
+    detail:
+      "Over 150 informal waste pickers integrated into our formal collection network — receiving transparent pricing, PPE, health training, and financial literacy support.",
+    img: "/assets/wastecollector1.jpeg",
+    imgAlt: "Waste pickers at community buy-back centre",
   },
   {
-    num: "03",
-    title: "Recycling",
-    desc: "Transforming waste into resources — plastic for manufacturing industries.",
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-        <path d="M3.3 7l8.7 5 8.7-5" />
-        <path d="M12 22V12" />
-      </svg>
-    ),
+    id: "hubs",
+    label: "Community Buy-Back Centres",
+    value: 7,
+    suffix: "",
+    metric: "Hubs",
+    detail:
+      "Seven satellite collection hubs embedded across Kisumu's densest informal settlements — each operating transparent weighing systems and immediate cash payment.",
+    img: "/assets/buyback.jpeg",
+    imgAlt: "Safisha Nchi buy-back centre operations",
   },
   {
-    num: "04",
-    title: "Consulting",
-    desc: "Providing professional advisory services on environmental compliance and corporate waste strategies.",
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-        <polyline points="14 2 14 8 20 8" />
-        <line x1="16" y1="13" x2="8" y2="13" />
-        <line x1="16" y1="17" x2="8" y2="17" />
-        <line x1="10" y1="9" x2="8" y2="9" />
-      </svg>
-    ),
+    id: "co2",
+    label: "CO₂ Equivalent Offset",
+    value: 270,
+    suffix: "T",
+    metric: "Tonnes CO₂",
+    detail:
+      "Recycling 360+ tonnes of material avoids the equivalent of 270 tonnes of CO₂ — compared to virgin material production and open landfill decomposition.",
+    img: "/assets/Investor.jpeg",
+    imgAlt: "Community tree planting and environmental cleanup",
   },
 ];
 
-const materials = [
-  {
-    num: "01",
-    title: "Plastic",
-    desc: "Collected bottles and film are washed and reprocessed into durable pellets and flakes.",
-    tag: "Recovered", 
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <path d="M7 3h10l2 4-2 4H7L5 7z" />
-        <path d="M5 11h14l-2 8H7z" />
-      </svg>
-    ),
-  },
-  {
-    num: "02",
-    title: "Cartons",
-    desc: "Clean cardboard and paperboard are baled for reuse in packaging and fibre-based manufacturing.",
-    tag: "Recovered",
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <rect x="4" y="4" width="16" height="16" rx="2" />
-        <path d="M8 8h8" />
-        <path d="M8 12h8" />
-        <path d="M8 16h5" />
-      </svg>
-    ),
-  },
-  {
-    num: "03",
-    title: "Metals",
-    desc: "Sorted steel and aluminium are compacted and supplied to processors for high-value remelting.",
-    tag: "Recovered",
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <path d="M4 8h16" />
-        <path d="M7 4h10l3 4v8l-3 4H7l-3-4V8z" />
-        <path d="M9 12h6" />
-      </svg>
-    ),
-  },
-  {
-    num: "04",
-    title: "Glass",
-    desc: "Broken bottles and jars are sorted into cullet for clean remanufacturing into new glass products.",
-    tag: "Recovered",
-    icon: (
-      <svg viewBox="0 0 24 24" className="icon">
-        <path d="M7 3h10v4H7z" />
-        <path d="M7 7h10v10H7z" />
-        <path d="M8 11h8" />
-        <path d="M8 15h8" />
-      </svg>
-    ),
-  },
-];
-
+// ─── Homepage ───────────────────────────────────────────────────
 export default function Home() {
+  const [hoveredImpact, setHoveredImpact] = useState<string | null>(null);
+
   return (
     <>
-      {/* ——— 1. HERO — Full-screen imagery ——— */}
-      <section className={styles.hero}>
-        {/* Background Image */}
-        <div className={styles.heroBg}>
+      {/* ═══════════════════════════════════════════
+          1. HERO
+      ═══════════════════════════════════════════ */}
+      <section className={styles.hero} aria-labelledby="hero-h1">
+        <div className={styles.hero__bg}>
           <Image
             src="/assets/img.png"
-            alt="Recycling plant in action at Safisha Nchi processing facility"
-            fill
-            priority
-            style={{ objectFit: "cover" }}
+            alt="Safisha Nchi waste management and recycling operations, Kisumu Kenya"
+            fill priority
+            style={{ objectFit: "cover", objectPosition: "center 25%" }}
           />
-          {/* Dark overlay — not green, keeps image visible */}
-          <div className={styles.heroOverlay} />
+          <div className={styles.hero__veil} />
         </div>
 
-        {/* Content */}
-        <div className={`container ${styles.heroInner}`}>
-          <div className={styles.heroContent}>
-            <RevealGroup>
-              <RevealItem>
-                <span className={styles.heroLabel}>Waste Recovery & Circular Economy</span>
-              </RevealItem>
-              <RevealItem>
-                <h1 className={`display-xl ${styles.heroHeadline}`}>
-                  Transforming waste into resources.
-                </h1>
-              </RevealItem>
-              <RevealItem>
-                <p className={styles.heroSub}>
-                  A professional recycling network building a sustainable circular economy
-                  across Kenya through efficient aggregation and processing.
-                </p>
-              </RevealItem>
-              <RevealItem>
-                <div className={styles.heroActions}>
-                  <Link href="#services" className="btn btn-primary">
-                    Explore Services
-                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </Link>
-                  <Link href="/about" className={styles.heroBtnGhost}>
-                    About Safisha Nchi
-                  </Link>
-                </div>
-              </RevealItem>
-            </RevealGroup>
-          </div>
+        <div className={`container ${styles.hero__body}`}>
+          <RevealGroup className={styles.hero__copy}>
+            <RevealItem>
+              <span className={`overline overline--lime`}>
+                Waste Management · Circular Economy · Kisumu, Kenya
+              </span>
+            </RevealItem>
+            <RevealItem>
+              <h1 className={`display-xl ${styles.hero__h1}`} id="hero-h1">
+                Recycling Waste,  Improving <span style={{ color: "var(--lime)" }}>Livelihoods</span>
+              </h1>
+            </RevealItem>
+            <RevealItem>
+              <p className={styles.hero__sub}>
+                We bridge the gap between environmental necessity and economic opportunity by turning waste into a resource for growth.
+              </p>
+            </RevealItem>
+            <RevealItem>
+              <div className={styles.hero__actions}>
+                <Link href="/materials" className="btn btn-primary">
+                  See How We Operate
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </Link>
+                <Link href="/contact" className="btn btn-outline-white">
+                  Partner With Us
+                </Link>
+              </div>
+            </RevealItem>
+          </RevealGroup>
 
           {/* Scroll indicator */}
-          <div className={styles.scrollHint} aria-hidden="true">
-            <span className={styles.scrollLine} />
-            <span className={styles.scrollText}>scroll</span>
+          <div className={styles.hero__scroll} aria-hidden="true">
+            <div className={styles.scroll__bar} />
+            <span>Scroll</span>
           </div>
         </div>
 
-        {/* Carbon Graph — bottom right */}
-        <div className={styles.carbonWidget}>
-          <CarbonGraph />
+        {/* Quick stats overlay */}
+        <div className={styles.hero__stats} aria-label="Key operational metrics">
+          {[
+            { n: 360, s: "T+", l: "Waste Diverted" },
+            { n: 150, s: "+", l: "Collectors Supported" },
+            { n: 7, s: "", l: "Collection Hubs" },
+            { n: 10, s: "yr+", l: "Years Operating" },
+          ].map((st) => (
+            <div key={st.l} className={styles.hero__stat}>
+              <AnimatedCounter target={st.n} suffix={st.s} className={styles.hero__stat__num} />
+              <span className={styles.hero__stat__lbl}>{st.l}</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ——— 2. STATS BAR ——— */}
-      <section className={styles.statsBar}>
+
+
+      {/* ═══════════════════════════════════════════
+          2. ABOUT — Concise summary
+      ═══════════════════════════════════════════ */}
+      <section className={`section zone-canvas ${styles.about}`} aria-labelledby="about-h2">
         <div className="container">
-          <div className={styles.statsRow}>
-            {[
-              { num: 360, suffix: "T+", label: "Waste Diverted" },
-              { num: 270, suffix: "T", label: "CO₂ Offset" },
-              { num: 150, suffix: "+", label: "Collectors Supported" },
-              { num: 7, suffix: "", label: "Collection Hubs" },
-            ].map((s) => (
-              <div key={s.label} className={styles.statItem}>
-                <AnimatedCounter target={s.num} suffix={s.suffix} className={styles.statNum} />
-                <span className={styles.statLabel}>{s.label}</span>
+          <div className={styles.about__grid}>
+
+            {/* Left: statement */}
+            <RevealItem direction="left" className={styles.about__left}>
+              <span className="overline">About Safisha Nchi Ltd.</span>
+              <h2 className={`display-lg ${styles.about__headline}`} id="about-h2">
+                Waste Management<br />for a Better Environment.
+              </h2>
+              <Link href="/about" className={`btn btn-forest ${styles.about__cta}`}>
+                Our Story
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </Link>
+            </RevealItem>
+
+            {/* Right: concise summary */}
+            <RevealItem direction="right" className={styles.about__right}>
+              <p className={styles.about__para}>
+                Safisha Nchi is a Kenyan waste management enterprise operating in Kisumu, Kenya. We run community Buy-Back Centres, sort and
+                process post-consumer plastics, glass, and paperboard, creating dignified livelihoods, and
+                supplying recycled feedstock to industrial buyers.
+              </p>
+
+              {/* Credentials row */}
+              <div className={styles.about__credentials}>
+                {["NEMA Registered", "KIWAN Member", "Waste-to-Green-Jobs", "10+ Years Operating"].map((c) => (
+                  <span key={c} className="chip chip--outline">{c}</span>
+                ))}
               </div>
-            ))}
+            </RevealItem>
           </div>
         </div>
       </section>
 
-      {/* ——— 3. ABOUT SPLIT ——— */}
-      <section className={`section-100 zone-light ${styles.aboutSection}`} id="about">
+      {/* ═══════════════════════════════════════════
+          3. IMPACT — Full-bleed 100vh image strip
+      ═══════════════════════════════════════════ */}
+      <section
+        className={styles.impact__section}
+        aria-labelledby="impact-h2"
+        aria-label="Measurable Impact"
+      >
+        {/* Section label floats above the strip */}
+        <div className={styles.impact__label__row}>
+          <span className="overline" style={{ color: "rgba(255,255,255,0.5)" }}>
+            Measurable Impact
+          </span>
+          <h2 className={styles.impact__eyebrow} id="impact-h2">
+            Hover to explore our impact
+          </h2>
+        </div>
+
+        {/* Horizontal strip of image columns */}
+        <div className={styles.impact__strip} role="list">
+          {impactCards.map((card, i) => (
+            <ImpactCard
+              key={card.id}
+              card={card}
+              delay={i * 0.05}
+              isHovered={hoveredImpact === card.id}
+              onHover={setHoveredImpact}
+              anyHovered={hoveredImpact !== null}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          4. PARTNERS CAROUSEL
+      ═══════════════════════════════════════════ */}
+      <section className={`${styles.partners} zone-alt`} aria-label="Partner organisations" style={{ paddingBottom: "var(--sp-12)" }}>
         <div className="container">
-          <div className={styles.aboutSplit}>
-            {/* Copy */}
-            <RevealGroup className={styles.aboutCopy}>
-              <RevealItem>
-                <span className="overline">Who We Are</span>
-              </RevealItem>
-              <RevealItem>
-                <h2 className="display-md">
-                  Building Kenya&apos;s circular materials economy.
+          <p className={styles.partners__eyebrow}>
+            OUR PARTNERS AND STAKEHOLDERS
+          </p>
+        </div>
+        <PartnerMarquee />
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          5. EXPERTISE ACCORDION
+      ═══════════════════════════════════════════ */}
+      <section className={`section zone-canvas ${styles.expertise__section}`} aria-labelledby="expertise-h2">
+        <div className="container">
+          <div className={styles.expertise__header}>
+            <RevealItem>
+              <span className="overline">Our Expertise</span>
+              <h2 className={`display-md`} id="expertise-h2" style={{ marginTop: "0.5rem" }}>
+                Our Waste Management System.
+              </h2>
+              <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "56ch" }}>
+                Six interconnected service streams working as one — from
+                community collection through sorting, recycling, training,
+                consulting, and waste picker empowerment.
+              </p>
+            </RevealItem>
+          </div>
+          <ExpertiseAccordion />
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          6. FULL-BLEED BANNER
+      ═══════════════════════════════════════════ */}
+      <section className={styles.banner} aria-label="Community empowerment through recycling">
+        <div className={styles.banner__img}>
+          <Image
+            src="/assets/sitetour.JPG"
+            alt="Community waste collection drives in Kisumu informal settlements"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 40%" }}
+          />
+          <div className={styles.banner__veil} />
+        </div>
+        <div className={`container ${styles.banner__content}`}>
+          <RevealItem direction="left">
+            <h2 className={`display-md ${styles.banner__headline}`}>
+              We don&apos;t just manage waste.<br />We build environmental and economic infrastructure.
+            </h2>
+            <p className={styles.banner__sub}>
+              Every tonne collected creates verified livelihoods for the women
+              and youth who recover it, transforming ecological challenges into
+              sustainable green careers.
+            </p>
+          </RevealItem>
+          <RevealItem direction="right">
+            <Link href="/about" className="btn btn-primary">
+              Learn More
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </Link>
+          </RevealItem>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          7. DUAL CTA — Investors + Consultation
+      ═══════════════════════════════════════════ */}
+      <section className={`section zone-alt ${styles.dual__cta}`} aria-label="Partnership and consultation options">
+        <div className="container">
+          <div className={styles.dual__grid}>
+
+            {/* Card A — Investor / Partner callout (forest) */}
+            <RevealItem direction="left" className={styles.cta__card__a}>
+              <div className={styles.cta__a__img}>
+                <Image src="/assets/team1.jpeg" alt="Safisha Nchi partnership meetings" fill style={{ objectFit: "cover" }} />
+                <div className={styles.cta__a__img__veil} />
+              </div>
+              <div className={styles.cta__a__body}>
+                <span className={`overline overline--on-dark`}>For Investors &amp; Partners</span>
+                <h2 className={`display-sm ${styles.cta__a__headline}`}>
+                  Attracting investors &amp; partners to build Kenya&apos;s circular economy.
                 </h2>
-              </RevealItem>
-              <RevealItem>
-                <p className="body-lg" style={{ marginTop: "1.5rem" }}>
-                  Safisha Nchi operates an integrated network of buy-back centres,
-                  collection hubs, and a central processing facility in Kisumu 
-                  to manage and recycle waste.
-                </p>
-              </RevealItem>
-              <RevealItem>
-                <p className="body-md" style={{ marginTop: "1rem" }}>
-                  We formalise the informal sector, pay fair prices for clean
-                  materials, and transform recovered waste into valuable resources
-                  that displace virgin plastic and reduce landfill pressure.
-                </p>
-              </RevealItem>
-              <RevealItem>
-                <Link href="/about" className={`btn btn-outline ${styles.aboutBtn}`} style={{ marginTop: "2rem" }}>
-                  Our Story
-                  <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                </Link>
-              </RevealItem>
-            </RevealGroup>
-
-            {/* Single image with overlay text */}
-            <RevealGroup>
-              <div className={styles.aboutImageWrap}>
-                <Image src="/assets/collection.png" alt="Operations at Safisha Nchi" fill style={{ objectFit: "cover" }} />
-                <div className={styles.aboutImageOverlay} />
-                <div className={styles.aboutImageText}>
-                  Waste Management For A Greener Environment
-                </div>
               </div>
-            </RevealGroup>
+            </RevealItem>
+
+            {/* Card B — Free consultation (lime) */}
+            <RevealItem direction="right" className={styles.cta__card__b}>
+              <span className="overline">Free Consultation</span>
+              <h2 className={`display-sm ${styles.cta__b__headline}`}>
+                Ready to recycle smarter? Book a free consultation.
+              </h2>
+              <p className={styles.cta__b__desc}>
+                Whether you run a hotel, school, manufacturing plant, or
+                county authority — our team will analyse your current waste
+                profile and design a compliant, cost-effective diversion plan.
+                No obligation, no jargon.
+              </p>
+
+              <div className={styles.cta__b__points}>
+                {[
+                  "On-site waste audit included",
+                  "NEMA compliance gap analysis",
+                  "Custom collection schedule",
+                  "ESG reporting support",
+                ].map((pt) => (
+                  <div key={pt} className={styles.cta__point}>
+                    <div className={styles.point__dot} aria-hidden="true" />
+                    <span>{pt}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link href="/contact" className="btn btn-forest" style={{ marginTop: "2rem", alignSelf: "flex-start" }}>
+                Book a Free Consultation
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </Link>
+            </RevealItem>
           </div>
         </div>
       </section>
 
-      {/* ——— 4. SERVICES ——— */}
-      <section className="section-100 zone-dark" id="services">
+      {/* ═══════════════════════════════════════════
+          8. PROJECTS SHOWCASE
+      ═══════════════════════════════════════════ */}
+      <section className={`section zone-canvas ${styles.projects__section}`} aria-labelledby="projects-h2">
         <div className="container">
-          <div className="section-header--center">
-            <RevealGroup>
-              <RevealItem><span className="overline overline--dark">Our Expertise</span></RevealItem>
-              <RevealItem><h2 className="display-lg">Comprehensive Waste Solutions.</h2></RevealItem>
-            </RevealGroup>
+          <div className={styles.projects__header}>
+            <RevealItem>
+              <span className="overline">Our Projects</span>
+              <h2 className="display-md" id="projects-h2" style={{ marginTop: "0.5rem" }}>
+                Our Projects.
+              </h2>
+              <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "52ch" }}>
+                Click any project to explore the full story. Each one is a step
+                in building Kenya&apos;s circular economy — ground up.
+              </p>
+            </RevealItem>
           </div>
-
-          <RevealGroup className={styles.servicesGrid}>
-            {services.map((srv) => (
-              <RevealItem key={srv.num} className={styles.serviceCard}>
-                <div className={styles.serviceTop}>
-                  <span className={styles.serviceNum}>{srv.num}</span>
-                  <div className={styles.serviceIcon}>{srv.icon}</div>
-                </div>
-                <h3 className={styles.serviceTitle}>{srv.title}</h3>
-                <p className={styles.serviceDesc}>{srv.desc}</p>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <ProjectsShowcase />
         </div>
       </section>
 
-      {/* ——— 5. MATERIALS ——— */}
-      <section className="section-100 zone-light" id="materials">
-        <div className="container">
-          <div className="section-header--center">
-            <RevealGroup>
-              <RevealItem><span className="overline">What We Process</span></RevealItem>
-              <RevealItem><h2 className="display-md">Materials We Recover.</h2></RevealItem>
-            </RevealGroup>
+      {/* ═══════════════════════════════════════════
+          9. MAP — Location hub section
+      ═══════════════════════════════════════════ */}
+      <section className={`${styles.map__section}`} aria-labelledby="map-h2">
+        <div className={styles.map__header}>
+          <div className="container">
+            <RevealItem>
+              <span className="overline">Find Us</span>
+              <h2 className="display-sm" id="map-h2" style={{ marginTop: "0.4rem" }}>
+                Our processing hubs &amp; Buy-Back Centres across Kisumu.
+              </h2>
+            </RevealItem>
           </div>
+        </div>
 
-          <RevealGroup className={styles.materialsGrid}>
-            {materials.map((m) => (
-              <RevealItem key={m.title} className={styles.materialCard}>
-                <div className={styles.materialIcon}>{m.icon}</div>
-                <div className={styles.materialBody}>
-                  <h3 className={styles.materialTitle}>{m.title}</h3>
-                  <p className={styles.materialDesc}>{m.desc}</p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+        <div className={styles.map__embed}>
+          <iframe
+            title="Safisha Nchi locations in Kisumu, Kenya"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63835.06399843843!2d34.70299535!3d-0.09199995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa433a44ab001%3A0x47c9de0a9ef4f5a7!2sKisumu%2C%20Kenya!5e0!3m2!1sen!2sus!4v1720000000000!5m2!1sen!2sus&style=feature:all|saturation:-30"
+            width="100%"
+            height="100%"
+            style={{ border: 0, filter: "grayscale(15%) contrast(1.05)" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
 
-          <div style={{ textAlign: "center", marginTop: "4rem" }}>
-            <Link href="/materials" className="btn btn-outline">
-              View All Materials
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          {/* Hub legend overlay */}
+          <div className={styles.map__legend}>
+            <div className={styles.map__legend__title}>Collection Network</div>
+            <div className={styles.map__legend__item}>
+              <div className={`${styles.map__dot} ${styles.map__dot__main}`} />
+              <span>Kisumu Central Hub — Main Processing Site</span>
+            </div>
+            <div className={styles.map__legend__item}>
+              <div className={`${styles.map__dot} ${styles.map__dot__sat}`} />
+              <span>7 Satellite Buy-Back Centres</span>
+            </div>
+            <Link href="/contact" className={`btn btn-primary ${styles.map__legend__btn}`}>
+              Get Directions
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ——— 6. PROJECT SHOWCASE ——— */}
-      <ProjectShowcase />
-
-      {/* ——— 7. IMPACT TICKER ——— */}
-      <section className="section-100 zone-accent" id="impact">
+      {/* ═══════════════════════════════════════════
+          10. CONNECT / CONTACT PREVIEW
+      ═══════════════════════════════════════════ */}
+      <section className={`section zone-dark ${styles.connect}`} aria-labelledby="connect-h2">
         <div className="container">
-          <RevealGroup className={styles.impactContent}>
-            <RevealItem>
-              <h2 className="display-md" style={{ color: "var(--dark)", marginBottom: "4rem", textAlign: "center" }}>
-                Measurable environmental impact.
+          <div className={styles.connect__grid}>
+            <RevealItem direction="left" className={styles.connect__left}>
+              <span className="overline overline--on-dark">Get in Touch</span>
+              <h2 className={`display-lg ${styles.connect__headline}`} id="connect-h2">
+                Let&apos;s Connect.
               </h2>
+              <p className={styles.connect__sub}>
+                Waste collection contracts, community partnerships, investment
+                discussions, or NEMA compliance advisory — our team responds
+                within 24 hours.
+              </p>
+              <div className={styles.connect__details}>
+                {[
+                  { icon: "📞", val: "+254 727 107 994", href: "tel:+254727107994" },
+                  { icon: "✉️", val: "info@safishanchi.co.ke", href: "mailto:info@safishanchi.co.ke" },
+                  { icon: "📍", val: "Kisumu, Kenya", href: "https://maps.google.com/?q=Kisumu,Kenya" },
+                ].map((d) => (
+                  <a key={d.val} href={d.href} className={styles.connect__detail} target={d.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                    <span className={styles.connect__detail__icon}>{d.icon}</span>
+                    <span>{d.val}</span>
+                  </a>
+                ))}
+              </div>
             </RevealItem>
-            <div className={styles.statsGrid}>
-              <RevealItem className={styles.statCard}>
-                <AnimatedCounter target={360} className={styles.statNum2} />
-                <span className={styles.statLabel2}>Tonnes Diverted</span>
-              </RevealItem>
-              <RevealItem className={styles.statCard}>
-                <AnimatedCounter target={270} className={styles.statNum2} />
-                <span className={styles.statLabel2}>Tons CO₂ Offset</span>
-              </RevealItem>
-              <RevealItem className={styles.statCard}>
-                <AnimatedCounter target={170} className={styles.statNum2} />
-                <span className={styles.statLabel2}>Ha Ecosystem Protected</span>
-              </RevealItem>
-            </div>
-          </RevealGroup>
-        </div>
-      </section>
 
-      {/* ——— 8. PARTNERS ——— */}
-      <section className="section-100 zone-dark" id="partners">
-        <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" }}>
-          <RevealGroup>
-            <RevealItem><span className="overline overline--dark" style={{ textAlign: "center", display: "block" }}>Trusted By</span></RevealItem>
-            <RevealItem><h2 className="display-md" style={{ textAlign: "center", marginBottom: "5rem" }}>Our Partners</h2></RevealItem>
-          </RevealGroup>
-          <RevealGroup className={styles.partnersGrid}>
-            {partners.map((partner) => (
-              <RevealItem key={partner.name} className={styles.partnerPlaceholder}>
-                <div className={styles.partnerLogoWrap}>
-                  <Image src={partner.src} alt={partner.name} fill style={{ objectFit: "cover" }} />
+            <RevealItem direction="right" className={styles.connect__form__card}>
+              <h3 className={styles.form__card__title}>Send us a message</h3>
+              <form className={styles.connect__form} onSubmit={(e) => e.preventDefault()}>
+                <div className={styles.form__row}>
+                  <div className="form-field">
+                    <label className="form-label" htmlFor="hp-name">Full Name</label>
+                    <input className="form-input" type="text" id="hp-name" required placeholder="Jane Mwangi" />
+                  </div>
+                  <div className="form-field">
+                    <label className="form-label" htmlFor="hp-email">Email Address</label>
+                    <input className="form-input" type="email" id="hp-email" required placeholder="jane@company.co.ke" />
+                  </div>
                 </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+                <div className="form-field">
+                  <label className="form-label" htmlFor="hp-interest">Area of Interest</label>
+                  <select className="form-input" id="hp-interest" defaultValue="" required>
+                    <option value="" disabled>Select an option…</option>
+                    <option>Waste Collection</option>
+                    <option>Community Partnerships</option>
+                    <option>Waste Management Consultation</option>
+                    <option>Sponsor a Project</option>
+                    <option>Training on Waste Management</option>
+                    <option>General Inquiry</option>
+                  </select>
+                </div>
+                <div className="form-field">
+                  <label className="form-label" htmlFor="hp-msg">Message</label>
+                  <textarea className="form-input" id="hp-msg" rows={4} placeholder="Tell us about your waste challenge or how you'd like to partner…" />
+                </div>
+                <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
+                  Send Message
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </button>
+              </form>
+            </RevealItem>
+          </div>
         </div>
       </section>
     </>

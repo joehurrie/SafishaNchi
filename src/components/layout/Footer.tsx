@@ -42,21 +42,17 @@ export default function Footer() {
           {/* Brand col */}
           <div className={styles.footer__brand}>
             <Link href="/" className={styles.logo} aria-label="Safisha Nchi">
-              <div className={styles.logo__mark} aria-hidden="true">
-                  <Image src="/assets/logo.png" alt="" width={32} height={32} className={styles.logo__image} />
-                </div>
-              <span className={styles.logo__text}>
-                Safisha Nchi
-              </span>
+              <Image src="/assets/logo.png" alt="" width={72} height={72} className={styles.logo__image} />
+              <span className={styles.logo__text}>Safisha Nchi</span>
             </Link>
             <p className={styles.footer__tagline}>
               Building clean recycling networks that transform waste into
               resources across Kenya.
             </p>
             <div className={styles.footer__contact}>
-              <a href="tel:+254727107994">+254 727 107 994</a>
-              <a href="mailto:info@safishanchi.com">info@safishanchi.com</a>
-              <span>Kisumu, Kenya</span>
+              <a href="tel:+254740113368">+254 740 113 368</a>
+              <a href="mailto:info@safishanchi.co.ke">info@safishanchi.co.ke</a>
+              <span>P.O. BOX 63916 00619 Nairobi, Kenya</span>
             </div>
           </div>
 

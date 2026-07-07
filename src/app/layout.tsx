@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://safishanchi.com",
   },
+  icons: {
+    icon: "/assets/logo.png",
+    apple: "/assets/logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -1,14 +1,10 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import styles from "./page.module.css";
 import ContactForm from "@/components/ui/ContactForm";
-import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
-
-export const metadata: Metadata = {
-  title: "Contact Us | Safisha Nchi",
-  description:
-    "Get in touch with Safisha Nchi. Whether you're interested in waste collection, community partnerships, or becoming a sponsor — we'd love to hear from you.",
-};
+import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const contactDetails = [
   {
@@ -18,8 +14,8 @@ const contactDetails = [
       </svg>
     ),
     label: "Phone",
-    value: "+254 727 107 994",
-    href: "tel:+254727107994",
+    value: "+254 740 113 368 / +254 727 107 994",
+    href: "tel:+254740113368",
   },
   {
     icon: (
@@ -29,8 +25,8 @@ const contactDetails = [
       </svg>
     ),
     label: "Email",
-    value: "info@safishanchi.com",
-    href: "mailto:info@safishanchi.com",
+    value: "info@safishanchi.co.ke",
+    href: "mailto:info@safishanchi.co.ke",
   },
   {
     icon: (
@@ -39,7 +35,17 @@ const contactDetails = [
         <circle cx="12" cy="10" r="3" />
       </svg>
     ),
-    label: "Location",
+    label: "Headquarters",
+    value: "P.O. BOX 63916 00619 Muthaiga Nairobi, Kenya",
+    href: "https://maps.google.com/?q=Nairobi,Kenya",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="icon">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+    ),
+    label: "Core Operations",
     value: "Kisumu, Kenya",
     href: "https://maps.google.com/?q=Kisumu,Kenya",
   },
@@ -88,15 +94,17 @@ const interests = [
   },
 ];
 
+const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export default function ContactPage() {
   return (
     <>
-      {/* 1. HERO (100vh, Light Surface) */}
-      <section className={`section-100 zone-light ${styles.hero}`}>
+      {/* 1. HERO */}
+      <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="contact-h1">
         <div className={styles.hero__bg}>
           <Image
-            src="/assets/contact.png"
-            alt="Safisha Nchi community cleanup"
+            src="/assets/happy.jpeg"
+            alt="Staff and community members at Safisha Nchi"
             fill
             priority
             style={{ objectFit: "cover" }}
@@ -105,75 +113,102 @@ export default function ContactPage() {
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
-            <RevealItem><span className="overline">Get In Touch</span></RevealItem>
+            <RevealItem><span className="overline overline--lime">Get In Touch</span></RevealItem>
             <RevealItem>
-              <h1 className="display-xl">
-                Let&apos;s build a cleaner Kenya together.
+              <h1 id="contact-h1" className="display-xl" style={{ color: "var(--white)" }}>
+                Let&apos;s build a cleaner<br />Kenya together.
               </h1>
+            </RevealItem>
+            <RevealItem>
+              <p className="body-lg" style={{ color: "rgba(255,255,255,0.75)", maxWidth: "50ch", marginTop: "var(--sp-5)" }}>
+                Whether you&apos;re a business, community, investor, or individual — we&apos;d love to hear from you.
+              </p>
             </RevealItem>
           </RevealGroup>
         </div>
       </section>
 
-      {/* 2. INTERESTS STRIP (Light Surface) */}
-      <section className="section--sm zone-light" style={{ paddingBottom: 0 }}>
+      {/* 2. INTERESTS STRIP — light */}
+      <section className="section--sm zone-canvas">
         <div className="container">
-          <RevealGroup className={styles.interests__grid}>
-            {interests.map((item) => (
-              <RevealItem key={item.title} className={styles.interest__card}>
+          <RevealGroup>
+            <RevealItem>
+              <span className="overline">How Can We Help?</span>
+            </RevealItem>
+          </RevealGroup>
+          <div className={styles.interests__grid}>
+            {interests.map((item, i) => (
+              <motion.div
+                key={item.title}
+                className={styles.interest__card}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.65, delay: i * 0.1, ease: spring }}
+              >
                 <div className={styles.interest__icon}>{item.icon}</div>
                 <h3 className={styles.interest__title}>{item.title}</h3>
                 <p className={styles.interest__desc}>{item.desc}</p>
-              </RevealItem>
+              </motion.div>
             ))}
-          </RevealGroup>
+          </div>
         </div>
       </section>
 
-      {/* 3. CONTACT GRID (Light Surface) */}
-      <section className="section zone-light" aria-labelledby="contact-headline">
+      {/* 3. CONTACT GRID — light */}
+      <section className="section zone-canvas" aria-labelledby="contact-headline">
         <div className="container">
           <div className={styles.contact__grid}>
 
             {/* Left: details */}
-            <Reveal direction="left" className={styles.contact__info}>
-              <span className="overline">Contact Details</span>
-              <h2 className={`display-md ${styles.contact__headline}`} id="contact-headline">
-                Reach us directly.
-              </h2>
-              <p className="body-md" style={{ marginBottom: "2.5rem", maxWidth: "450px" }}>
-                We&apos;re always open to conversations about partnerships,
-                sponsorship, and community initiatives. Our team responds
-                within 24–48 hours.
-              </p>
+            <RevealGroup className={styles.contact__info}>
+              <RevealItem>
+                <span className="overline">Contact Details</span>
+              </RevealItem>
+              <RevealItem>
+                <h2 className={`display-md ${styles.contact__headline}`} id="contact-headline">
+                  Reach us directly.
+                </h2>
+              </RevealItem>
+              <RevealItem>
+                <p className="body-md" style={{ marginBottom: "var(--sp-8)", maxWidth: "42ch" }}>
+                  We&apos;re always open to conversations about partnerships, sponsorship, and community initiatives. Our team responds within 24–48 hours.
+                </p>
+              </RevealItem>
 
               <div className={styles.details__list}>
-                {contactDetails.map((d) => (
-                  <a
+                {contactDetails.map((d, i) => (
+                  <motion.a
                     key={d.label}
                     href={d.href}
                     className={styles.detail__item}
                     target={d.href.startsWith("http") ? "_blank" : undefined}
                     rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.55, delay: i * 0.1, ease: spring }}
                   >
                     <div className={styles.detail__icon}>{d.icon}</div>
                     <div>
                       <span className={styles.detail__label}>{d.label}</span>
                       <span className={styles.detail__value}>{d.value}</span>
                     </div>
-                  </a>
+                  </motion.a>
                 ))}
               </div>
 
-              <div className={styles.hours}>
-                <h4 className={styles.hours__title}>Operating Hours</h4>
-                <p className={styles.hours__text}>Monday – Saturday: 8:00 AM – 5:00 PM EAT</p>
-                <p className={styles.hours__text}>Sunday: Closed</p>
-              </div>
-            </Reveal>
+              <RevealItem>
+                <div className={styles.hours}>
+                  <h4 className={styles.hours__title}>Operating Hours</h4>
+                  <p className={styles.hours__text}>Monday – Saturday: 8:00 AM – 5:00 PM EAT</p>
+                  <p className={styles.hours__text}>Sunday: Closed</p>
+                </div>
+              </RevealItem>
+            </RevealGroup>
 
             {/* Right: form */}
-            <Reveal direction="right" className={styles.contact__form__wrap}>
+            <RevealItem direction="right" className={styles.contact__form__wrap}>
               <div className={styles.form__card}>
                 <h3 className={styles.form__title}>Send us a Message</h3>
                 <p className={styles.form__sub}>
@@ -181,28 +216,34 @@ export default function ContactPage() {
                 </p>
                 <ContactForm />
               </div>
-            </Reveal>
+            </RevealItem>
           </div>
         </div>
       </section>
 
-      {/* 4. MAP VISUAL (Dark Panel) */}
+      {/* 4. MAP VISUAL — dark */}
       <section className={styles.map__section} aria-label="Our location">
         <div className={styles.map__img}>
           <Image
-            src="/assets/.png"
+            src="/assets/sitetour.JPG"
             alt="Safisha Nchi Kisumu Central Hub operations"
             fill
-            style={{ objectFit: "cover", filter: "grayscale(100%)" }}
+            style={{ objectFit: "cover", filter: "grayscale(30%)" }}
           />
           <div className={styles.map__overlay}>
-            <div className={styles.map__badge}>
+            <motion.div
+              className={styles.map__badge}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: spring }}
+            >
               <span className={styles.map__badge__dot} aria-hidden="true" />
               <div>
                 <strong>Kisumu Central Hub</strong>
                 <span>Main Processing Site — Kisumu, Kenya</span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

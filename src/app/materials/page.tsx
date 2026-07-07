@@ -1,13 +1,10 @@
-import Image from "next/image";
-import type { Metadata } from "next";
-import styles from "./page.module.css";
-import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Materials Lifecycle | Safisha Nchi",
-  description:
-    "Explore Safisha Nchi's full materials lifecycle — from community collection hubs to value-added processing into pellets and raw materials for manufacturing.",
-};
+import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import styles from "./page.module.css";
+import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const hubs = [
   { id: "main", type: "main", label: "Kisumu Central Hub", desc: "Main processing site. Sorting, crushing, baling." },
@@ -34,12 +31,12 @@ const lifecycle = [
   {
     num: "03",
     title: "Processing",
-    desc: "HDPE, LDPE, and flexible plastics are sorted, washed, shredded, and extruded into high-grade manufacturing-ready pellets.",
+    desc: "Sorted plastics are washed, shredded, and dried into high-quality plastic flakes ready for industrial use. Our roadmap includes scaling to pellet extrusion as infrastructure and funding grow.",
   },
   {
     num: "04",
     title: "Output",
-    desc: "Finished pellets and baled materials are supplied directly to manufacturers, completing the circular economy loop.",
+    desc: "Finished industrial commodities — including baled PET, clean flakes, and sorted glass cullet — are supplied directly to manufacturers, completing the circular economy loop.",
   },
 ];
 
@@ -47,121 +44,149 @@ const materials = [
   {
     num: "01",
     title: "Plastics Recovery",
-    types: ["PET Bottles", "HDPE Jugs", "LDPE Film", "PP Containers"],
-    output: "Pellets & Flakes",
+    types: ["PET Bottles & Containers", "LDPE Bags", "HDPE Jugs (Blue/White)", "PP Food Containers (Green/Red)"],
+    output: "Flakes & Bales",
     img: "/assets/pellets.png",
   },
   {
     num: "02",
     title: "Glass Sorting",
-    types: ["Wine Bottles", "Beverage Glass", "Clear Glass", "Coloured Glass"],
+    types: ["Beer Bottles", "Wine Bottles", "Beverage Glass", "All Colors & Types"],
     output: "Crushed Cullet",
     img: "/assets/glass.png",
   },
   {
     num: "03",
-    title: "Cartons & Paper",
-    types: ["Cardboard", "Office Paper", "Tetra Pak", "Newsprint"],
+    title: "Cartons & Paperboard",
+    types: ["Cardboard Packaging", "Various Paper Grades", "Tetra Pak", "Newsprint"],
     output: "Baled Grades",
     img: "/assets/bales.jpg",
   },
 ];
 
+const specs = [
+  { lbl: "Baler Capacity", val: "1.5 Tonnes / Hr" },
+  { lbl: "Crusher Throughput", val: "500 Kg / Hr" },
+  { lbl: "Flakes Output", val: "300 Kg / Hr" },
+  { lbl: "Total Floor Space", val: "15,000 Sq Ft" },
+];
+
+const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export default function MaterialsPage() {
+  const [activeStep, setActiveStep] = useState<string | null>(null);
+
   return (
     <>
-      {/* 1. HERO (100vh, Light Surface) */}
-      <section className={`section-100 zone-light ${styles.hero}`}>
+      {/* 1. HERO */}
+      <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="materials-h1">
         <div className={styles.hero__bg}>
           <Image src="/assets/pellets.png" alt="Recycling processing operations" fill priority style={{ objectFit: "cover" }} />
           <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
-            <RevealItem><span className="overline">Our Operations</span></RevealItem>
+            <RevealItem><span className="overline overline--lime">Our Operations</span></RevealItem>
             <RevealItem>
-              <h1 className="display-xl">Materials Lifecycle.</h1>
+              <h1 id="materials-h1" className="display-xl" style={{ color: "var(--white)" }}>Materials Lifecycle.</h1>
             </RevealItem>
             <RevealItem>
-              <p className="body-lg" style={{ marginTop: "1.5rem", maxWidth: "600px" }}>
-                From community collection to industrial-grade pellets — follow
-                the full journey of how Safisha Nchi transforms waste into value.
+              <p className="body-lg" style={{ marginTop: "1.5rem", maxWidth: "600px", color: "rgba(255, 255, 255, 0.8)" }}>
+                From community collection to quality plastic flakes — follow the full journey of how Safisha Nchi transforms recovered waste into verified industrial value.
               </p>
             </RevealItem>
           </RevealGroup>
         </div>
       </section>
 
-      
-      {/* 3. LIFECYCLE (Light Surface) */}
-      <section className={`section-100 zone-light`}>
+      {/* 2. LIFECYCLE — light, horizontal steps */}
+      <section className="section zone-canvas" aria-labelledby="lifecycle-h2">
         <div className="container">
-          <div className="section-header--center">
-            <RevealGroup>
-              <RevealItem><span className="overline">How It Works</span></RevealItem>
-              <RevealItem><h2 className="display-lg">The full recycling lifecycle.</h2></RevealItem>
-            </RevealGroup>
-          </div>
+          <RevealGroup>
+            <RevealItem><span className="overline">How It Works</span></RevealItem>
+            <RevealItem>
+              <h2 id="lifecycle-h2" className="display-lg" style={{ marginTop: "var(--sp-3)" }}>
+                The full recycling lifecycle.
+              </h2>
+            </RevealItem>
+          </RevealGroup>
 
-          <RevealGroup className={styles.lifecycle__grid}>
-            {lifecycle.map((step) => (
-              <RevealItem key={step.num} className={styles.lifecycle__step}>
+          <div className={styles.lifecycle__grid}>
+            {lifecycle.map((step, i) => (
+              <motion.div
+                key={step.num}
+                className={styles.lifecycle__step}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: i * 0.1, ease: spring }}
+                onMouseEnter={() => setActiveStep(step.num)}
+                onMouseLeave={() => setActiveStep(null)}
+              >
                 <span className={styles.step__num}>{step.num}</span>
                 <div className={styles.step__connector} />
                 <h3 className={styles.step__title}>{step.title}</h3>
                 <p className={styles.step__desc}>{step.desc}</p>
-              </RevealItem>
+              </motion.div>
             ))}
-          </RevealGroup>
+          </div>
         </div>
       </section>
-      {/* 2. NETWORK (100vh, Dark Panel) */}
-      <section className={`section-100 zone-dark`}>
-        <div className="container">
-          <div className="section-header--center">
-            <RevealGroup>
-              <RevealItem><span className="overline overline--dark">Our Network</span></RevealItem>
-              <RevealItem>
-                <h2 className="display-lg">1 Main Hub.<br />7 Collection Mini Hubs.</h2>
-              </RevealItem>
-              <RevealItem>
-                <p className="body-lg" style={{ color: "var(--dark-sub)", marginTop: "1rem" }}>
-                  Our distributed network ensures maximum coverage and collection
-                  efficiency across the Kisumu region.
-                </p>
-              </RevealItem>
-            </RevealGroup>
-          </div>
 
-          <RevealGroup className={styles.network__grid}>
-            {hubs.map((hub) => (
-              <RevealItem key={hub.id} className={`${styles.hub__card} ${hub.type === "main" ? styles["hub__card--main"] : ""}`}>
+      {/* 3. NETWORK — dark */}
+      <section className="section zone-dark" aria-labelledby="network-h2">
+        <div className="container">
+          <RevealGroup>
+            <RevealItem><span className="overline overline--on-dark">Our Network</span></RevealItem>
+            <RevealItem>
+              <h2 id="network-h2" className="display-lg" style={{ color: "var(--on-dark)", marginTop: "var(--sp-3)" }}>
+                1 Main Hub.<br />7 Collection Mini Hubs.
+              </h2>
+            </RevealItem>
+            <RevealItem>
+              <p className="body-lg" style={{ color: "var(--on-dark-muted)", marginTop: "var(--sp-4)", maxWidth: "52ch" }}>
+                Our distributed network ensures maximum coverage and collection efficiency across the Kisumu region.
+              </p>
+            </RevealItem>
+          </RevealGroup>
+
+          <div className={styles.network__grid}>
+            {hubs.map((hub, i) => (
+              <motion.div
+                key={hub.id}
+                className={`${styles.hub__card} ${hub.type === "main" ? styles["hub__card--main"] : ""}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: i * 0.07, ease: spring }}
+              >
                 <div className={styles.hub__dot} aria-hidden="true" />
                 <span className={styles.hub__type}>
                   {hub.type === "main" ? "Main Processing Site" : "Satellite Hub"}
                 </span>
                 <h3 className={styles.hub__name}>{hub.label}</h3>
                 {hub.desc && <p className={styles.hub__desc}>{hub.desc}</p>}
-              </RevealItem>
+              </motion.div>
             ))}
-          </RevealGroup>
+          </div>
         </div>
       </section>
 
-
-      {/* 4. MATERIALS CATEGORIES (Light Surface) */}
-      <section className={`section-100 zone-light`}>
+      {/* 4. MATERIALS CATEGORIES — light */}
+      <section className="section zone-alt" aria-labelledby="materials-cats-h2">
         <div className="container">
-          <div className="section-header--center">
-            <RevealGroup>
-              <RevealItem><span className="overline">What We Collect</span></RevealItem>
-              <RevealItem><h2 className="display-md">Materials we process.</h2></RevealItem>
-            </RevealGroup>
-          </div>
+          <RevealGroup>
+            <RevealItem><span className="overline">What We Collect</span></RevealItem>
+            <RevealItem>
+              <h2 id="materials-cats-h2" className="display-lg" style={{ marginTop: "var(--sp-3)" }}>
+                Materials we process.
+              </h2>
+            </RevealItem>
+          </RevealGroup>
 
-          <RevealGroup className={styles.mats__grid}>
-            {materials.map((mat) => (
-              <RevealItem key={mat.num} className={styles.mat__card}>
+          <div className={styles.mats__grid}>
+            {materials.map((mat, i) => (
+              <RevealItem key={mat.num} delay={i * 0.12} className={styles.mat__card}>
                 <div className={styles.mat__img}>
                   <Image src={mat.img} alt={mat.title} fill style={{ objectFit: "cover" }} />
                   <span className={styles.mat__num}>{mat.num}</span>
@@ -180,45 +205,33 @@ export default function MaterialsPage() {
                 </div>
               </RevealItem>
             ))}
-          </RevealGroup>
+          </div>
         </div>
       </section>
 
-      {/* 5. PROCESSING CAPABILITIES (100vh, Dark Panel) */}
-      <section className={`section-100 zone-dark`}>
+      {/* 5. PROCESSING CAPABILITIES — dark, split */}
+      <section className="section zone-dark" aria-labelledby="processing-h2">
         <div className="container">
           <div className={styles.processing__grid}>
-            <div className={styles.processing__copy}>
-              <RevealGroup>
-                <RevealItem><span className="overline overline--dark">Capacity</span></RevealItem>
-                <RevealItem>
-                  <h2 className="display-lg">Industrial grade processing.</h2>
-                </RevealItem>
-                <RevealItem>
-                  <div className={styles.processing__specs}>
-                    <div className={styles.spec__row}>
-                      <span className={styles.spec__lbl}>Baler Capacity</span>
-                      <span className={styles.spec__val}>1.5 Tonnes / Hr</span>
-                    </div>
-                    <div className={styles.spec__row}>
-                      <span className={styles.spec__lbl}>Crusher Throughput</span>
-                      <span className={styles.spec__val}>500 Kg / Hr</span>
-                    </div>
-                    <div className={styles.spec__row}>
-                      <span className={styles.spec__lbl}>Flakes Output</span>
-                      <span className={styles.spec__val}>300 Kg / Hr</span>
-                    </div>
-                    <div className={styles.spec__row}>
-                      <span className={styles.spec__lbl}>Total Floor Space</span>
-                      <span className={styles.spec__val}>15,000 Sq Ft</span>
-                    </div>
-                  </div>
-                </RevealItem>
-              </RevealGroup>
-            </div>
-            <Reveal className={styles.processing__img}>
-              <Image src="/assets/sacks.png" alt="Plastics ready for processing" fill style={{ objectFit: "cover",  }} />
-            </Reveal>
+            <RevealGroup className={styles.processing__copy}>
+              <RevealItem><span className="overline overline--on-dark">Capacity</span></RevealItem>
+              <RevealItem>
+                <h2 id="processing-h2" className="display-md" style={{ color: "var(--on-dark)", marginTop: "var(--sp-4)" }}>
+                  Industrial grade<br />processing.
+                </h2>
+              </RevealItem>
+            </RevealGroup>
+
+            <RevealGroup>
+              <RevealItem delay={0.1}>
+                <p style={{ color: "var(--on-dark-muted)", fontSize: "1.125rem", lineHeight: 1.7 }}>
+                  Our processing facilities are designed to deliver high-quality recycled materials that meet rigorous industrial standards. By replacing virgin plastics with our clean, sorted, and processed flakes, manufacturers can significantly reduce their carbon footprint, lower emissions, and actively combat plastic pollution in our environment.
+                </p>
+              </RevealItem>
+            </RevealGroup>
+            <RevealItem direction="right" className={styles.processing__img}>
+              <Image src="/assets/sacks.png" alt="Plastics ready for processing" fill style={{ objectFit: "cover" }} />
+            </RevealItem>
           </div>
         </div>
       </section>

@@ -2,21 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./page.module.css";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import ProjectModal, { type ProjectData } from "@/components/ui/ProjectModal";
 import { projectsData } from "@/components/ui/projectsData";
 
 const projects = projectsData;
+const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function ProjectsPage() {
-  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
-
   return (
     <>
-      {/* 1. HERO (100vh, imagery background) */}
-      <section className={`section-100 zone-light ${styles.hero}`}>
+      {/* 1. HERO */}
+      <section className={`zone-dark ${styles.hero}`} aria-labelledby="projects-h1">
         <div className={styles.hero__bg}>
           <Image
             src="/assets/project.JPG"
@@ -33,8 +31,8 @@ export default function ProjectsPage() {
               <span className={styles.heroLabel}>All Projects</span>
             </RevealItem>
             <RevealItem>
-              <h1 className={`display-xl`}>
-                Bringing change<br />to communities and Environment
+              <h1 id="projects-h1" className="display-xl" style={{ color: "var(--white)" }}>
+                Bringing change<br />to communities and<br />environment.
               </h1>
             </RevealItem>
             <RevealItem>
@@ -52,10 +50,10 @@ export default function ProjectsPage() {
         <div className="container">
           <RevealGroup className={styles.scale__row}>
             {[
-              { val: "1", label: "Main Processing Site", desc: "Central Kisumu Hub for aggregation and value-added processing" },
+              { val: "1", label: "Main Hub", desc: "Central Kisumu Hub for aggregation and value-added processing" },
               { val: "7", label: "Satellite Hubs", desc: "Community collection centres embedded across the region" },
-              { val: "150+", label: "Active Collectors", desc: "Informal waste pickers in our network" },
-              { val: "360T+", label: "Waste Diverted", desc: "Total materials recovered to date" },
+              { val: "150+", label: "Active Collectors", desc: "Informal waste pickers empowered in our network" },
+              { val: "360T+", label: "Plastics Diverted", desc: "Total materials recovered successfully" },
             ].map((s) => (
               <RevealItem key={s.label} className={styles.scale__stat}>
                 <span className={styles.scale__val}>{s.val}</span>
@@ -87,14 +85,9 @@ export default function ProjectsPage() {
           <RevealGroup className={styles.projects__grid}>
             {projects.map((proj) => (
               <RevealItem key={proj.id}>
-                <div
+                <Link
+                  href={`/projects/${proj.id}`}
                   className={styles.project__card}
-                  onClick={() => setSelectedProject(proj)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e: React.KeyboardEvent) => {
-                    if (e.key === "Enter") setSelectedProject(proj);
-                  }}
                 >
                   <div className={styles.project__img}>
                     <Image src={proj.image} alt={proj.title} fill style={{ objectFit: "cover" }} />
@@ -114,7 +107,7 @@ export default function ProjectsPage() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </Link>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -146,9 +139,6 @@ export default function ProjectsPage() {
           </RevealGroup>
         </div>
       </section>
-
-      {/* Full-screen project modal */}
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </>
   );
 }
