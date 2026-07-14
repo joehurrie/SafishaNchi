@@ -210,7 +210,6 @@
 .form__card {
   background: var(--white);
   border: 1px solid var(--border-primary);
-  border-left: 3px solid var(--primary);
   border-radius: var(--r-lg);
   padding: 2.25rem 2.5rem;
   box-shadow: var(--sh-md);

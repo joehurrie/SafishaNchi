@@ -243,7 +243,7 @@ select {
 /* ── DISPLAY TYPOGRAPHY ──────────────────────────────────────────── */
 .display-xl {
   font-family: var(--font-sans);
-  font-size: clamp(2.6rem, 8vw, 7.5rem);
+  font-size: clamp(3rem, 8vw, 7.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -251,7 +251,7 @@ select {
 
 .display-lg {
   font-family: var(--font-sans);
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: clamp(2.4rem, 6vw, 5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -259,21 +259,21 @@ select {
 
 .display-md {
   font-family: var(--font-sans);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .display-sm {
   font-family: var(--font-sans);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.75rem, 3vw, 2.2rem);
   font-weight: 600;
   letter-spacing: -0.015em;
 }
 
 .body-lg {
   font-family: var(--font-body);
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  font-size: clamp(1.15rem, 2vw, 1.25rem);
   line-height: 1.7;
   color: var(--text-muted);
   font-weight: 400;
@@ -281,7 +281,7 @@ select {
 
 .body-md {
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   line-height: 1.65;
   color: var(--text-muted);
 }
@@ -292,7 +292,7 @@ select {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -687,8 +687,8 @@ select {
 
   html,
   body {
-    font-size: 16px;
-    /* scale down from 18px on mobile */
+    font-size: 18px;
+    /* keeping base size legible on mobile */
   }
 
   .section {
@@ -721,11 +721,11 @@ select {
   }
 
   .body-lg {
-    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    font-size: clamp(1.05rem, 2.5vw, 1.15rem);
   }
 
   .body-md {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 }
 
@@ -737,7 +737,7 @@ select {
 
   html,
   body {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .section {

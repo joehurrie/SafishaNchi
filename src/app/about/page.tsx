@@ -336,13 +336,13 @@ export default function AboutPage() {
               </h2>
             </RevealItem>
             <RevealItem>
-              <p className="body-lg" style={{ marginTop: "1rem", maxWidth: "60ch" }}>
+              <p className="body-sm" style={{ marginTop: "1rem", maxWidth: "60ch" }}>
                 Spearheaded by Executive Director and Co-Founder <strong>Norah Gakii Nyagah</strong>, and supported by Technical Sub-Consultant <strong>Andrew Njenga Kimani</strong> — a dedicated team of environmentalists, engineers, and community organizers working toward a cleaner Kenya.
               </p>
             </RevealItem>
           </RevealGroup>
           <RevealItem direction="none" className={styles.team__photo}>
-            <Image src="/assets/project1.jpg" alt="Safisha Nchi Team" fill style={{ objectFit: "contain", }} />
+            <Image src="/assets/project1.jpg" alt="Safisha Nchi Team" fill sizes="(max-width: 768px) 100vw, 80vw" style={{ objectFit: "contain", }} />
             <div className={styles.team__caption}>
               <p>Our founder and the core operations team on-site at the Kisumu Central Hub</p>
             </div>

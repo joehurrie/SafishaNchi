@@ -162,22 +162,28 @@
 
 /* ── Mobile: stack vertically, responsive heights ── */
 @media (max-width: 768px) {
-  .card {
+  .card, .card__expanded, .card__compressed {
     flex: none;
     width: 100%;
-    height: 30dvh;
-    min-height: 200px;
-  }
-
-  .card__expanded {
     height: 65dvh;
     min-height: 420px;
+    filter: none;
   }
 
-  .card__compressed {
-    height: 15dvh;
-    min-height: 120px;
-    filter: brightness(0.7);
+  .card__reveal {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .card__default {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .card__veil {
+    display: block;
+    background: linear-gradient(to top, rgba(25,130,109,0.9) 0%, rgba(25,130,109,0.3) 60%, transparent 100%);
   }
 
   .reveal__num {

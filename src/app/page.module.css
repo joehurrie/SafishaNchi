@@ -743,7 +743,7 @@
 
 @media (max-width: 540px) {
   .hero {
-    min-height: 80svh;
+    min-height: 100svh;
   }
 
   .hero__body {

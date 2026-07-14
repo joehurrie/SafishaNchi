@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, AnimatePresence, useScroll } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "./ExpertiseAccordion.module.css";
 
 interface Pipeline {
@@ -220,14 +220,8 @@ export default function ExpertiseAccordion() {
   const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  });
-
   return (
     <div className={styles.accordion} role="list" ref={containerRef}>
-      <motion.div className={styles.accordion__progress} style={{ scaleY: scrollYProgress }} />
       {items.map((item) => {
         const isOpen = openId === item.id;
         return (
