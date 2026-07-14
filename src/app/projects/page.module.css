@@ -34,7 +34,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.75rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -102,7 +102,7 @@
 
 .scale__desc {
   display: block;
-  font-size: 0.875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -157,7 +157,7 @@
   background: var(--lime);
   color: var(--bg-dark);
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -173,7 +173,7 @@
   background: var(--lime);
   color: var(--forest-dark);
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   padding: 0.35rem 0.9rem;
   border-radius: var(--r-pill);
@@ -204,7 +204,7 @@
 
 .project__desc {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -234,7 +234,7 @@
 }
 
 .metric__lbl {
-  font-size: 0.7rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -307,11 +307,11 @@
   }
 
   .scale__lbl {
-    font-size: 0.95rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 
   .scale__desc {
-    font-size: 0.85rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 }
 
@@ -347,11 +347,11 @@
   }
 
   .scale__lbl {
-    font-size: 0.85rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 
   .scale__desc {
-    font-size: 0.75rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 }
 
@@ -375,7 +375,7 @@
   }
 
   .scale__lbl {
-    font-size: 0.75rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
     margin-bottom: 0.25rem;
   }
 }

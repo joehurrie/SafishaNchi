@@ -85,7 +85,7 @@
 }
 
 .mission__stat__lbl {
-  font-size: 0.78rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -144,13 +144,13 @@
 .bento__icon svg { width: 20px; height: 20px; }
 .bento__title {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
 }
 .bento__desc {
-  font-size: 0.83rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -204,7 +204,7 @@
 }
 
 .value__desc {
-  font-size: 0.875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-muted);
   line-height: 1.65;
 }
@@ -288,7 +288,7 @@
 }
 
 .timeline__desc {
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-muted);
   line-height: 1.65;
 }
@@ -333,7 +333,7 @@
 
 .strategy__num {
   display: block;
-  font-size: 0.7rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -349,7 +349,7 @@
 }
 
 .strategy__desc {
-  font-size: 0.875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: rgba(255,255,255,0.45);
   line-height: 1.65;
 }
@@ -422,7 +422,7 @@
   padding: var(--sp-6) var(--sp-5);
   background: linear-gradient(to top, rgba(25, 130, 109, 0.85), transparent);
   color: var(--white);
-  font-size: 0.85rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   line-height: 1.4;
   transform: translateY(100%);
   transition: transform var(--dur) var(--spring);
@@ -491,7 +491,7 @@
 
 .team__caption p {
   color: rgba(255,255,255,0.85);
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
@@ -618,7 +618,7 @@
 }
 
 .statsStrip__lbl {
-  font-size: 0.8rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -727,7 +727,7 @@
 }
 
 .missionNew__title {
-  font-size: 0.85rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--lime);
   font-weight: 500;
   text-transform: uppercase;

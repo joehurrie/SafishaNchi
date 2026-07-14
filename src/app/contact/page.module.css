@@ -97,7 +97,7 @@
   letter-spacing: -0.01em;
 }
 .interest__desc {
-  font-size: 0.875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-muted);
   line-height: 1.65;
 }
@@ -134,12 +134,11 @@
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   text-decoration: none;
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--spring);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .detail__item:hover {
   border-color: var(--forest);
   box-shadow: var(--sh-sm);
-  transform: translateX(8px);
 }
 
 .detail__icon {
@@ -168,7 +167,7 @@
 .detail__label {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -178,7 +177,7 @@
 .detail__value {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   color: var(--text);
 }
@@ -191,7 +190,7 @@
   border: 1px solid var(--border);
 }
 .hours__title {
-  font-size: 0.75rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -199,7 +198,7 @@
   margin-bottom: var(--sp-3);
 }
 .hours__text {
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-muted);
   line-height: 1.6;
 }
@@ -224,7 +223,7 @@
   color: var(--text);
 }
 .form__sub {
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-muted);
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -323,7 +322,7 @@
 }
 .map__badge span {
   display: block;
-  font-size: 0.875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: rgba(255,255,255,0.55);
   margin-top: 0.2rem;
 }

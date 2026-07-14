@@ -15,7 +15,7 @@ export default function Typewriter({ lines, className, delay = 0 }: TypewriterPr
       style={{ whiteSpace: "pre-wrap" }}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: true, margin: "-50px" }}
       variants={{
         visible: {
           transition: {

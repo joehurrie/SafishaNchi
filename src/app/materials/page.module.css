@@ -76,7 +76,7 @@
 .step__num {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   color: var(--text-faint);
   margin-bottom: var(--sp-6);
@@ -104,7 +104,7 @@
 }
 
 .step__desc {
-  font-size: 0.875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-muted);
   line-height: 1.65;
 }
@@ -160,7 +160,7 @@
 .hub__type {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -181,7 +181,7 @@
 }
 
 .hub__desc {
-  font-size: 0.82rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: rgba(255,255,255,0.4);
   margin-top: var(--sp-2);
   line-height: 1.6;
@@ -233,7 +233,7 @@
   background: var(--lime);
   color: var(--forest-dark);
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 800;
   padding: 0.3rem 0.75rem;
   border-radius: var(--r-pill);
@@ -265,7 +265,7 @@
   background: var(--canvas-alt);
   color: var(--text-muted);
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 500;
   padding: 0.3rem 0.75rem;
   border-radius: var(--r-pill);
@@ -281,7 +281,7 @@
 }
 
 .output__label {
-  font-size: 0.78rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -290,7 +290,7 @@
 
 .output__val {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   color: var(--forest);
 }
@@ -333,7 +333,7 @@
 }
 
 .spec__lbl {
-  font-size: 0.875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: rgba(255,255,255,0.5);
 }
 

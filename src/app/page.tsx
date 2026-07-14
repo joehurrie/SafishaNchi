@@ -239,6 +239,7 @@ export default function Home() {
           <RevealItem direction="left">
             <Typewriter
               className={`display-md ${styles.banner__headline}`}
+              delay={0.4}
               lines={[
                 "We don't just manage waste.",
                 "We build environmental and economic infrastructure."
@@ -269,7 +270,7 @@ export default function Home() {
             {/* Card A — Investor / Partner callout (photo) */}
             <RevealItem direction="left" className={styles.cta__card__a}>
               <div className={styles.cta__a__img}>
-                <Image src="/assets/team1.jpeg" alt="Safisha Nchi partnership meetings" fill style={{ objectFit: "cover" }} />
+                <Image src="/assets/team1.jpeg" alt="Safisha Nchi partnership meetings" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
                 <div className={styles.cta__a__img__veil} />
               </div>
               <div className={styles.cta__a__body}>

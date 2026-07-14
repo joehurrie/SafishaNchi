@@ -292,7 +292,7 @@ select {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -443,7 +443,7 @@ select {
 
 .btn-md {
   padding: .55rem 1.15rem;
-  font-size: .825rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   border-radius: var(--r-pill);
 }
 
@@ -550,7 +550,7 @@ select {
   padding: 0.25rem 0.75rem;
   border-radius: var(--r-pill);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -593,7 +593,7 @@ select {
 
 .form-label {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.03em;
@@ -687,8 +687,8 @@ select {
 
   html,
   body {
-    font-size: 18px;
-    /* keeping base size legible on mobile */
+    font-size: 16px;
+    /* scale down from 18px on mobile */
   }
 
   .section {
@@ -721,11 +721,11 @@ select {
   }
 
   .body-lg {
-    font-size: clamp(1.05rem, 2.5vw, 1.15rem);
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   }
 
   .body-md {
-    font-size: 1.05rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 }
 
@@ -737,7 +737,7 @@ select {
 
   html,
   body {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .section {

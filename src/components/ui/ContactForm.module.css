@@ -19,7 +19,7 @@
 
 .form__group label {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -49,7 +49,7 @@
 .form__group input::placeholder,
 .form__group textarea::placeholder {
   color: var(--text-faint);
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
 }
 
 .form__group input:focus,
@@ -146,7 +146,7 @@
   }
 
   .form__group label {
-    font-size: 0.7rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 
   .form__group input,
@@ -180,7 +180,7 @@
   }
 
   .success p {
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 }
 
@@ -194,7 +194,7 @@
   }
 
   .form__group label {
-    font-size: 0.65rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 
   .form__group input,
@@ -231,6 +231,6 @@
   }
 
   .success p {
-    font-size: 0.85rem;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
   }
 }

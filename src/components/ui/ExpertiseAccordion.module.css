@@ -124,7 +124,7 @@
 
 .trigger__num {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -142,7 +142,7 @@
 
 .trigger__sub {
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
   font-weight: 400;
 }
@@ -177,20 +177,11 @@
   position: relative;
   padding: 0.5rem 0 2rem 4rem;
 }
-.panel::before {
-  content: '';
-  position: absolute;
-  left: 21px;
-  top: -10px;
-  bottom: 1.5rem;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--lime) 50%, transparent);
-  border-radius: 2px;
-}
+
 
 .panel__summary {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.7;
   max-width: 680px;
@@ -290,7 +281,7 @@
 
 .step__step {
   display: inline-block;
-  font-size: 0.6rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -300,7 +291,7 @@
 
 .step__label {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.25rem;
@@ -310,7 +301,7 @@
 
 .step__desc {
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.6;
 }

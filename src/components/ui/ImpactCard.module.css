@@ -80,7 +80,7 @@
 
 .default__label {
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -118,7 +118,7 @@
 
 .reveal__metric {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -154,7 +154,7 @@
 
 .reveal__detail {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.65;
   max-width: 34ch;

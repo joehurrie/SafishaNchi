@@ -90,7 +90,7 @@
 .nav-links a {
   display: block;
   padding: .45rem 0;
-  font-size: .875rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
   font-weight: 500;
   color: var(--bg-dark);
   transition: color var(--dur) var(--ease);
