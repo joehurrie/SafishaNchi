@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { projectsData } from "@/components/ui/projectsData";
 import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import Footer from "@/components/layout/Footer";
+import MotionCard from "@/components/ui/MotionCard";
 
 // Generate static params for all known projects
 export function generateStaticParams() {
@@ -26,14 +27,14 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
   return (
     <>
       {/* 1. HERO */}
+      {/* 1. HERO */}
       <section className={`section-100 zone-dark ${styles.hero}`}>
         <div className={styles.hero__bg}>
           <Image
             src={project.image}
             alt={project.title}
-            fill
-            priority
-            style={{ objectFit: "cover" }}
+            fill priority sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "center 30%" }}
           />
           <div className={styles.hero__overlay} />
         </div>
@@ -43,7 +44,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               <span className="overline overline--lime">{project.tag}</span>
             </RevealItem>
             <RevealItem>
-              <h1 className="display-xl" style={{ color: "var(--white)" }}>
+              <h1 className={`display-xl ${styles.heroTitle}`}>
                 {project.title}
               </h1>
             </RevealItem>
@@ -115,18 +116,20 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
             <div className={styles.otherGrid}>
               {otherProjects.map((p, index) => (
                 <RevealItem key={p.id} delay={index * 0.1}>
-                  <Link href={`/projects/${p.id}`} className={styles.otherCard}>
-                    <Image
-                      src={p.image}
-                      alt={p.title}
-                      fill
-                      style={{ objectFit: "cover" }}
-                    />
-                    <div className={styles.otherOverlay}>
-                      <span className="overline overline--lime">{p.tag}</span>
-                      <h3 className={styles.otherTitle}>{p.title}</h3>
-                    </div>
-                  </Link>
+                  <MotionCard>
+                    <Link href={`/projects/${p.id}`} className={styles.otherCard} style={{ height: "100%" }}>
+                      <Image
+                        src={p.image}
+                        alt={p.title}
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
+                      <div className={styles.otherOverlay}>
+                        <span className="overline overline--lime">{p.tag}</span>
+                        <h3 className={styles.otherTitle}>{p.title}</h3>
+                      </div>
+                    </Link>
+                  </MotionCard>
                 </RevealItem>
               ))}
             </div>

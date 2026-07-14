@@ -14,8 +14,8 @@ const contactDetails = [
       </svg>
     ),
     label: "Phone",
-    value: "+254 740 113 368 / +254 727 107 994",
-    href: "tel:+254740113368",
+    value: " +254 727 107 994 / +254 141 033 779",
+    href: "tel:+254 727 107 994",
   },
   {
     icon: (
@@ -38,16 +38,6 @@ const contactDetails = [
     label: "Headquarters",
     value: "Kisumu, Kenya",
     href: "https://maps.google.com/?Kisumu,Kenya",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="icon">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
-    label: "Core Operations",
-    value: "Kisumu, Kenya",
-    href: "https://maps.google.com/?q=Kisumu,Kenya",
   },
 ];
 
@@ -105,31 +95,30 @@ export default function ContactPage() {
           <Image
             src="/assets/happy.jpeg"
             alt="Staff and community members at Safisha Nchi"
-            fill
-            priority
-            style={{ objectFit: "cover" }}
+            fill priority sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "center 30%" }}
           />
           <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
           <RevealGroup>
-            <RevealItem><span className={`overline overline--lime ${styles.heroLabel}`}>Get In Touch</span></RevealItem>
+            <RevealItem><span className="overline overline--lime">Get In Touch</span></RevealItem>
             <RevealItem>
-              <h1 id="contact-h1" className={`display-xl ${styles.heroTitle}`}>
-                Let&apos;s build a cleaner<br />Kenya together.
+              <h1 id="contact-h1" className={`display-xl ${styles.heroTitle}`} style={{ maxWidth: "800px" }}>
+                A greener <br />Kenya
               </h1>
             </RevealItem>
             <RevealItem>
-              <p className={`body-lg ${styles.heroSubtitle}`} style={{ maxWidth: "50ch", marginTop: "var(--sp-5)" }}>
-                Whether you&apos;re a business, community, investor, or individual — we&apos;d love to hear from you.
+              <p className={`body-lg ${styles.heroSubtitle}`}>
+                Building clean recycling networks that transform waste into resources across Kenya.
               </p>
             </RevealItem>
           </RevealGroup>
         </div>
       </section>
 
-      {/* 2. INTERESTS STRIP — light */}
-      <section className="section--sm zone-canvas">
+      {/* 2. INTERESTS STRIP */}
+      <section className="section--sm zone-tint">
         <div className="container">
           <RevealGroup>
             <RevealItem>
@@ -167,12 +156,12 @@ export default function ContactPage() {
               </RevealItem>
               <RevealItem>
                 <h2 className={`display-md ${styles.contact__headline}`} id="contact-headline">
-                  Reach us directly.
+                  Reach us today.
                 </h2>
               </RevealItem>
               <RevealItem>
                 <p className="body-md" style={{ marginBottom: "var(--sp-8)", maxWidth: "42ch" }}>
-                  We&apos;re always open to conversations about partnerships, sponsorship, and community initiatives. Our team responds within 24–48 hours.
+                  We&apos;re always open to conversations about partnerships, sponsorship, and community initiatives. Let&apos;s work together to build a cleaner Kenya.
                 </p>
               </RevealItem>
 
@@ -221,8 +210,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 4. MAP VISUAL — dark */}
-      <section className={styles.map__section} aria-label="Our location">
+      {/* 4. BRAND CLOSE — bold */}
+      <section className={styles.map__section} aria-label="Our location" style={{ position: "relative" }}>
         <div className={styles.map__img}>
           <Image
             src="/assets/sitetour.JPG"
@@ -230,20 +219,10 @@ export default function ContactPage() {
             fill
             style={{ objectFit: "cover", filter: "grayscale(30%)" }}
           />
-          <div className={styles.map__overlay}>
-            <motion.div
-              className={styles.map__badge}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: spring }}
-            >
-              <span className={styles.map__badge__dot} aria-hidden="true" />
-              <div>
-                <strong>Kisumu Central Hub</strong>
-                <span>Main Processing Site — Kisumu, Kenya</span>
-              </div>
-            </motion.div>
+          <div className={styles.map__primary__overlay} />
+          <div className={styles.map__brand__text}>
+            <span className={styles.map__brand__label}>Safisha Nchi</span>
+            <span className={styles.map__brand__tagline}>Turning Waste Into Opportunity</span>
           </div>
         </div>
       </section>

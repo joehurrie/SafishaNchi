@@ -1,4 +1,4 @@
-/* ===== HERO ===== */
+/* ===== HERO — full-bleed, matches About page ===== */
 .hero {
   position: relative;
   min-height: 100svh;
@@ -8,34 +8,32 @@
   justify-content: center;
   overflow: hidden;
 }
+
 .hero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: var(--forest-dark);
+  background: var(--primary);
 }
+
 .hero__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(19, 50, 33, 0.88) 0%, rgba(10, 28, 18, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(25, 130, 109, 0.82) 0%, rgba(25, 130, 109, 0.25) 100%);
   pointer-events: none;
 }
 
 .heroTitle {
   color: var(--white);
-  transition: color var(--dur) var(--ease);
 }
 
 .heroSubtitle {
-  color: rgba(255, 255, 255, 0.75);
-  transition: color var(--dur) var(--ease);
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: var(--sp-5);
+  max-width: 54ch;
 }
 
-.highlightKeyword {
-  color: inherit;
-  transition: color var(--dur) var(--ease);
-}
 .hero__inner {
   position: relative;
   z-index: 2;
@@ -56,13 +54,13 @@
 
 .interest__card {
   background: var(--white);
-  padding: 2.5rem 2rem;
+  padding: 2.25rem 1.75rem;
   transition: background var(--dur) var(--ease), transform var(--dur) var(--spring);
   cursor: default;
 }
 .interest__card:hover {
-  background: var(--canvas-alt);
-  transform: translateY(-4px);
+  background: var(--tint-primary);
+  transform: translateY(-2px);
 }
 
 .interest__icon {
@@ -211,9 +209,10 @@
 
 .form__card {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  padding: 2.75rem;
+  border: 1px solid var(--border-primary);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--r-lg);
+  padding: 2.25rem 2.5rem;
   box-shadow: var(--sh-md);
 }
 
@@ -249,20 +248,52 @@
   transform: scale(1.03);
 }
 
-.map__overlay {
+.map__primary__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 28, 18, 0.92) 0%, transparent 55%);
+  background: color-mix(in srgb, var(--primary) 80%, transparent);
+  z-index: 1;
+}
+
+.map__brand__text {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   display: flex;
-  align-items: flex-end;
-  padding: 3.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--sp-8);
+  text-align: center;
+}
+
+.map__brand__label {
+  font-family: var(--font-head);
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--lime);
+  letter-spacing: -0.02em;
+}
+
+.map__brand__tagline {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-weight: 500;
+  color: var(--white);
+  margin-top: var(--sp-4);
+  letter-spacing: 0.02em;
+}
+
+.map__overlay {
+  display: none;
 }
 
 .map__badge {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  background: rgba(10, 28, 18, 0.8);
+  background: rgba(25, 130, 109, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.1);
@@ -324,19 +355,19 @@
     max-height: 50svh;
   }
   .hero__overlay {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
   }
   .heroTitle {
-    color: var(--forest);
+    color: var(--primary);
   }
   .heroSubtitle {
     color: var(--text);
   }
-  .heroLabel {
-    color: var(--text) !important;
+  .hero :global(.overline) {
+    color: var(--primary) !important;
   }
-  .heroLabel::before {
-    background: var(--text) !important;
+  .hero :global(.overline)::before {
+    background: var(--primary) !important;
   }
   .interests__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -345,10 +376,6 @@
 
   .form__card {
     padding: 1.75rem;
-  }
-
-  .map__overlay {
-    padding: 1.5rem;
   }
 
   .map__badge {

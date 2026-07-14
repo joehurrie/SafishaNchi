@@ -41,12 +41,11 @@
   width: 150px;
   height: 60px;
   flex-shrink: 0;
-  filter: grayscale(100%) opacity(0.6);
-  transition: filter var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
 
 .marquee__item:hover {
-  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
 }
 
 @keyframes scroll {

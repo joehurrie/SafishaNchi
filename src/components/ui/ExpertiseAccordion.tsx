@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import styles from "./ExpertiseAccordion.module.css";
 
 interface Pipeline {
@@ -123,7 +123,7 @@ const items: ExpertiseItem[] = [
       { step: "Engage", label: "Community Mobilisation", desc: "We work closely with neighbourhood associations, schools, and businesses to establish consistent collection schedules and educate on proper waste segregation at source.", icon: <PIcon name="engage" /> },
       { step: "Collect", label: "Scheduled Collection Routes", desc: "Trained collection teams operate regular routes across Kisumu — covering informal settlements, commercial zones, and institutional campuses.", icon: <PIcon name="collect" /> },
       { step: "Weigh", label: "Transparent Weighing", desc: "All materials are weighed on calibrated scales at the point of collection or buy-back. Collectors receive immediate, transparent payment based on verified weight.", icon: <PIcon name="weigh" /> },
-      { step: "Aggregate", label: "Hub Staging", desc: "Collected materials are staged at our 7 satellite hubs before being consolidated and transported to our Kisumu Central Hub for processing.", icon: <PIcon name="aggregate" /> },
+      { step: "Aggregate", label: "Hub Staging", desc: "Collected materials are staged at our 7 mini hubs before being consolidated and transported to our Kisumu Central Hub for processing.", icon: <PIcon name="aggregate" /> },
       { step: "Report", label: "Collection Records", desc: "Every collection event is logged — quantity, material type, and location — providing verified data for environmental reporting and NEMA compliance.", icon: <PIcon name="report" /> },
     ],
   },
@@ -218,9 +218,16 @@ const items: ExpertiseItem[] = [
 export default function ExpertiseAccordion() {
   const [openId, setOpenId] = useState<string | null>(null);
   const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
 
   return (
-    <div className={styles.accordion} role="list">
+    <div className={styles.accordion} role="list" ref={containerRef}>
+      <motion.div className={styles.accordion__progress} style={{ scaleY: scrollYProgress }} />
       {items.map((item) => {
         const isOpen = openId === item.id;
         return (
@@ -243,7 +250,6 @@ export default function ExpertiseAccordion() {
                 </div>
                 <div className={styles.trigger__titles}>
                   <div className={styles.trigger__num__title}>
-                    <span className={styles.trigger__num}>{item.num}</span>
                     <span className={styles.trigger__title}>{item.title}</span>
                   </div>
                   <span className={styles.trigger__sub}>{item.sub}</span>
@@ -280,9 +286,27 @@ export default function ExpertiseAccordion() {
                     <p className={styles.panel__summary}>{item.summary}</p>
 
                     {/* Creative pipeline: icon nodes with connecting flow */}
-                    <div className={styles.pipeline} role="list" aria-label="Process pipeline">
+                    <motion.div 
+                      className={styles.pipeline} 
+                      role="list" 
+                      aria-label="Process pipeline"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: {},
+                        visible: { transition: { staggerChildren: 0.15 } }
+                      }}
+                    >
                       {item.pipeline.map((step, i) => (
-                        <div key={step.step} className={styles.pipeline__step} role="listitem">
+                        <motion.div 
+                          key={step.step} 
+                          className={styles.pipeline__step} 
+                          role="listitem"
+                          variants={{
+                            hidden: { opacity: 0, y: 10 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
+                          }}
+                        >
                           {/* Icon node */}
                           <div className={styles.step__node}>
                             <div className={styles.step__icon__wrap}>
@@ -304,9 +328,9 @@ export default function ExpertiseAccordion() {
                             <h4 className={styles.step__label}>{step.label}</h4>
                             <p className={styles.step__desc}>{step.desc}</p>
                           </div>
-                        </div>
+                        </motion.div>
                       ))}
-                    </div>
+                    </motion.div>
                   </div>
                 </motion.div>
               )}

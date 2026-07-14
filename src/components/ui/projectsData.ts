@@ -12,7 +12,7 @@ export const projectsData: ProjectItem[] = [
     title: "The Kisumu Operational Facility (2022–2024)",
     image: "/assets/bales1.jpeg",
     overview:
-      "The Kisumu Project was Safisha Nchi’s foundational proof-of-concept operation. Over a two-year period, the company deployed a targeted operational facility in Kisumu to establish a robust, localized waste collection, buy-back, and processing ecosystem. This direct intervention yielded concrete, field-verified results across both environmental and socioeconomic metrics, proving the viability of the company's decentralized model.",
+      "The Kisumu Project was Safisha Nchi’s foundational proof-of-concept operation. Over a three-year period, the company deployed a targeted operational facility in Kisumu to establish a robust, localized waste collection, buy-back, and processing ecosystem. This direct intervention yielded concrete, field-verified results across both environmental and socioeconomic metrics, proving the viability of the company's decentralized model.",
     stakeholders: ["County Government of Kisumu", "NEMA", "Local Communities", "Independent Waste Pickers"],
     impact: [
       { label: "Plastics Diverted", value: "360T+" },
@@ -76,7 +76,7 @@ export const projectsData: ProjectItem[] = [
       { label: "National Hubs", value: "Nairobi & Mombasa" },
     ],
     story:
-      "Projected Milestones\n\nNairobi Expansion (2026 Target): As the immediate next step in scaling its physical infrastructure, Safisha Nchi plans to launch and operationalize a second major Buy-Back Centre in Nairobi. This facility is projected to intercept significantly higher volumes of urban waste from the capital. \n\nDigital & Regional Integration (2027 Projection): By 2027, the company aims to establish a coastal footprint by opening a third operational centre in Mombasa. Concurrently, Safisha Nchi will launch a proprietary, live digital platform designed to streamline material tracking, aggregator onboarding, and decentralized payments across all active locations. \n\nNational Network Consolidation (2028 Target): The ultimate operational goal for Safisha Nchi is to establish a fully integrated, nationwide supply chain. By 2028, the company projects having over 5,000 waste pickers nationally networked, supported, and economically empowered through the centralized Safisha Nchi ecosystem.",
+      "Projected Milestones\n\nNairobi Expansion (2026 Target): As the immediate next step in scaling physical infrastructure, we plan to launch and operationalize a second major Buy-Back Centre in Nairobi. This facility is projected to intercept significantly higher volumes of urban waste from the capital. \n\nDigital & Regional Integration (2027 Projection): By 2027, we aim to establish a coastal footprint by opening a third operational centre in Mombasa. Concurrently, we will launch a proprietary, live digital platform designed to streamline material tracking, aggregator onboarding, and decentralized payments across all active locations. \n\n Multi -Nation Network Consolidation (2028 Target): The ultimate operational goal for Safisha Nchi is to establish a fully integrated, multi nation wide supply chain across kenya and Uganda. By 2028, the company projects having over 5,000 waste pickers nationally networked, supported, and economically empowered through the centralized Safisha Nchi ecosystem.",
     metrics: [
       { val: "5k+", lbl: "Waste Pickers" },
       { val: "3", lbl: "National Hubs" },

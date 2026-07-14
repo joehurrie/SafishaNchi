@@ -20,7 +20,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(19, 50, 33, 0.88) 0%, rgba(10, 28, 18, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(25, 130, 109, 0.85) 0%, rgba(25, 130, 109, 0.35) 100%);
   pointer-events: none;
 }
 
@@ -60,7 +60,7 @@
   padding: 2.5rem 2rem;
   border-right: 1px solid var(--border);
   position: relative;
-  transition: background var(--dur) var(--ease);
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--spring);
   cursor: default;
 }
 
@@ -69,7 +69,8 @@
 }
 
 .lifecycle__step:hover {
-  background: var(--white);
+  background: var(--tint-primary);
+  transform: translateY(-2px);
 }
 
 .step__num {
@@ -407,16 +408,16 @@
     background: rgba(255, 255, 255, 0.8);
   }
   .heroTitle {
-    color: var(--forest);
+    color: var(--primary);
   }
   .heroSubtitle {
     color: var(--text);
   }
-  .heroLabel {
-    color: var(--text) !important;
+  .hero :global(.overline) {
+    color: var(--primary) !important;
   }
-  .heroLabel::before {
-    background: var(--text) !important;
+  .hero :global(.overline)::before {
+    background: var(--primary) !important;
   }
 
   .network__grid {

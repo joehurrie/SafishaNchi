@@ -8,20 +8,20 @@ import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const hubs = [
   { id: "main", type: "main", label: "Kisumu Central Hub", desc: "Main processing site. Sorting, crushing, baling." },
-  { id: "h1", type: "satellite", label: "Nyalenda Hub" },
-  { id: "h2", type: "satellite", label: "Manyatta Hub" },
-  { id: "h3", type: "satellite", label: "Kondele Hub" },
-  { id: "h4", type: "satellite", label: "Migosi Hub" },
-  { id: "h5", type: "satellite", label: "Mamboleo Hub" },
-  { id: "h6", type: "satellite", label: "Obunga Hub" },
-  { id: "h7", type: "satellite", label: "Kaloleni Hub" },
+  { id: "h1", type: "mini", label: "Nyalenda Hub" },
+  { id: "h2", type: "mini", label: "Manyatta Hub" },
+  { id: "h3", type: "mini", label: "Kondele Hub" },
+  { id: "h4", type: "mini", label: "Migosi Hub" },
+  { id: "h5", type: "mini", label: "Mamboleo Hub" },
+  { id: "h6", type: "mini", label: "Obunga Hub" },
+  { id: "h7", type: "mini", label: "Kaloleni Hub" },
 ];
 
 const lifecycle = [
   {
     num: "01",
     title: "Collection",
-    desc: "150+ informal collectors and 7 satellite hubs recover plastics, glass, and cartons from communities and businesses across the region.",
+    desc: "150+ informal collectors and 7 mini hubs recover plastics, glass, and cartons from communities and businesses across the region.",
   },
   {
     num: "02",
@@ -88,7 +88,7 @@ export default function MaterialsPage() {
           <RevealGroup>
             <RevealItem><span className={`overline overline--lime ${styles.heroLabel}`}>Our Operations</span></RevealItem>
             <RevealItem>
-              <h1 id="materials-h1" className={`display-xl ${styles.heroTitle}`}>Materials Lifecycle.</h1>
+              <h1 id="materials-h1" className={`display-xl ${styles.heroTitle}`}>Waste Lifecycle.</h1>
             </RevealItem>
             <RevealItem>
               <p className={`body-lg ${styles.heroSubtitle}`} style={{ marginTop: "1.5rem", maxWidth: "600px" }}>
@@ -132,46 +132,6 @@ export default function MaterialsPage() {
           </div>
         </div>
       </section>
-
-      {/* 3. NETWORK — dark */}
-      <section className="section zone-dark" aria-labelledby="network-h2">
-        <div className="container">
-          <RevealGroup>
-            <RevealItem><span className="overline overline--on-dark">Our Network</span></RevealItem>
-            <RevealItem>
-              <h2 id="network-h2" className="display-lg" style={{ color: "var(--on-dark)", marginTop: "var(--sp-3)" }}>
-                1 Main Hub.<br />7 Collection Mini Hubs.
-              </h2>
-            </RevealItem>
-            <RevealItem>
-              <p className="body-lg" style={{ color: "var(--on-dark-muted)", marginTop: "var(--sp-4)", maxWidth: "52ch" }}>
-                Our distributed network ensures maximum coverage and collection efficiency across the Kisumu region.
-              </p>
-            </RevealItem>
-          </RevealGroup>
-
-          <div className={styles.network__grid}>
-            {hubs.map((hub, i) => (
-              <motion.div
-                key={hub.id}
-                className={`${styles.hub__card} ${hub.type === "main" ? styles["hub__card--main"] : ""}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.6, delay: i * 0.07, ease: spring }}
-              >
-                <div className={styles.hub__dot} aria-hidden="true" />
-                <span className={styles.hub__type}>
-                  {hub.type === "main" ? "Main Processing Site" : "Satellite Hub"}
-                </span>
-                <h3 className={styles.hub__name}>{hub.label}</h3>
-                {hub.desc && <p className={styles.hub__desc}>{hub.desc}</p>}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 4. MATERIALS CATEGORIES — light */}
       <section className="section zone-alt" aria-labelledby="materials-cats-h2">
         <div className="container">
@@ -179,7 +139,7 @@ export default function MaterialsPage() {
             <RevealItem><span className="overline">What We Collect</span></RevealItem>
             <RevealItem>
               <h2 id="materials-cats-h2" className="display-lg" style={{ marginTop: "var(--sp-3)" }}>
-                Materials we process.
+                Waste materials we process.
               </h2>
             </RevealItem>
           </RevealGroup>
@@ -209,6 +169,10 @@ export default function MaterialsPage() {
         </div>
       </section>
 
+
+
+
+
       {/* 5. PROCESSING CAPABILITIES — dark, split */}
       <section className="section zone-dark" aria-labelledby="processing-h2">
         <div className="container">
@@ -232,6 +196,44 @@ export default function MaterialsPage() {
             <RevealItem direction="right" className={styles.processing__img}>
               <Image src="/assets/sacks.png" alt="Plastics ready for processing" fill style={{ objectFit: "cover" }} />
             </RevealItem>
+          </div>
+        </div>
+      </section>
+      {/* 3. NETWORK — dark */}
+      <section className="section zone-dark" aria-labelledby="network-h2">
+        <div className="container">
+          <RevealGroup>
+            <RevealItem><span className="overline overline--on-dark">Our Network</span></RevealItem>
+            <RevealItem>
+              <h2 id="network-h2" className="display-lg" style={{ color: "var(--on-dark)", marginTop: "var(--sp-3)" }}>
+                1 Main Hub.<br />7 Collection Mini Hubs.
+              </h2>
+            </RevealItem>
+            <RevealItem>
+              <p className="body-lg" style={{ color: "var(--on-dark-muted)", marginTop: "var(--sp-4)", maxWidth: "52ch" }}>
+                Our distributed network ensures maximum coverage and collection efficiency across the Kisumu region.
+              </p>
+            </RevealItem>
+          </RevealGroup>
+
+          <div className={styles.network__grid}>
+            {hubs.map((hub, i) => (
+              <motion.div
+                key={hub.id}
+                className={`${styles.hub__card} ${hub.type === "main" ? styles["hub__card--main"] : ""}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: i * 0.07, ease: spring }}
+              >
+                <div className={styles.hub__dot} aria-hidden="true" />
+                <span className={styles.hub__type}>
+                  {hub.type === "main" ? "Main Processing Site" : "Mini Hub"}
+                </span>
+                <h3 className={styles.hub__name}>{hub.label}</h3>
+                {hub.desc && <p className={styles.hub__desc}>{hub.desc}</p>}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

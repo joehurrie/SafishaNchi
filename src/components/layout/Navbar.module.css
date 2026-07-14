@@ -67,17 +67,17 @@
 }
 
 .logo__text {
-  font-family: var(--font-head);
+  font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--forest);
+  color: var(--bg-dark);
   transition: color var(--dur) var(--ease);
   white-space: nowrap;
 }
 
 .navbar--transparent .logo__text { color: white; }
-.navbar--scrolled .logo__text    { color: var(--forest); }
+.navbar--scrolled .logo__text    { color: var(--bg-dark); }
 
 /* ── Nav links ── */
 .nav-links {
@@ -92,7 +92,7 @@
   padding: .45rem 0;
   font-size: .875rem;
   font-weight: 500;
-  color: var(--forest);
+  color: var(--bg-dark);
   transition: color var(--dur) var(--ease);
   position: relative;
 }
@@ -113,7 +113,7 @@
 .navbar--transparent .nav-links a { color: rgba(255,255,255,.85); }
 
 .nav-links a:hover {
-  color: var(--forest-dark);
+  color: var(--bg-dark-alt);
 }
 
 .nav-links a:hover::after {
@@ -126,7 +126,7 @@
 }
 
 .nav-links a.active {
-  color: var(--forest);
+  color: var(--bg-dark);
   font-weight: 600;
 }
 
@@ -166,7 +166,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--forest);
+  background: var(--bg-dark);
   border-radius: 2px;
   transition: all var(--dur) var(--ease);
   transform-origin: center;
@@ -221,10 +221,10 @@
     display: block;
     width: 100%;
     font-size: 1.35rem;
-    font-family: var(--font-head);
+    font-family: var(--font-sans);
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: var(--forest) !important;
+    color: var(--bg-dark) !important;
     background: transparent !important;
     padding: 1.1rem 0;
     border-radius: 0;
@@ -235,13 +235,13 @@
 
   /* Active page: lime underline accent */
   .nav-links a:not(:global(.btn)).active {
-    color: var(--forest) !important;
+    color: var(--bg-dark) !important;
     background: transparent !important;
   }
   .nav-links a:not(:global(.btn)).active::after {
     transform: scaleX(1);
     transform-origin: center;
-    background: var(--lime);
+    background: var(--primary);
     height: 3px;
     border-radius: 2px;
   }

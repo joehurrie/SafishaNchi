@@ -7,6 +7,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ImpactCard, { ImpactCardData } from "@/components/ui/ImpactCard";
+import Typewriter from "@/components/ui/Typewriter";
 import ExpertiseAccordion from "@/components/ui/ExpertiseAccordion";
 import PartnerMarquee from "@/components/ui/PartnerMarquee";
 import ProjectsShowcase from "@/components/ui/ProjectsShowcase";
@@ -50,7 +51,7 @@ const impactCards: ImpactCardData[] = [
     suffix: "",
     metric: "Hubs",
     detail:
-      "Seven satellite collection hubs embedded across Kisumu's densest informal settlements — each operating transparent weighing systems and immediate cash payment.",
+      "Seven mini collection hubs embedded across Kisumu's densest informal settlements — each operating transparent weighing systems and immediate cash payment.",
     img: "/assets/buyback.jpeg",
     imgAlt: "Safisha Nchi buy-back centre operations",
   },
@@ -82,7 +83,7 @@ export default function Home() {
             src="/assets/img.png"
             alt="Safisha Nchi waste management and recycling operations, Kisumu Kenya"
             fill priority
-            style={{ objectFit: "cover", objectPosition: "center 25%" }}
+            style={{ objectFit: "cover", objectPosition: "center" }}
           />
           <div className={styles.hero__veil} />
         </div>
@@ -92,22 +93,22 @@ export default function Home() {
 
             <RevealItem>
               <h1 className={`display-xl ${styles.hero__h1}`} id="hero-h1">
-                Recycling Waste,  Improving <span style={{ color: "var(--lime)" }}>Livelihoods</span>
+                Recycling Waste,  Changing <span style={{ color: "var(--lime)" }}>Livelihoods</span>
               </h1>
             </RevealItem>
             <RevealItem>
               <p className={styles.hero__sub}>
-                We bridge the gap between environmental necessity and economic opportunity by turning waste into a resource for growth.
+                We bridge the gap between environmental necessity and economic opportunity by turning waste into resources.
               </p>
             </RevealItem>
             <RevealItem>
               <div className={styles.hero__actions}>
                 <Link href="/materials" className="btn btn-primary">
-                  See How We Operate
+                  How We Operate
                   <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
                 <Link href="/contact" className="btn btn-outline-white">
-                  Partner With Us
+                  Work With Us
                 </Link>
               </div>
             </RevealItem>
@@ -118,21 +119,6 @@ export default function Home() {
             <div className={styles.scroll__bar} />
             <span>Scroll</span>
           </div>
-        </div>
-
-        {/* Quick stats overlay */}
-        <div className={styles.hero__stats} aria-label="Key operational metrics">
-          {[
-            { n: 360, s: "T+", l: "Waste Diverted" },
-            { n: 150, s: "+", l: "Collectors Supported" },
-            { n: 7, s: "", l: "Collection Hubs" },
-            { n: 10, s: "yr+", l: "Years Operating" },
-          ].map((st) => (
-            <div key={st.l} className={styles.hero__stat}>
-              <AnimatedCounter target={st.n} suffix={st.s} className={styles.hero__stat__num} />
-              <span className={styles.hero__stat__lbl}>{st.l}</span>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -151,23 +137,17 @@ export default function Home() {
               <h2 className={`display-lg ${styles.about__headline}`} id="about-h2">
                 Waste Management<br />for a Better Environment.
               </h2>
-              <Link href="/about" className={`btn btn-forest ${styles.about__cta}`}>
-                Our Story
-                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
             </RevealItem>
 
             {/* Right: concise summary */}
             <RevealItem direction="right" className={styles.about__right}>
               <p className={styles.about__para}>
-                Safisha Nchi is a Kenyan waste management enterprise operating in Kisumu, Kenya. We run community Buy-Back Centres, sort and
-                process post-consumer plastics, glass, and paperboard, creating dignified livelihoods, and
-                supplying recycled feedstock to industrial buyers.
+                Safisha Nchi's core service is comprehensive recycling and waste management, focusing on collecting, sorting, and applying value addition to recyclable materials like plastics (PET, HDPE, PP), paper/cardboard, thereby transforming waste into valuable resources and creating green jobs within a circular economy model.
               </p>
 
               {/* Credentials row */}
               <div className={styles.about__credentials}>
-                {["NEMA Registered", "KIWAN Member", "Waste-to-Green-Jobs", "10+ Years Operating"].map((c) => (
+                {["NEMA Certified", "KIWAN Member", "Waste-to-Green-Jobs", "5+ Years Operating"].map((c) => (
                   <span key={c} className="chip chip--outline">{c}</span>
                 ))}
               </div>
@@ -184,14 +164,13 @@ export default function Home() {
         aria-labelledby="impact-h2"
         aria-label="Measurable Impact"
       >
-        {/* Section label floats above the strip */}
-        <div className={styles.impact__label__row}>
-          <span className="overline" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Measurable Impact
-          </span>
-          <h2 className={styles.impact__eyebrow} id="impact-h2">
-            Hover to explore our impact
-          </h2>
+        <div className="container" style={{ paddingBottom: "1.5rem" }}>
+          <div className={styles.impact__label__row}>
+            <span className="overline">Our Impact</span>
+            <h2 className="display-sm" id="impact-h2" style={{ marginTop: "0.25rem" }}>
+              Measurable progress.
+            </h2>
+          </div>
         </div>
 
         {/* Horizontal strip of image columns */}
@@ -212,7 +191,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           4. PARTNERS CAROUSEL
       ═══════════════════════════════════════════ */}
-      <section className={`${styles.partners} zone-alt`} aria-label="Partner organisations" style={{ paddingBottom: "var(--sp-12)" }}>
+      <section className={`${styles.partners} zone-tint`} aria-label="Partner organisations" style={{ paddingBottom: "var(--sp-12)" }}>
         <div className="container">
           <p className={styles.partners__eyebrow}>
             OUR PARTNERS AND STAKEHOLDERS
@@ -224,7 +203,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           5. EXPERTISE ACCORDION
       ═══════════════════════════════════════════ */}
-      <section className={`section zone-canvas ${styles.expertise__section}`} aria-labelledby="expertise-h2">
+      <section className={`section zone-tint ${styles.expertise__section}`} aria-labelledby="expertise-h2">
         <div className="container">
           <div className={styles.expertise__header}>
             <RevealItem>
@@ -258,9 +237,13 @@ export default function Home() {
         </div>
         <div className={`container ${styles.banner__content}`}>
           <RevealItem direction="left">
-            <h2 className={`display-md ${styles.banner__headline}`}>
-              We don&apos;t just manage waste.<br />We build environmental and economic infrastructure.
-            </h2>
+            <Typewriter
+              className={`display-md ${styles.banner__headline}`}
+              lines={[
+                "We don't just manage waste.",
+                "We build environmental and economic infrastructure."
+              ]}
+            />
             <p className={styles.banner__sub}>
               Every tonne collected creates verified livelihoods for the women
               and youth who recover it, transforming ecological challenges into
@@ -283,7 +266,7 @@ export default function Home() {
         <div className="container">
           <div className={styles.dual__grid}>
 
-            {/* Card A — Investor / Partner callout (forest) */}
+            {/* Card A — Investor / Partner callout (photo) */}
             <RevealItem direction="left" className={styles.cta__card__a}>
               <div className={styles.cta__a__img}>
                 <Image src="/assets/team1.jpeg" alt="Safisha Nchi partnership meetings" fill style={{ objectFit: "cover" }} />
@@ -297,9 +280,9 @@ export default function Home() {
               </div>
             </RevealItem>
 
-            {/* Card B — Free consultation (lime) */}
+            {/* Card B — Free consultation (primary green) */}
             <RevealItem direction="right" className={styles.cta__card__b}>
-              <span className="overline">Free Consultation</span>
+              <span className="overline overline--lime">Free Consultation</span>
               <h2 className={`display-sm ${styles.cta__b__headline}`}>
                 Ready to recycle smarter? Book a free consultation.
               </h2>
@@ -324,7 +307,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <Link href="/contact" className="btn btn-forest" style={{ marginTop: "2rem", alignSelf: "flex-start" }}>
+              <Link href="/contact" className="btn btn-outline-white" style={{ marginTop: "2rem", alignSelf: "flex-start" }}>
                 Book a Free Consultation
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
@@ -372,7 +355,7 @@ export default function Home() {
         <div className={styles.map__embed}>
           <iframe
             title="Safisha Nchi locations in Kisumu, Kenya"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63835.06399843843!2d34.70299535!3d-0.09199995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182aa433a44ab001%3A0x47c9de0a9ef4f5a7!2sKisumu%2C%20Kenya!5e0!3m2!1sen!2sus!4v1720000000000!5m2!1sen!2sus&style=feature:all|saturation:-30"
+            src="https://www.google.com/maps/d/u/1/embed?mid=1uz_o-RIaJN7Z_NkptlCzs6jrU0NrzRA&ehbc=2E312F&noprof=1"
             width="100%"
             height="100%"
             style={{ border: 0, filter: "grayscale(15%) contrast(1.05)" }}
@@ -390,7 +373,7 @@ export default function Home() {
             </div>
             <div className={styles.map__legend__item}>
               <div className={`${styles.map__dot} ${styles.map__dot__sat}`} />
-              <span>7 Satellite Buy-Back Centres</span>
+              <span>7 Mini Buy-Back Centres</span>
             </div>
             <Link href="/contact" className={`btn btn-primary ${styles.map__legend__btn}`}>
               Get Directions
@@ -408,7 +391,7 @@ export default function Home() {
             <RevealItem direction="left" className={styles.connect__left}>
               <span className="overline overline--on-dark">Get in Touch</span>
               <h2 className={`display-lg ${styles.connect__headline}`} id="connect-h2">
-                Let&apos;s Connect.
+                Get In Touch
               </h2>
               <p className={styles.connect__sub}>
                 Waste collection contracts, community partnerships, investment

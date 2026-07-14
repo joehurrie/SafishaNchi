@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import AnimatedCounter from "./AnimatedCounter";
 import styles from "./ImpactCard.module.css";
 
 export interface ImpactCardData {
@@ -26,11 +24,30 @@ interface Props {
 }
 
 export default function ImpactCard({ card, delay = 0, isHovered, onHover, anyHovered }: Props) {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.innerWidth <= 768) {
+      // Toggle logic on mobile
+      const willHover = !isHovered;
+      onHover(willHover ? card.id : null);
+      
+      if (willHover) {
+        // Wait briefly for the CSS transition to start before scrolling
+        const target = e.currentTarget;
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }, 150);
+      }
+    } else {
+      onHover(card.id);
+    }
+  };
+
   return (
     <div
       className={`${styles.card} ${isHovered ? styles.card__expanded : ""} ${anyHovered && !isHovered ? styles.card__compressed : ""}`}
       onMouseEnter={() => onHover(card.id)}
       onMouseLeave={() => onHover(null)}
+      onClick={handleClick}
       tabIndex={0}
       onFocus={() => onHover(card.id)}
       onBlur={() => onHover(null)}
@@ -63,12 +80,9 @@ export default function ImpactCard({ card, delay = 0, isHovered, onHover, anyHov
       <div className={`${styles.card__reveal} ${isHovered ? styles.card__reveal__visible : ""}`}>
         <span className={styles.reveal__metric}>{card.metric}</span>
         <div className={styles.reveal__stat}>
-          <AnimatedCounter
-            target={card.value}
-            suffix={card.suffix}
-            prefix={card.prefix}
-            className={styles.reveal__num}
-          />
+          <span className={styles.reveal__num}>
+            {card.prefix ?? ""}{card.value}{card.suffix}
+          </span>
         </div>
         <h3 className={styles.reveal__label}>{card.label}</h3>
         <p className={styles.reveal__detail}>{card.detail}</p>

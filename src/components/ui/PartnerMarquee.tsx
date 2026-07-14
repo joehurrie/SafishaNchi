@@ -4,13 +4,13 @@ import Image from "next/image";
 import styles from "./PartnerMarquee.module.css";
 
 const partners = [
-  { name: "County Government of Kisumu", src: "/assets/County Government of Kisumu-logo.jfif" },
-  { name: "NEMA", src: "/assets/nema logo.jfif" },
-  { name: "Kepro", src: "/assets/kepro-logo.png" },
-  { name: "New Life Mission", src: "/assets/New Life Mission Aid.jfif" },
-  { name: "Human Brights", src: "/assets/Human Bight logo.jfif" },
-  { name: "Norwegian Retailers", src: "/assets/norwegian logo.png" },
-  { name: "Linkon AS", src: "/assets/linkon logo.PNG" },
+  { name: "County Government of Kisumu", src: "/assets/logos/county-government-of-kisumu-logo.jpg" },
+  { name: "NEMA", src: "/assets/logos/nema-logo.jpg" },
+  { name: "Kepro", src: "/assets/logos/kepro-logo.png" },
+  { name: "New Life Mission", src: "/assets/logos/new-life-mission-aid.jpg" },
+  { name: "Human Brights", src: "/assets/logos/human-bight-logo.jpg" },
+  { name: "Norwegian Retailers", src: "/assets/logos/norwegian-logo.png" },
+  { name: "Linkon AS", src: "/assets/logos/linkon-logo.png" },
 ];
 
 export default function PartnerMarquee() {
