@@ -222,7 +222,7 @@ export default function ContactPage() {
           <div className={styles.map__primary__overlay} />
           <div className={styles.map__brand__text}>
             <span className={styles.map__brand__label}>Safisha Nchi</span>
-            <span className={styles.map__brand__tagline}>Turning Waste Into Opportunity</span>
+            <span className={styles.map__brand__tagline}>Clean The Country</span>
           </div>
         </div>
       </section>

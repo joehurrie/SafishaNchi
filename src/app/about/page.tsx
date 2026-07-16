@@ -8,19 +8,19 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import PartnerMarquee from "@/components/ui/PartnerMarquee";
 
 const strategy = [
-  { title: "Expand Buy-Back Network", desc: "Scale from 7 to 15+ mini hubs, covering more communities and increasing monthly collection volumes." },
+  { title: "Expand Buy-Back Network", desc: "Scale from 8 to 15+ mini hubs, covering more communities and increasing monthly collection volumes." },
   { title: "Household Garbage Collection", desc: "Expand our logistics network to provide direct household waste collection, ensuring proper segregation at source." },
   { title: "Organic Waste & BSF", desc: "Introduce large-scale organic waste management using Black Soldier Fly (BSF) larvae — producing high-protein animal feed and organic fertilizer." },
   { title: "New Balers & Infrastructure", desc: "Install industrial-grade hydraulic balers at main hubs to increase throughput capacity and improve baled output quality for mills." },
-  { title: "Government & Policy Alliances", desc: "Strengthen collaborations with county governments and support NEMA Act recycling mandate implementation across all operating regions." },
+  { title: "Government & Policy Alliances", desc: "Strengthen collaborations with county governments and support NEMA 2022 sustainable waste managemnet act implementation across all operating regions." },
 ];
 
 const timeline = [
   { year: "2022", label: "The Beginning", desc: "Founded with a single buy-back centre in Kisumu, focused on informal plastic recovery." },
   { year: "2023", label: "Network Growth", desc: "Expanded to 3 mini hubs; established relationships with 50+ informal collectors." },
-  { year: "2024", label: "Value Addition", desc: "Introduced sorting, crushing and baling capabilities, producing quality plastic flakes for industrial buyers. Pellet production is on our growth roadmap, pending infrastructure investment." },
-  { year: "2025", label: "Scaling Impact", desc: "Reached 150+ active collectors, 7 hubs, and 360T+ total waste diverted. KIWAN membership established." },
-  { year: "2026+", label: "The Future", desc: "Household collection, BSF organic waste processing, expansion to 15+ hubs, and growth into additional Kenyan counties as we build national recycling infrastructure." },
+  { year: "2024", label: "Value Addition", desc: "Introduced sorting, crushing and baling capabilities, producing quality plastic flakes for industrial buyers." },
+  { year: "2025", label: "Scaling Impact", desc: "Reached 150+ active collectors, 8 hubs, and 360T+ total waste diverted. KIWAN membership established." },
+  { year: "2026+", label: "The Future", desc: "Household collection, BSF organic waste processing,production of plastic  pellets, expansion to 15+ hubs, and growth into additional Kenyan counties as we build national recycling infrastructure." },
 ];
 
 const coreValues = [
@@ -50,7 +50,7 @@ const coreValues = [
       </svg>
     ),
     title: "Environmental Stewardship",
-    desc: "Combating plastic pollution in Lake Victoria and across Kenya by significantly boosting national recycling rates.",
+    desc: "Combating plastic pollution in Lake Victoria to creating a conducive environment for over 40 million residents in Kisumu and across Kenya.",
   },
   {
     icon: (
@@ -69,6 +69,7 @@ const gallery = [
   { src: "/assets/bales1.jpeg", alt: "Baled recyclables ready for processing" },
   { src: "/assets/sitetour.JPG", alt: "Safisha Nchi collection New Crushing Machine" },
   { src: "/assets/wastecollector.jpeg", alt: "A waste Collector delivering plastic waste to Safisha Nchi's Buyback Center" },
+  { src: "/assets/team2.jpeg", alt: "Safisha Nchi's team at a buyback Center in Kisumu" }
 ];
 
 const partners = [
@@ -342,9 +343,9 @@ export default function AboutPage() {
             </RevealItem>
           </RevealGroup>
           <RevealItem direction="none" className={styles.team__photo}>
-            <Image src="/assets/project1.jpg" alt="Safisha Nchi Team" fill sizes="(max-width: 768px) 100vw, 80vw" style={{ objectFit: "contain", }} />
+            <Image src="/assets/team5.jpeg" alt="Safisha Nchi Team" fill sizes="(max-width: 768px) 100vw, 80vw" style={{ objectFit: "cover", }} />
             <div className={styles.team__caption}>
-              <p>Our founder and the core operations team on-site at the Kisumu Central Hub</p>
+              <p>Founder Norah Gakii Nyagah with team at the Kisumu Central Hub</p>
             </div>
           </RevealItem>
         </div>

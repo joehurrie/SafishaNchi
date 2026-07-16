@@ -16,10 +16,9 @@ const footerNav = [
   {
     title: "Projects",
     links: [
-      { label: "Kisumu Central Hub", href: "/projects" },
-      { label: "Nyalenda Buy-Back Centre", href: "/projects" },
-      { label: "Waste Pickers Initiative", href: "/projects" },
-      { label: "KIWAN Network", href: "/projects" },
+      { label: "Kisumu Central Hub", href: "/projects/kisumu-project" },
+      { label: "Carbon Emission Measurement", href: "/projects/carbon-emission" },
+      { label: "KIWAN Network", href: "/projects/kiwan-network" },
     ],
   },
   {
@@ -46,13 +45,12 @@ export default function Footer() {
               <span className={styles.logo__text}>Safisha Nchi</span>
             </Link>
             <p className={styles.footer__tagline}>
-              Building clean recycling networks that transform waste into
-              resources across Kenya.
+              Clean The Country
             </p>
             <div className={styles.footer__contact}>
               <a href="tel:+254740113368">+254 740 113 368</a>
               <a href="mailto:info@safishanchi.co.ke">info@safishanchi.co.ke</a>
-              <span>P.O. BOX 63916 00619 Nairobi, Kenya</span>
+
             </div>
           </div>
 

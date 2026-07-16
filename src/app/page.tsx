@@ -47,11 +47,11 @@ const impactCards: ImpactCardData[] = [
   {
     id: "hubs",
     label: "Community Buy-Back Centres",
-    value: 7,
+    value: 8,
     suffix: "",
     metric: "Hubs",
     detail:
-      "Seven mini collection hubs embedded across Kisumu's densest informal settlements — each operating transparent weighing systems and immediate cash payment.",
+      "Eight collection hubs embedded across Kisumu's densest informal settlements — each operating transparent weighing systems and immediate cash payment.",
     img: "/assets/buyback.jpeg",
     imgAlt: "Safisha Nchi buy-back centre operations",
   },
@@ -63,7 +63,7 @@ const impactCards: ImpactCardData[] = [
     metric: "Tonnes CO₂",
     detail:
       "Recycling 360+ tonnes of material avoids the equivalent of 270 tonnes of CO₂ — compared to virgin material production and open landfill decomposition.",
-    img: "/assets/Investor.jpeg",
+    img: "/assets/emmisions.jpeg",
     imgAlt: "Community tree planting and environmental cleanup",
   },
 ];
@@ -142,12 +142,12 @@ export default function Home() {
             {/* Right: concise summary */}
             <RevealItem direction="right" className={styles.about__right}>
               <p className={styles.about__para}>
-                Safisha Nchi's core service is comprehensive recycling and waste management, focusing on collecting, sorting, and applying value addition to recyclable materials like plastics (PET, HDPE, PP), paper/cardboard, thereby transforming waste into valuable resources and creating green jobs within a circular economy model.
+                Safisha Nchi's core service is comprehensive recycling and waste management, focusing on collecting, sorting, and applying value addition to recyclable materials transforming them into valuable resources and creating green jobs within a circular economy model.
               </p>
 
               {/* Credentials row */}
               <div className={styles.about__credentials}>
-                {["NEMA Certified", "KIWAN Member", "Waste-to-Green-Jobs", "5+ Years Operating"].map((c) => (
+                {["NEMA Certified", "KIWAN Member", "Waste-to-Green-Jobs", "5+ Years Operating", "EPR COMPLIANT", "CIRCULAR WASTE MANAGEMENT"].map((c) => (
                   <span key={c} className="chip chip--outline">{c}</span>
                 ))}
               </div>
@@ -212,7 +212,7 @@ export default function Home() {
                 Our Waste Management System.
               </h2>
               <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "56ch" }}>
-                Six interconnected service streams working as one — from
+                Six interconnected service streams working as one, from
                 community collection through sorting, recycling, training,
                 consulting, and waste picker empowerment.
               </p>
@@ -246,9 +246,9 @@ export default function Home() {
               ]}
             />
             <p className={styles.banner__sub}>
-              Every tonne collected creates verified livelihoods for the women
-              and youth who recover it, transforming ecological challenges into
-              sustainable green careers.
+              Every tonne collected creates income opportunity for the women
+              and youth, transforming the waste into an
+              income stream.
             </p>
           </RevealItem>
           <RevealItem direction="right">
@@ -288,7 +288,7 @@ export default function Home() {
                 Ready to recycle smarter? Book a free consultation.
               </h2>
               <p className={styles.cta__b__desc}>
-                Whether you run a hotel, school, manufacturing plant, or
+                Whether you run a church, hotel, school, manufacturing plant, or
                 county authority — our team will analyse your current waste
                 profile and design a compliant, cost-effective diversion plan.
                 No obligation, no jargon.
@@ -396,14 +396,13 @@ export default function Home() {
               </h2>
               <p className={styles.connect__sub}>
                 Waste collection contracts, community partnerships, investment
-                discussions, or NEMA compliance advisory — our team responds
-                within 24 hours.
+                discussions, or NEMA compliance advisory.
               </p>
               <div className={styles.connect__details}>
                 {[
-                  { icon: "📞", val: "+254 727 107 994", href: "tel:+254727107994" },
+                  { icon: "📞", val: "+254 727 107 994", href: "tel:+25414103377" },
                   { icon: "✉️", val: "info@safishanchi.co.ke", href: "mailto:info@safishanchi.co.ke" },
-                  { icon: "📍", val: "Kisumu, Kenya", href: "https://maps.google.com/?q=Kisumu,Kenya" },
+
                 ].map((d) => (
                   <a key={d.val} href={d.href} className={styles.connect__detail} target={d.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
                     <span className={styles.connect__detail__icon}>{d.icon}</span>

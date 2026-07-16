@@ -82,4 +82,26 @@ export const projectsData: ProjectItem[] = [
       { val: "3", lbl: "National Hubs" },
     ],
   },
+
+  {
+    id: "carbon-emission",
+    tag: "Ongoing Project",
+    title: "Landfill Carbon emission Measurement-project",
+    image: "/assets/emmisions1.jpeg",
+    overview:
+      "Safisha Nchi is embarking on a pioneering initiative to quantify the direct greenhouse gas (GHG) emissions avoided through its waste management operations. This project involves systematic monitoring and calculation of methane (CH4) and carbon dioxide (CO2) displacement resulting from recycling activities, utilizing established international methodologies to generate verifiable carbon credits. So far we have been able to visit the following dumpsites to evaluate the impact of our operations in Kenyas Dandora, Thika and Kitengela lanfills. Addditionally, with a team of experts we are working on setting up a system to measure the amount of carbon dioxide avoided through our operations at Kisumu ",
+    stakeholders: ["Pakro", "NEMA", "Local Communities", "Civil Societies"],
+    impact: [
+      { label: "Plastics Diverted", value: "360T+" },
+      { label: "CO2 Avoided", value: "270T" },
+    ],
+    story:
+      "Safisha Nchi’s commitment to verifiable impact extends to its pioneering Landfill Carbon Emission Measurement Project. To date, Safisha Nchi has conducted extensive site assessments at three major Kenyan landfills—Dandora, Thika, and Kitengela—evaluating the baseline conditions and the specific impact of the company’s diversion activities. Furthermore, in partnership with environmental engineering experts, the company is developing a proprietary measurement system to quantify the precise carbon tonnage avoided at its Kisumu facility. This ongoing work underscores Safisha Nchi’s dedication to providing transparent, data-backed proof of its contribution to a sustainable future. ",
+    metrics: [
+      { val: "360T+", lbl: "Recyclables" },
+      { val: "270T", lbl: "CO2 Avoided" },
+    ],
+  },
+
+
 ];

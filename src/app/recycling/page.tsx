@@ -21,12 +21,12 @@ const lifecycle = [
   {
     num: "01",
     title: "Collection",
-    desc: "150+ informal collectors and 7 mini hubs recover plastics, glass, and cartons from communities and businesses across the region.",
+    desc: "150+ informal collectors and 8 hubs recover plastics, glass, and cartons from communities and businesses across the region.",
   },
   {
     num: "02",
     title: "Aggregation",
-    desc: "Materials flow into our Central Kisumu Hub where they are weighed, logged, and staged for processing — 3–5 metric tonnes per week.",
+    desc: "Materials flow into our Central Kisumu Hub where they are weighed, logged, and staged for processing 10+ metric tonnes per week.",
   },
   {
     num: "03",
@@ -36,7 +36,7 @@ const lifecycle = [
   {
     num: "04",
     title: "Output",
-    desc: "Finished industrial commodities — including baled PET, clean flakes, and sorted glass cullet — are supplied directly to manufacturers, completing the circular economy loop.",
+    desc: "Finished industrial commodities including baled PET, clean flakes, and sorted glass cullet are supplied directly to manufacturers, completing the circular economy loop.",
   },
 ];
 
@@ -44,15 +44,15 @@ const materials = [
   {
     num: "01",
     title: "Plastics Recovery",
-    types: ["PET Bottles & Containers", "LDPE Bags", "HDPE Jugs (Blue/White)", "PP Food Containers (Green/Red)"],
+    types: ["PET Bottles & Containers", "LDPE Bags", "HDPE (Black/White)", "PP Food Containers"],
     output: "Flakes & Bales",
     img: "/assets/pellets.png",
   },
   {
     num: "02",
     title: "Glass Sorting",
-    types: ["Beer Bottles", "Wine Bottles", "Beverage Glass", "All Colors & Types"],
-    output: "Crushed Cullet",
+    types: ["Beverage Glass", "All Colors & Types"],
+    output: ["Cullet/", "Upcycling/", "Bottle Return Projects"],
     img: "/assets/glass.png",
   },
   {
@@ -92,7 +92,7 @@ export default function MaterialsPage() {
             </RevealItem>
             <RevealItem>
               <p className={`body-lg ${styles.heroSubtitle}`} style={{ marginTop: "1.5rem", maxWidth: "600px" }}>
-                From community collection to quality plastic flakes — follow the full journey of how Safisha Nchi transforms recovered waste into verified industrial value.
+                From community collection to quality plastic flakes, follow the full journey of how Safisha Nchi transforms recovered waste into verified industrial value.
               </p>
             </RevealItem>
           </RevealGroup>

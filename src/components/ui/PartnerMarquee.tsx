@@ -11,6 +11,7 @@ const partners = [
   { name: "Human Brights", src: "/assets/logos/human-bight-logo.jpg" },
   { name: "Norwegian Retailers", src: "/assets/logos/norwegian-logo.png" },
   { name: "Linkon AS", src: "/assets/logos/linkon-logo.png" },
+  { name: "Pakpro", src: "/assets/pakpro-logo.png" },
 ];
 
 export default function PartnerMarquee() {
@@ -22,12 +23,12 @@ export default function PartnerMarquee() {
       <div className={styles.marquee__track}>
         {duplicatedPartners.map((partner, idx) => (
           <div key={`${partner.name}-${idx}`} className={styles.marquee__item}>
-            <Image 
-              src={partner.src} 
-              alt={partner.name} 
-              fill 
+            <Image
+              src={partner.src}
+              alt={partner.name}
+              fill
               sizes="150px"
-              style={{ objectFit: "contain" }} 
+              style={{ objectFit: "contain" }}
             />
           </div>
         ))}
