@@ -276,7 +276,7 @@ export default function Home() {
               <div className={styles.cta__a__body}>
                 <span className={`overline overline--on-dark`}>For Investors &amp; Partners</span>
                 <h2 className={`display-sm ${styles.cta__a__headline}`}>
-                  Enabling investors and partners to contribute towards Kenya&apos;s circular economy.
+                  Enabling investors and partners contribute towards Kenya&apos;s circular economy.
                 </h2>
               </div>
             </RevealItem>
