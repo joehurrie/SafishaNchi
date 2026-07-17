@@ -29,7 +29,7 @@ const impactCards: ImpactCardData[] = [
     suffix: "T+",
     metric: "Tonnes",
     detail:
-      "360+ metric tonnes of post-consumer plastics, glass, and fibre recovered from Kisumu communities — material that would otherwise enter waterways or open dumps.",
+      "360+ metric tonnes of post-consumer plastics, glass, and fibre recovered from communities material that would otherwise enter waterways or open dumps.",
     img: "/assets/bales2.jpeg",
     imgAlt: "Baled plastics at Safisha Nchi processing hub",
   },
@@ -40,8 +40,8 @@ const impactCards: ImpactCardData[] = [
     suffix: "+",
     metric: "People",
     detail:
-      "Over 150 informal waste pickers integrated into our formal collection network — receiving transparent pricing, PPE, health training, and financial literacy support.",
-    img: "/assets/wastecollector1.jpeg",
+      "Over 150 informal waste pickers integrated into our formal collection network, receiving transparent pricing, PPE, health training, and financial literacy support.",
+    img: "/assets/wastepicker.png",
     imgAlt: "Waste pickers at community buy-back centre",
   },
   {
@@ -51,7 +51,7 @@ const impactCards: ImpactCardData[] = [
     suffix: "",
     metric: "Hubs",
     detail:
-      "Eight collection hubs embedded across Kisumu's densest informal settlements — each operating transparent weighing systems and immediate cash payment.",
+      "Eight collection hubs each operating transparent weighing systems and immediate cash payment to engage informal waste pickers in the circular waste managemnet model.",
     img: "/assets/buyback.jpeg",
     imgAlt: "Safisha Nchi buy-back centre operations",
   },
@@ -62,8 +62,8 @@ const impactCards: ImpactCardData[] = [
     suffix: "T",
     metric: "Tonnes CO₂",
     detail:
-      "Recycling 360+ tonnes of material avoids the equivalent of 270 tonnes of CO₂ — compared to virgin material production and open landfill decomposition.",
-    img: "/assets/emmisions.jpeg",
+      "Recycling 360+ tonnes of material avoids the equivalent of 270 tonnes of CO₂, compared to virgin material production and open landfill decomposition.",
+    img: "/assets/emmisions2.jpeg",
     imgAlt: "Community tree planting and environmental cleanup",
   },
 ];
@@ -147,7 +147,7 @@ export default function Home() {
 
               {/* Credentials row */}
               <div className={styles.about__credentials}>
-                {["NEMA Certified", "KIWAN Member", "Waste-to-Green-Jobs", "5+ Years Operating", "EPR COMPLIANT", "CIRCULAR WASTE MANAGEMENT"].map((c) => (
+                {["NEMA Certified", "KIWAN Member", "Waste-to-Green-Jobs", "5+ Years Operating", "EPR COMPLIANT", "WASTE MANAGEMENT CONSULTATION", "CIRCULAR WASTE MANAGEMENT"].map((c) => (
                   <span key={c} className="chip chip--outline">{c}</span>
                 ))}
               </div>
@@ -212,7 +212,7 @@ export default function Home() {
                 Our Waste Management System.
               </h2>
               <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "56ch" }}>
-                Six interconnected service streams working as one, from
+                Interconnected service streams working as one, from
                 community collection through sorting, recycling, training,
                 consulting, and waste picker empowerment.
               </p>
@@ -276,7 +276,7 @@ export default function Home() {
               <div className={styles.cta__a__body}>
                 <span className={`overline overline--on-dark`}>For Investors &amp; Partners</span>
                 <h2 className={`display-sm ${styles.cta__a__headline}`}>
-                  Attracting investors &amp; partners to build Kenya&apos;s circular economy.
+                  Enabling investors and partners to contribute towards Kenya&apos;s circular economy.
                 </h2>
               </div>
             </RevealItem>
@@ -372,10 +372,7 @@ export default function Home() {
               <div className={`${styles.map__dot} ${styles.map__dot__main}`} />
               <span>Kisumu Central Hub — Main Processing Site</span>
             </div>
-            <div className={styles.map__legend__item}>
-              <div className={`${styles.map__dot} ${styles.map__dot__sat}`} />
-              <span>7 Mini Buy-Back Centres</span>
-            </div>
+
             <Link href="/contact" className={`btn btn-primary ${styles.map__legend__btn}`}>
               Get Directions
             </Link>

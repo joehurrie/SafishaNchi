@@ -11,10 +11,10 @@ const hubs = [
   { id: "h1", type: "mini", label: "Nyalenda Hub" },
   { id: "h2", type: "mini", label: "Manyatta Hub" },
   { id: "h3", type: "mini", label: "Kondele Hub" },
-  { id: "h4", type: "mini", label: "Migosi Hub" },
+  { id: "h4", type: "mini", label: "Otonglo Hub" },
   { id: "h5", type: "mini", label: "Mamboleo Hub" },
   { id: "h6", type: "mini", label: "Obunga Hub" },
-  { id: "h7", type: "mini", label: "Kaloleni Hub" },
+  { id: "h7", type: "mini", label: "Kasese Landfill Hub" },
 ];
 
 const lifecycle = [

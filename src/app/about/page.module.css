@@ -57,7 +57,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--r-lg);
   overflow: hidden;
   margin-top: var(--sp-10);
@@ -65,12 +65,12 @@
 
 .mission__stat {
   padding: var(--sp-8) var(--sp-6);
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   transition: background var(--dur) var(--ease);
 }
 
 .mission__stat:hover {
-  background: rgba(255,255,255,0.07);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .mission__stat__num {
@@ -89,7 +89,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
   display: block;
 }
 
@@ -125,11 +125,13 @@
   flex-direction: column;
   gap: var(--sp-3);
 }
+
 .bento__card:hover {
   border-color: var(--lime);
   box-shadow: 0 8px 28px rgba(25, 130, 109, 0.07);
   transform: translateY(-3px);
 }
+
 .bento__icon {
   width: 40px;
   height: 40px;
@@ -141,7 +143,12 @@
   color: var(--primary);
   margin-bottom: var(--sp-1);
 }
-.bento__icon svg { width: 20px; height: 20px; }
+
+.bento__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
 .bento__title {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.2vw, 1.1rem);
@@ -149,6 +156,7 @@
   color: var(--text-primary);
   line-height: 1.2;
 }
+
 .bento__desc {
   font-size: clamp(1rem, 1.2vw, 1.1rem);
   color: var(--text-secondary);
@@ -298,14 +306,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: rgba(255,255,255,0.07);
+  background: rgba(255, 255, 255, 0.07);
   border-radius: var(--r-xl);
   overflow: hidden;
   margin-top: var(--sp-12);
 }
 
 .strategy__card {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   padding: 2.5rem 2rem;
   transition: background var(--dur) var(--ease);
   position: relative;
@@ -324,7 +332,7 @@
 }
 
 .strategy__card:hover {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .strategy__card:hover::before {
@@ -350,7 +358,7 @@
 
 .strategy__desc {
   font-size: clamp(1rem, 1.2vw, 1.1rem);
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
   line-height: 1.65;
 }
 
@@ -372,10 +380,12 @@
   z-index: 2;
   pointer-events: none;
 }
+
 .gallery__bento__track::before {
   left: 0;
   background: linear-gradient(to right, var(--canvas), transparent);
 }
+
 .gallery__bento__track::after {
   right: 0;
   background: linear-gradient(to left, var(--canvas), transparent);
@@ -433,8 +443,13 @@
 }
 
 @keyframes scroll-bento {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 0.75rem)); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
 }
 
 /* ===== PARTNERS ===== */
@@ -478,6 +493,21 @@
   overflow: hidden;
   margin-top: var(--sp-12);
   box-shadow: var(--sh-xl);
+  /* Add this to prevent overflow on any screen */
+  max-width: 100%;
+}
+
+/* Small devices (e.g., phones, tablets up to 768px) */
+@media (max-width: 768px) {
+  .team__photo {
+    max-width: 100%;
+    /* or use 90% for fluid width */
+    margin-left: auto;
+    /* center the element */
+    margin-right: auto;
+    /* Optionally reduce top margin on small screens */
+    margin-top: var(--sp-6);
+  }
 }
 
 .team__caption {
@@ -490,7 +520,7 @@
 }
 
 .team__caption p {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   font-size: clamp(1rem, 1.2vw, 1.1rem);
   max-width: 700px;
   margin: 0 auto;
@@ -513,7 +543,7 @@
     width: 260px;
     height: 200px;
   }
-  
+
   .gallery__bento__item__large {
     width: 320px;
   }
@@ -746,6 +776,7 @@
     grid-template-columns: 1fr;
     gap: var(--sp-8);
   }
+
   .values__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -762,21 +793,27 @@
     min-height: 50svh;
     max-height: 50svh;
   }
+
   .hero__overlay {
     background: rgba(255, 255, 255, 0.8);
   }
+
   .heroTitle {
     color: var(--primary);
   }
+
   .heroSubtitle {
     color: var(--text);
   }
+
   .highlightKeyword {
     color: var(--lime);
   }
+
   .hero :global(.overline) {
     color: var(--primary) !important;
   }
+
   .hero :global(.overline)::before {
     background: var(--primary) !important;
   }
@@ -785,9 +822,11 @@
     grid-template-columns: 1fr;
     gap: var(--sp-8);
   }
+
   .humanCost__imgWrap {
     height: 260px;
   }
+
   .team__photo {
     height: 300px;
   }

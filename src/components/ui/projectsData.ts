@@ -26,12 +26,12 @@ export const projectsData: ProjectItem[] = [
     ],
   },
   {
-    id: "nyalenda-bbc",
+    id: "chiga-bbc",
     tag: "Active Operations",
-    title: "The Nyalenda Buy-Back Centre",
+    title: "The Chiga Buy-Back Centre",
     image: "/assets/buyback1.jpeg",
     overview:
-      "The Safisha Nchi Nyalenda Buy-Back Centre operates as a localized, community-embedded waste recovery hub situated in Kisumu. Designed to bridge the gap between informal waste generation and industrial recycling, this facility acts as a critical aggregation point where collectors can exchange recovered materials for fair, transparent compensation. By anchoring operations directly within the community, the centre minimizes transport friction for independent waste pickers and ensures a steady, high-volume stream of recyclable commodities.",
+      "The Safisha Nchi Chiga Buy-Back Centre operates as a localized, community-embedded waste recovery hub situated in Kisumu. Designed to bridge the gap between informal waste generation and industrial recycling, this facility acts as a critical aggregation point where collectors can exchange recovered materials for fair, transparent compensation. By anchoring operations directly within the community, the centre minimizes transport friction for independent waste pickers and ensures a steady, high-volume stream of recyclable commodities.",
     stakeholders: ["Safisha Nchi's Management Teams", "Grassroots Waste Collectors", "Neighborhood Associations", "Downstream Industrial Recyclers"],
     impact: [
       { label: "Waste Diverted", value: "120T+" },

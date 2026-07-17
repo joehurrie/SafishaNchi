@@ -28,7 +28,7 @@ export default function PartnerMarquee() {
               alt={partner.name}
               fill
               sizes="150px"
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: "contain", borderRadius: "8px" }}
             />
           </div>
         ))}

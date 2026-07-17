@@ -74,31 +74,31 @@ const IconPeople = () => (
 // ── Pipeline step icons ───────────────────────────────────────
 const PIcon = ({ name }: { name: string }) => {
   const map: Record<string, React.ReactNode> = {
-    engage:     <path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M9 20H4v-2a3 3 0 0 1 5.356-1.857M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />,
-    collect:    <path d="M5 8h14M5 12h14M5 16h6" />,
-    weigh:      <><path d="M12 3v1M5.05 5.05l.707.707M3 12h1M5.05 18.95l.707-.707M12 21v-1M18.95 18.95l-.707-.707M21 12h-1M18.95 5.05l-.707.707" /><circle cx="12" cy="12" r="5" /></>,
-    aggregate:  <><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /><rect x="9" y="4" width="6" height="6" rx="1" /><path d="M7 14v-4M17 14v-4M7 10h10" /></>,
-    report:     <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></>,
-    receive:    <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></>,
-    sort:       <path d="M3 6l9 6 9-6M3 12l9 6 9-6" />,
-    clean:      <><path d="M3 3l18 18M3 21l18-18" /><circle cx="12" cy="12" r="4" /></>,
-    grade:      <><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></>,
-    shred:      <><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z" /><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" /><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z" /><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z" /><path d="M14 14.5v1c0 1.4-2 2.5-2 2.5s-2-1.1-2-2.5v-1c0-.28.22-.5.5-.5h3c.28 0 .5.22.5.5z" /></>,
-    dry:        <><path d="M8 14s1.5 2 4 2 4-2 4-2" /><circle cx="12" cy="12" r="10" /><path d="M9 9h.01M15 9h.01" /></>,
-    pack:       <><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></>,
-    assess:     <><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></>,
-    design:     <><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="16" /><line x1="8" y1="12" x2="16" y2="12" /></>,
-    train:      <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></>,
-    equip:      <><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></>,
-    follow:     <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2.68h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5l.19-.58z" /></>,
-    audit:      <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><path d="M16 13H8M16 17H8M10 9H8" /></>,
-    analyse:    <><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></>,
-    implement:  <><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></>,
-    connect:    <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
-    pay:        <><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></>,
-    uplift:     <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>,
-    wash:       <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></>,
-    default:    <circle cx="12" cy="12" r="4" />,
+    engage: <path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M9 20H4v-2a3 3 0 0 1 5.356-1.857M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />,
+    collect: <path d="M5 8h14M5 12h14M5 16h6" />,
+    weigh: <><path d="M12 3v1M5.05 5.05l.707.707M3 12h1M5.05 18.95l.707-.707M12 21v-1M18.95 18.95l-.707-.707M21 12h-1M18.95 5.05l-.707.707" /><circle cx="12" cy="12" r="5" /></>,
+    aggregate: <><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /><rect x="9" y="4" width="6" height="6" rx="1" /><path d="M7 14v-4M17 14v-4M7 10h10" /></>,
+    report: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></>,
+    receive: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></>,
+    sort: <path d="M3 6l9 6 9-6M3 12l9 6 9-6" />,
+    clean: <><path d="M3 3l18 18M3 21l18-18" /><circle cx="12" cy="12" r="4" /></>,
+    grade: <><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></>,
+    shred: <><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z" /><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" /><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z" /><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z" /><path d="M14 14.5v1c0 1.4-2 2.5-2 2.5s-2-1.1-2-2.5v-1c0-.28.22-.5.5-.5h3c.28 0 .5.22.5.5z" /></>,
+    dry: <><path d="M8 14s1.5 2 4 2 4-2 4-2" /><circle cx="12" cy="12" r="10" /><path d="M9 9h.01M15 9h.01" /></>,
+    pack: <><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></>,
+    assess: <><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></>,
+    design: <><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="16" /><line x1="8" y1="12" x2="16" y2="12" /></>,
+    train: <><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></>,
+    equip: <><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></>,
+    follow: <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2.68h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5l.19-.58z" /></>,
+    audit: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><path d="M16 13H8M16 17H8M10 9H8" /></>,
+    analyse: <><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></>,
+    implement: <><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></>,
+    connect: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
+    pay: <><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></>,
+    uplift: <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></>,
+    wash: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></>,
+    default: <circle cx="12" cy="12" r="4" />,
   };
   const key = name.toLowerCase().split(" ")[0];
   const d = map[key] ?? map.default;
@@ -118,12 +118,12 @@ const items: ExpertiseItem[] = [
     accent: "#C5F84A",
     icon: <IconTruck />,
     summary:
-      "We provide reliable waste collection services for households, businesses, institutions, and communities — ensuring responsible waste management while increasing the recovery of recyclable materials across the region.",
+      "We provide reliable waste collection services for households, businesses, institutions, and communities, ensuring responsible waste management while increasing the recovery of recyclable materials across our regions of operation.",
     pipeline: [
       { step: "Engage", label: "Community Mobilisation", desc: "We work closely with neighbourhood associations, schools, and businesses to establish consistent collection schedules and educate on proper waste segregation at source.", icon: <PIcon name="engage" /> },
-      { step: "Collect", label: "Scheduled Collection Routes", desc: "Trained collection teams operate regular routes across Kisumu — covering informal settlements, commercial zones, and institutional campuses.", icon: <PIcon name="collect" /> },
+      { step: "Collect", label: "Scheduled Collection Routes", desc: "Trained collection teams operate regular routes across the country, covering informal settlements, commercial zones, and institutional campuses.", icon: <PIcon name="collect" /> },
       { step: "Weigh", label: "Transparent Weighing", desc: "All materials are weighed on calibrated scales at the point of collection or buy-back. Collectors receive immediate, transparent payment based on verified weight.", icon: <PIcon name="weigh" /> },
-      { step: "Aggregate", label: "Hub Staging", desc: "Collected materials are staged at our 7 mini hubs before being consolidated and transported to our Kisumu Central Hub for processing.", icon: <PIcon name="aggregate" /> },
+      { step: "Aggregate", label: "Hub Staging", desc: "Collected materials are staged at our mini hubs before being consolidated and transported to our Kisumu Central Hub for processing.", icon: <PIcon name="aggregate" /> },
       { step: "Report", label: "Collection Records", desc: "Every collection event is logged — quantity, material type, and location — providing verified data for environmental reporting and NEMA compliance.", icon: <PIcon name="report" /> },
     ],
   },
@@ -280,9 +280,9 @@ export default function ExpertiseAccordion() {
                     <p className={styles.panel__summary}>{item.summary}</p>
 
                     {/* Creative pipeline: icon nodes with connecting flow */}
-                    <motion.div 
-                      className={styles.pipeline} 
-                      role="list" 
+                    <motion.div
+                      className={styles.pipeline}
+                      role="list"
                       aria-label="Process pipeline"
                       initial="hidden"
                       animate="visible"
@@ -292,9 +292,9 @@ export default function ExpertiseAccordion() {
                       }}
                     >
                       {item.pipeline.map((step, i) => (
-                        <motion.div 
-                          key={step.step} 
-                          className={styles.pipeline__step} 
+                        <motion.div
+                          key={step.step}
+                          className={styles.pipeline__step}
                           role="listitem"
                           variants={{
                             hidden: { opacity: 0, y: 10 },

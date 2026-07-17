@@ -20,7 +20,7 @@ const timeline = [
   { year: "2023", label: "Network Growth", desc: "Expanded to 3 mini hubs; established relationships with 50+ informal collectors." },
   { year: "2024", label: "Value Addition", desc: "Introduced sorting, crushing and baling capabilities, producing quality plastic flakes for industrial buyers." },
   { year: "2025", label: "Scaling Impact", desc: "Reached 150+ active collectors, 8 hubs, and 360T+ total waste diverted. KIWAN membership established." },
-  { year: "2026+", label: "The Future", desc: "Household collection, BSF organic waste processing,production of plastic  pellets, expansion to 15+ hubs, and growth into additional Kenyan counties as we build national recycling infrastructure." },
+  { year: "2026+", label: "The Future", desc: "Household collection, BSF organic waste processing,production of plastic  pellets, expansion to 15+ hubs, and growth into additional Kenyan counties and East African countries including Uganda and Tanzania as we build collection and supply chain for recycling and  circular economy infrastructure." },
 ];
 
 const coreValues = [
@@ -83,7 +83,7 @@ const stats = [
   { target: 360, suffix: "T+", lbl: "Waste Diverted" },
   { target: 150, suffix: "+", lbl: "Collectors Supported" },
   { target: 7, suffix: "", lbl: "Collection Hubs" },
-  { target: 10, suffix: "+", lbl: "Years Operating" },
+  { target: 5, suffix: "+", lbl: "Years Operating" },
 ];
 
 const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -337,7 +337,7 @@ export default function AboutPage() {
               </h2>
             </RevealItem>
             <RevealItem>
-              <p className="body-sm" style={{ marginTop: "1rem", maxWidth: "60ch" }}>
+              <p className="body-sm" style={{ marginTop: "1rem", maxWidth: "100%" }}>
                 Spearheaded by Executive Director and Co-Founder <strong>Norah Gakii Nyagah</strong>, and supported by Technical Sub-Consultant <strong>Andrew Njenga Kimani</strong> — a dedicated team of environmentalists, engineers, and community organizers working toward a cleaner Kenya.
               </p>
             </RevealItem>

@@ -48,7 +48,7 @@ export default function Footer() {
               Clean The Country
             </p>
             <div className={styles.footer__contact}>
-              <a href="tel:+254740113368">+254 740 113 368</a>
+              <a href="tel:+254740113368">+254 727 107 994</a>
               <a href="mailto:info@safishanchi.co.ke">info@safishanchi.co.ke</a>
 
             </div>
