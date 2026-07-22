@@ -25,19 +25,9 @@ interface Props {
 
 export default function ImpactCard({ card, delay = 0, isHovered, onHover, anyHovered }: Props) {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth <= 768) {
-      // Toggle logic on mobile
-      const willHover = !isHovered;
-      onHover(willHover ? card.id : null);
-      
-      if (willHover) {
-        // Wait briefly for the CSS transition to start before scrolling
-        const target = e.currentTarget;
-        setTimeout(() => {
-          target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-        }, 150);
-      }
-    } else {
+    // On desktop only: hover state is managed by mouse events
+    // On mobile: no interaction needed, cards always show full content
+    if (window.innerWidth > 768) {
       onHover(card.id);
     }
   };

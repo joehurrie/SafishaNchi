@@ -35,38 +35,6 @@ const footerNav = [
   },
 ];
 
-const quickLinks = [
-  {
-    label: "Home",
-    href: "/",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
-      </svg>
-    ),
-  },
-  {
-    label: "Recycling",
-    href: "/materials",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        {/* Universal recycling symbol — three rotating arrows */}
-        <path d="M12 2L9.5 6H7a1 1 0 0 0-.87 1.5l2 3.46L6.27 13H4a1 1 0 0 0-.87 1.5l4 6.93A1 1 0 0 0 8 22h8a1 1 0 0 0 .87-.57l4-6.93A1 1 0 0 0 20 13h-2.27l-1.86-2.04 2-3.46A1 1 0 0 0 17 6h-2.5L12 2zm0 3.24L13.5 8h-3L12 5.24zM8.62 10h6.76l1.5 2.6-1.23 1.35-.65-.95H9l-.65.95-1.23-1.35L8.62 10zM7 15h10l-2.5 4.33h-5L7 15z"/>
-      </svg>
-    ),
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2.68h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5l.19-.58z" />
-      </svg>
-    ),
-  },
-];
-
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -108,15 +76,6 @@ export default function Footer() {
               <span className={styles.brand__tagline}>Clean The Country</span>
             </div>
           </Link>
-
-          {/* Minimal icon-only quick links */}
-          <div className={styles.quick__links}>
-            {quickLinks.map((q) => (
-              <Link key={q.label} href={q.href} className={styles.quick__link} aria-label={q.label} title={q.label}>
-                {q.icon}
-              </Link>
-            ))}
-          </div>
         </div>
 
         {/* ── Middle: Newsletter + Contact cols + Nav cols ── */}

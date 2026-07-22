@@ -61,7 +61,7 @@ export default function ProjectsShowcase() {
 
   return (
     <div className={styles.showcase}>
-      {/* ── Scroll controls ── */}
+      {/* ── Scroll controls (above on desktop, below on mobile) ── */}
       <div className={styles.controls}>
         <button
           className={`${styles.scroll__btn} ${!canScrollLeft ? styles["scroll__btn--disabled"] : ""}`}

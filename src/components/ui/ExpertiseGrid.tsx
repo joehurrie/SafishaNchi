@@ -207,7 +207,22 @@ const CARET_POSITIONS = ["17%", "50%", "83%"];
 export default function ExpertiseGrid() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [cols, setCols] = useState(3);
-  const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
+  const toggle = (id: string) => {
+    const willOpen = openId !== id;
+    setOpenId((prev) => (prev === id ? null : id));
+
+    if (willOpen) {
+      // Scroll the card itself into view, which ensures the panel below it is also visible.
+      // This avoids race conditions waiting for AnimatePresence to mount the panel.
+      setTimeout(() => {
+        const cardEl = document.getElementById(`expertise-card-${id}`);
+        if (!cardEl) return;
+        const navHeight = 72; // approx sticky nav height in px
+        const top = cardEl.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+        window.scrollTo({ top, behavior: "smooth" });
+      }, 50);
+    }
+  };
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -247,6 +262,7 @@ export default function ExpertiseGrid() {
               return (
                 <motion.button
                   key={item.id}
+                  id={`expertise-card-${item.id}`}
                   className={`${styles.card} ${isOpen ? styles["card--active"] : ""}`}
                   onClick={() => toggle(item.id)}
                   aria-expanded={isOpen}

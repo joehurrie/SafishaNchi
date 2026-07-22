@@ -694,7 +694,7 @@
   }
 
   .hero__scroll {
-    bottom: clamp(140px, 20vh, 180px); /* Above the static stats grid on mobile */
+    bottom: 2rem;
     right: 1.25rem;
   }
 

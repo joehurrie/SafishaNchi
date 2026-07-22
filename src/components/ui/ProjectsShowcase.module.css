@@ -6,6 +6,8 @@
 .showcase {
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── Scroll control buttons ─────────────────────────────────── */
@@ -14,6 +16,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1.25rem;
+  order: 0; /* Above track on desktop */
 }
 
 .scroll__btn {
@@ -523,5 +526,21 @@
   .panel__hero__content {
     left: 1.25rem;
     bottom: 1.25rem;
+  }
+}
+
+/* ── Move prev/next controls below cards on mobile ── */
+@media (max-width: 640px) {
+  .track {
+    order: 0; /* Cards first */
+    margin-block: 0;
+    padding-block: 1rem;
+  }
+
+  .controls {
+    order: 1; /* Controls after cards */
+    margin-bottom: 0;
+    margin-top: 1.25rem;
+    justify-content: center;
   }
 }
