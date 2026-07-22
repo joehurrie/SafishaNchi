@@ -104,16 +104,21 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: currentColor;
+  background: var(--lime);
   transform: scaleX(0);
   transition: transform var(--dur) var(--ease);
   transform-origin: right;
+  border-radius: 2px;
 }
 
 .navbar--transparent .nav-links a { color: rgba(255,255,255,.85); }
 
 .nav-links a:hover {
-  color: var(--bg-dark-alt);
+  color: var(--bg-dark);
+}
+
+.navbar--transparent .nav-links a:hover {
+  color: white;
 }
 
 .nav-links a:hover::after {
@@ -121,21 +126,17 @@
   transform-origin: left;
 }
 
-.navbar--transparent .nav-links a:hover {
-  color: white;
-}
-
 .nav-links a.active {
   color: var(--bg-dark);
-  font-weight: 600;
-}
-
-.nav-links a.active::after {
-  transform: scaleX(1);
+  font-weight: 700;
 }
 
 .navbar--transparent .nav-links a.active {
   color: white;
+}
+
+.nav-links a.active::after {
+  transform: scaleX(1);
 }
 
 /* ── CTA ── */
@@ -233,25 +234,15 @@
     transition: color var(--dur) var(--ease);
   }
 
-  /* Active page: lime underline accent */
+  /* Active page: lime text only, no underline */
   .nav-links a:not(:global(.btn)).active {
-    color: var(--bg-dark) !important;
+    color: var(--lime) !important;
     background: transparent !important;
   }
-  .nav-links a:not(:global(.btn)).active::after {
-    transform: scaleX(1);
-    transform-origin: center;
-    background: var(--primary);
-    height: 3px;
-    border-radius: 2px;
-  }
 
-  /* Hide underline pseudo-element inherited from desktop */
+  /* Remove all underline pseudo-elements on mobile */
   .nav-links a::after {
     display: none;
-  }
-  .nav-links a.active::after {
-    display: block;
   }
 
   /* CTA button inside mobile menu */

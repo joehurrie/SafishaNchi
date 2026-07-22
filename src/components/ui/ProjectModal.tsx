@@ -12,7 +12,7 @@ export interface ProjectData {
   overview: string;
   stakeholders: string[];
   impact: { label: string; value: string }[];
-  story: string;
+  aboutTheProject: string;
 }
 
 interface ProjectModalProps {
@@ -109,7 +109,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     <ul className={styles.list}>
                       {project.impact.map((imp, i) => (
                         <li key={i}>
-                          <strong>{imp.value}</strong> — {imp.label}
+                          <strong>{imp.value}</strong>, {imp.label}
                         </li>
                       ))}
                     </ul>
@@ -117,8 +117,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
 
                 <div className={styles.section}>
-                  <h3>The Narrative</h3>
-                  <p className="body-md">{project.story}</p>
+                  <h3>About This Project</h3>
+                  <p className="body-md">{project.aboutTheProject}</p>
                 </div>
               </div>
             </div>

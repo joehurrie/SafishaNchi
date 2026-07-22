@@ -97,21 +97,23 @@
 /* ===== VALUES BENTO GRID ===== */
 .values__bento {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: var(--sp-16);
-  align-items: center;
+  grid-template-columns: 1fr 1.6fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
 }
 
 .values__lead {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  position: sticky;
+  top: 7rem;
 }
 
 .values__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 /* Bento cards */
@@ -120,28 +122,36 @@
   border-radius: var(--r-xl);
   border: 1px solid var(--border);
   background: var(--white);
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--spring);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.25s ease;
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
+  cursor: default;
 }
 
 .bento__card:hover {
   border-color: var(--lime);
-  box-shadow: 0 8px 28px rgba(25, 130, 109, 0.07);
+  box-shadow: 0 6px 24px rgba(25, 130, 109, 0.08);
   transform: translateY(-3px);
 }
 
 .bento__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--lime) 18%, transparent);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--lime) 20%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
   margin-bottom: var(--sp-1);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.bento__card:hover .bento__icon {
+  background: var(--lime);
+  color: #0e2d1f;
 }
 
 .bento__icon svg {
@@ -151,16 +161,16 @@
 
 .bento__title {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.95rem, 1.1vw, 1rem);
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .bento__desc {
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.84rem, 1vw, 0.9rem);
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .value__item {

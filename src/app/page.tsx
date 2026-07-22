@@ -8,10 +8,11 @@ import styles from "./page.module.css";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ImpactCard, { ImpactCardData } from "@/components/ui/ImpactCard";
 import Typewriter from "@/components/ui/Typewriter";
-import ExpertiseAccordion from "@/components/ui/ExpertiseAccordion";
+import ExpertiseGrid from "@/components/ui/ExpertiseGrid";
 import PartnerMarquee from "@/components/ui/PartnerMarquee";
 import ProjectsShowcase from "@/components/ui/ProjectsShowcase";
-import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import ContactForm from "@/components/ui/ContactForm";
+import { RevealGroup, RevealItem, SPRING } from "@/components/ui/Reveal";
 
 // ─── Static data ────────────────────────────────────────────────
 const partners = [
@@ -51,7 +52,7 @@ const impactCards: ImpactCardData[] = [
     suffix: "",
     metric: "Hubs",
     detail:
-      "Eight collection hubs each operating transparent weighing systems and immediate cash payment to engage informal waste pickers in the circular waste managemnet model.",
+      "Eight collection hubs each operating transparent weighing systems and immediate cash payment to engage informal waste pickers in the circular waste management model.",
     img: "/assets/buyback.jpeg",
     imgAlt: "Safisha Nchi buy-back centre operations",
   },
@@ -60,10 +61,10 @@ const impactCards: ImpactCardData[] = [
     label: "CO₂ Equivalent Offset",
     value: 270,
     suffix: "T",
-    metric: "Tonnes CO₂",
+    metric: "CO₂",
     detail:
       "Recycling 360+ tonnes of material avoids the equivalent of 270 tonnes of CO₂, compared to virgin material production and open landfill decomposition.",
-    img: "/assets/emmisions2.jpeg",
+    img: "/assets/emmisions3.jpeg",
     imgAlt: "Community tree planting and environmental cleanup",
   },
 ];
@@ -93,12 +94,12 @@ export default function Home() {
 
             <RevealItem>
               <h1 className={`display-xl ${styles.hero__h1}`} id="hero-h1">
-                Recycling Waste,  Changing <span style={{ color: "var(--lime)" }}>Livelihoods</span>
+                Recycling Waste,<br /> Changing <span style={{ color: "var(--lime)" }}>Livelihoods</span>
               </h1>
             </RevealItem>
             <RevealItem>
               <p className={styles.hero__sub}>
-                We bridge the gap between environmental necessity and economic opportunity by turning waste into resources.
+                We turn waste into resources, creating livelihoods for communities while protecting Kenya&apos;s environment.
               </p>
             </RevealItem>
             <RevealItem>
@@ -132,26 +133,32 @@ export default function Home() {
           <div className={styles.about__grid}>
 
             {/* Left: statement */}
-            <RevealItem direction="left" className={styles.about__left}>
-              <span className="overline">About Safisha Nchi Ltd.</span>
-              <h2 className={`display-lg ${styles.about__headline}`} id="about-h2">
-                Waste Management<br />for a Better Environment.
-              </h2>
-            </RevealItem>
+            <RevealGroup className={styles.about__left}>
+              <RevealItem><span className="overline">About Safisha Nchi Ltd.</span></RevealItem>
+              <RevealItem>
+                <h2 className={`display-lg ${styles.about__headline}`} id="about-h2">
+                  Waste Management<br />for a Better Environment.
+                </h2>
+              </RevealItem>
+            </RevealGroup>
 
             {/* Right: concise summary */}
-            <RevealItem direction="right" className={styles.about__right}>
-              <p className={styles.about__para}>
-                Safisha Nchi's core service is comprehensive recycling and waste management, focusing on collecting, sorting, and applying value addition to recyclable materials transforming them into valuable resources and creating green jobs within a circular economy model.
-              </p>
+            <RevealGroup className={styles.about__right}>
+              <RevealItem>
+                <p className={styles.about__para}>
+                  Safisha Nchi provides comprehensive recycling and waste management services, collecting, sorting, and processing recyclable materials into valuable resources while creating green jobs within a circular economy.
+                </p>
+              </RevealItem>
 
               {/* Credentials row */}
-              <div className={styles.about__credentials}>
-                {["NEMA Certified", "KIWAN Member", "Waste-to-Green-Jobs", "5+ Years Operating", "EPR COMPLIANT", "WASTE MANAGEMENT CONSULTATION", "CIRCULAR WASTE MANAGEMENT"].map((c) => (
-                  <span key={c} className="chip chip--outline">{c}</span>
-                ))}
-              </div>
-            </RevealItem>
+              <RevealItem>
+                <div className={styles.about__credentials}>
+                  {["NEMA Certified", "KIWAN Member", "Waste-to-Green-Jobs", "5+ Years Operating", "EPR COMPLIANT", "WASTE MANAGEMENT CONSULTATION", "CIRCULAR WASTE MANAGEMENT"].map((c) => (
+                    <span key={c} className="chip chip--outline">{c}</span>
+                  ))}
+                </div>
+              </RevealItem>
+            </RevealGroup>
           </div>
         </div>
       </section>
@@ -165,40 +172,34 @@ export default function Home() {
         aria-label="Measurable Impact"
       >
         <div className="container" style={{ paddingBottom: "1.5rem" }}>
-          <div className={styles.impact__label__row}>
-            <span className="overline">Our Impact</span>
-            <h2 className="display-sm" id="impact-h2" style={{ marginTop: "0.25rem" }}>
-              Measurable progress.
-            </h2>
-          </div>
+          <RevealGroup className={styles.impact__label__row}>
+            <RevealItem><span className="overline">Our Impact</span></RevealItem>
+            <RevealItem>
+              <h2 className="display-sm" id="impact-h2" style={{ marginTop: "0.25rem" }}>
+                Measurable progress.
+              </h2>
+            </RevealItem>
+          </RevealGroup>
         </div>
 
         {/* Horizontal strip of image columns */}
-        <div className={styles.impact__strip} role="list">
-          {impactCards.map((card, i) => (
-            <ImpactCard
-              key={card.id}
-              card={card}
-              delay={i * 0.05}
-              isHovered={hoveredImpact === card.id}
-              onHover={setHoveredImpact}
-              anyHovered={hoveredImpact !== null}
-            />
-          ))}
-        </div>
+        <RevealItem className={styles.impact__wrap}>
+          <div className={styles.impact__strip} role="list">
+            {impactCards.map((card, i) => (
+              <ImpactCard
+                key={card.id}
+                card={card}
+                delay={i * 0.05}
+                isHovered={hoveredImpact === card.id}
+                onHover={setHoveredImpact}
+                anyHovered={hoveredImpact !== null}
+              />
+            ))}
+          </div>
+        </RevealItem>
       </section>
 
-      {/* ═══════════════════════════════════════════
-          4. PARTNERS CAROUSEL
-      ═══════════════════════════════════════════ */}
-      <section className={`${styles.partners} zone-tint`} aria-label="Partner organisations" style={{ paddingBottom: "var(--sp-12)" }}>
-        <div className="container">
-          <p className={styles.partners__eyebrow}>
-            OUR PARTNERS AND STAKEHOLDERS
-          </p>
-        </div>
-        <PartnerMarquee />
-      </section>
+
 
       {/* ═══════════════════════════════════════════
           5. EXPERTISE ACCORDION
@@ -206,19 +207,25 @@ export default function Home() {
       <section className={`section zone-tint ${styles.expertise__section}`} aria-labelledby="expertise-h2">
         <div className="container">
           <div className={styles.expertise__header}>
-            <RevealItem>
-              <span className="overline">Our Expertise</span>
-              <h2 className={`display-md`} id="expertise-h2" style={{ marginTop: "0.5rem" }}>
-                Our Waste Management System.
-              </h2>
-              <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "56ch" }}>
-                Interconnected service streams working as one, from
-                community collection through sorting, recycling, training,
-                consulting, and waste picker empowerment.
-              </p>
-            </RevealItem>
+            <RevealGroup>
+              <RevealItem><span className="overline">Our Expertise</span></RevealItem>
+              <RevealItem>
+                <h2 className="display-md" id="expertise-h2" style={{ marginTop: "0.5rem" }}>
+                  Our Waste Management System.
+                </h2>
+              </RevealItem>
+              <RevealItem>
+                <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "56ch" }}>
+                  Interconnected service streams working as one, from
+                  community collection through sorting, recycling, training,
+                  consulting, and waste picker empowerment.
+                </p>
+              </RevealItem>
+            </RevealGroup>
           </div>
-          <ExpertiseAccordion />
+          <RevealItem>
+            <ExpertiseGrid />
+          </RevealItem>
         </div>
       </section>
 
@@ -236,22 +243,20 @@ export default function Home() {
           <div className={styles.banner__veil} />
         </div>
         <div className={`container ${styles.banner__content}`}>
-          <RevealItem direction="left">
+          <RevealItem>
             <Typewriter
               className={`display-md ${styles.banner__headline}`}
               delay={0.4}
               lines={[
-                "We don't just manage waste.",
-                "We build environmental and economic infrastructure."
+                "We don't just manage waste.We build environmental and economic infrastructure."
+
               ]}
             />
             <p className={styles.banner__sub}>
-              Every tonne collected creates income opportunity for the women
-              and youth, transforming the waste into an
-              income stream.
+              Every tonne collected generates income for women and youth in our communities, turning what was once waste into a sustainable livelihood.
             </p>
           </RevealItem>
-          <RevealItem direction="right">
+          <RevealItem>
             <Link href="/about" className="btn btn-primary">
               Learn More
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -268,7 +273,7 @@ export default function Home() {
           <div className={styles.dual__grid}>
 
             {/* Card A — Investor / Partner callout (photo) */}
-            <RevealItem direction="left" className={styles.cta__card__a}>
+            <RevealItem className={styles.cta__card__a}>
               <div className={styles.cta__a__img}>
                 <Image src="/assets/team1.jpeg" alt="Safisha Nchi partnership meetings" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
                 <div className={styles.cta__a__img__veil} />
@@ -276,20 +281,20 @@ export default function Home() {
               <div className={styles.cta__a__body}>
                 <span className={`overline overline--on-dark`}>For Investors &amp; Partners</span>
                 <h2 className={`display-sm ${styles.cta__a__headline}`}>
-                  Enabling investors and partners contribute towards Kenya&apos;s circular economy.
+                  Enabling investors and partners to contribute to Kenya&apos;s circular economy.
                 </h2>
               </div>
             </RevealItem>
 
             {/* Card B — Free consultation (primary green) */}
-            <RevealItem direction="right" className={styles.cta__card__b}>
+            <RevealItem className={styles.cta__card__b}>
               <span className="overline overline--lime">Free Consultation</span>
               <h2 className={`display-sm ${styles.cta__b__headline}`}>
                 Ready to recycle smarter? Book a free consultation.
               </h2>
               <p className={styles.cta__b__desc}>
                 Whether you run a church, hotel, school, manufacturing plant, or
-                county authority — our team will analyse your current waste
+                county authority, our team will analyse your current waste
                 profile and design a compliant, cost-effective diversion plan.
                 No obligation, no jargon.
               </p>
@@ -300,11 +305,13 @@ export default function Home() {
                   "NEMA compliance gap analysis",
                   "Custom collection schedule",
                   "ESG reporting support",
-                ].map((pt) => (
-                  <div key={pt} className={styles.cta__point}>
-                    <div className={styles.point__dot} aria-hidden="true" />
-                    <span>{pt}</span>
-                  </div>
+                ].map((pt, i) => (
+                  <RevealItem key={pt} delay={i * 0.08}>
+                    <div className={styles.cta__point}>
+                      <div className={styles.point__dot} aria-hidden="true" />
+                      <span>{pt}</span>
+                    </div>
+                  </RevealItem>
                 ))}
               </div>
 
@@ -316,6 +323,21 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* ═══════════════════════════════════════════
+          4. PARTNERS CAROUSEL
+      ═══════════════════════════════════════════ */}
+      <section className={`${styles.partners} zone-tint`} aria-label="Partner organisations" style={{ paddingBottom: "var(--sp-12)" }}>
+        <div className="container">
+          <RevealItem>
+            <p className={styles.partners__eyebrow}>
+              OUR PARTNERS AND STAKEHOLDERS
+            </p>
+          </RevealItem>
+        </div>
+        <RevealItem>
+          <PartnerMarquee />
+        </RevealItem>
+      </section>
 
       {/* ═══════════════════════════════════════════
           8. PROJECTS SHOWCASE
@@ -323,18 +345,24 @@ export default function Home() {
       <section className={`section zone-canvas ${styles.projects__section}`} aria-labelledby="projects-h2">
         <div className="container">
           <div className={styles.projects__header}>
-            <RevealItem>
-              <span className="overline">Our Projects</span>
-              <h2 className="display-md" id="projects-h2" style={{ marginTop: "0.5rem" }}>
-                Our Projects.
-              </h2>
-              <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "52ch" }}>
-                Click any project to explore the full story. Each one is a step
-                in building Kenya&apos;s circular economy — ground up.
-              </p>
-            </RevealItem>
+            <RevealGroup>
+              <RevealItem><span className="overline">Our Projects</span></RevealItem>
+              <RevealItem>
+                <h2 className="display-md" id="projects-h2" style={{ marginTop: "0.5rem" }}>
+                  Our Projects.
+                </h2>
+              </RevealItem>
+              <RevealItem>
+                <p className="body-md" style={{ marginTop: "0.75rem", maxWidth: "52ch" }}>
+                  Click any project to explore the full story. Each one is a step
+                  in building Kenya&apos;s circular economy, ground up.
+                </p>
+              </RevealItem>
+            </RevealGroup>
           </div>
-          <ProjectsShowcase />
+          <RevealItem>
+            <ProjectsShowcase />
+          </RevealItem>
         </div>
       </section>
 
@@ -344,12 +372,14 @@ export default function Home() {
       <section className={`${styles.map__section}`} aria-labelledby="map-h2">
         <div className={styles.map__header}>
           <div className="container">
-            <RevealItem>
-              <span className="overline">Find Us</span>
-              <h2 className="display-sm" id="map-h2" style={{ marginTop: "0.4rem" }}>
-                Our processing hubs &amp; Buy-Back Centres across Kisumu.
-              </h2>
-            </RevealItem>
+            <RevealGroup>
+              <RevealItem><span className="overline">Find Us</span></RevealItem>
+              <RevealItem>
+                <h2 className="display-sm" id="map-h2" style={{ marginTop: "0.4rem" }}>
+                  Our processing hubs &amp; Buy-Back Centres across Kisumu.
+                </h2>
+              </RevealItem>
+            </RevealGroup>
           </div>
         </div>
 
@@ -366,17 +396,17 @@ export default function Home() {
           />
 
           {/* Hub legend overlay */}
-          <div className={styles.map__legend}>
+          <RevealItem className={styles.map__legend}>
             <div className={styles.map__legend__title}>Collection Network</div>
             <div className={styles.map__legend__item}>
               <div className={`${styles.map__dot} ${styles.map__dot__main}`} />
-              <span>Kisumu Central Hub — Main Processing Site</span>
+              <span>Kisumu Central Hub, Main Processing Site</span>
             </div>
 
             <Link href="/contact" className={`btn btn-primary ${styles.map__legend__btn}`}>
               Get Directions
             </Link>
-          </div>
+          </RevealItem>
         </div>
       </section>
 
@@ -386,63 +416,39 @@ export default function Home() {
       <section className={`section zone-dark ${styles.connect}`} aria-labelledby="connect-h2">
         <div className="container">
           <div className={styles.connect__grid}>
-            <RevealItem direction="left" className={styles.connect__left}>
-              <span className="overline overline--on-dark">Get in Touch</span>
-              <h2 className={`display-lg ${styles.connect__headline}`} id="connect-h2">
-                Get In Touch
-              </h2>
-              <p className={styles.connect__sub}>
-                Waste collection contracts, community partnerships, investment
-                discussions, or NEMA compliance advisory.
-              </p>
-              <div className={styles.connect__details}>
-                {[
-                  { icon: "📞", val: "+254 727 107 994", href: "tel:+25414103377" },
-                  { icon: "✉️", val: "info@safishanchi.co.ke", href: "mailto:info@safishanchi.co.ke" },
+            <RevealGroup className={styles.connect__left}>
+              <RevealItem><span className="overline overline--on-dark">Get in Touch</span></RevealItem>
+              <RevealItem>
+                <h2 className={`display-lg ${styles.connect__headline}`} id="connect-h2">
+                  Get In Touch
+                </h2>
+              </RevealItem>
+              <RevealItem>
+                <p className={styles.connect__sub}>
+                  Waste collection contracts, community partnerships, investment
+                  discussions, or NEMA compliance advisory.
+                </p>
+              </RevealItem>
+              <RevealItem>
+                <div className={styles.connect__details}>
+                  {[
+                    { icon: "📞", val: "+254 727 107 994", href: "tel:+25414103377" },
+                    { icon: "✉️", val: "info@safishanchi.com", href: "mailto:info@safishanchi.com" },
+                  ].map((d, i) => (
+                    <RevealItem key={d.val} delay={0.1 + i * 0.1}>
+                      <a href={d.href} className={styles.connect__detail} target={d.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                        <span className={styles.connect__detail__icon}>{d.icon}</span>
+                        <span>{d.val}</span>
+                      </a>
+                    </RevealItem>
+                  ))}
+                </div>
+              </RevealItem>
+            </RevealGroup>
 
-                ].map((d) => (
-                  <a key={d.val} href={d.href} className={styles.connect__detail} target={d.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
-                    <span className={styles.connect__detail__icon}>{d.icon}</span>
-                    <span>{d.val}</span>
-                  </a>
-                ))}
-              </div>
-            </RevealItem>
-
-            <RevealItem direction="right" className={styles.connect__form__card}>
+            <RevealItem className={styles.connect__form__card}>
               <h3 className={styles.form__card__title}>Send us a message</h3>
-              <form className={styles.connect__form} onSubmit={(e) => e.preventDefault()}>
-                <div className={styles.form__row}>
-                  <div className="form-field">
-                    <label className="form-label" htmlFor="hp-name">Full Name</label>
-                    <input className="form-input" type="text" id="hp-name" required placeholder="Jane Mwangi" />
-                  </div>
-                  <div className="form-field">
-                    <label className="form-label" htmlFor="hp-email">Email Address</label>
-                    <input className="form-input" type="email" id="hp-email" required placeholder="jane@company.co.ke" />
-                  </div>
-                </div>
-                <div className="form-field">
-                  <label className="form-label" htmlFor="hp-interest">Area of Interest</label>
-                  <select className="form-input" id="hp-interest" defaultValue="" required>
-                    <option value="" disabled>Select an option…</option>
-                    <option>Waste Collection</option>
-                    <option>Community Partnerships</option>
-                    <option>Waste Management Consultation</option>
-                    <option>Sponsor a Project</option>
-                    <option>Training on Waste Management</option>
-                    <option>General Inquiry</option>
-                  </select>
-                </div>
-                <div className="form-field">
-                  <label className="form-label" htmlFor="hp-msg">Message</label>
-                  <textarea className="form-input" id="hp-msg" rows={4} placeholder="Tell us about your waste challenge or how you'd like to partner…" />
-                </div>
-                <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-                  Send Message
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                </button>
-              </form>
+              <ContactForm />
             </RevealItem>
           </div>
         </div>

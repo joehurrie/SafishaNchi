@@ -67,10 +67,7 @@
   align-items: center;
   gap: .5rem;
   z-index: 3;
-  margin-bottom: 0%;
-
-
-
+  bottom: clamp(100px, 15vh, 140px);
 }
 
 .hero__scroll span {
@@ -280,6 +277,13 @@
   font-weight: 500;
   letter-spacing: 0.04em;
   margin: 0;
+}
+
+.impact__wrap {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  min-height: 0;
 }
 
 /* The horizontal strip fills the full section height */
@@ -689,6 +693,11 @@
     padding-block: 6rem var(--sp-12);
   }
 
+  .hero__scroll {
+    bottom: clamp(140px, 20vh, 180px); /* Above the static stats grid on mobile */
+    right: 1.25rem;
+  }
+
   /* Mobile stats: card grid instead of sticky strip */
   .hero__stats {
     position: static;
@@ -736,6 +745,12 @@
   }
 
   /* Impact strip stacks vertically on mobile */
+  .impact__wrap {
+    display: block;
+    flex: none;
+    width: 100%;
+  }
+
   .impact__strip {
     flex-direction: column;
   }

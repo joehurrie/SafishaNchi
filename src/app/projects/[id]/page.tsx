@@ -84,7 +84,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
                   <ul className={styles.list}>
                     {project.impact.map((imp, i) => (
                       <li key={i}>
-                        <strong>{imp.value}</strong> — {imp.label}
+                        <strong>{imp.value}</strong>, {imp.label}
                       </li>
                     ))}
                   </ul>
@@ -94,8 +94,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
 
             <div className={styles.section}>
               <RevealItem>
-                <h3 className="display-sm">The Narrative</h3>
-                {project.story.split("\n\n").map((p, idx) => (
+                <h3 className="display-sm">About The Project</h3>
+                {project.aboutTheProject.split("\n\n").map((p, idx) => (
                   <p key={idx} className="body-lg" style={{ color: "var(--on-dark-muted)", marginBottom: "1.5rem" }}>
                     {p}
                   </p>
@@ -136,7 +136,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
           </RevealGroup>
         </div>
       </section>
-      
+
       {/* 4. FOOTER */}
       {/* The Footer is rendered by the layout, but if they explicitly want it attached to the bottom of the project document on a green background... wait, layout.tsx already renders <Footer /> on all pages. Let's make sure we don't duplicate it. */}
     </>

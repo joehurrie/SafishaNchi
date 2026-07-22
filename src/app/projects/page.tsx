@@ -4,11 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import styles from "./page.module.css";
-import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { RevealGroup, RevealItem, SPRING } from "@/components/ui/Reveal";
 import { projectsData } from "@/components/ui/projectsData";
 
 const projects = projectsData;
-const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function ProjectsPage() {
   return (
@@ -29,7 +28,7 @@ export default function ProjectsPage() {
             <RevealItem><span className="overline overline--lime">Our Projects</span></RevealItem>
             <RevealItem>
               <h1 id="projects-h1" className={`display-xl ${styles.heroTitle}`} style={{ maxWidth: "800px" }}>
-                Bringing change
+                Driving real impact.
               </h1>
             </RevealItem>
             <RevealItem>
@@ -73,7 +72,6 @@ export default function ProjectsPage() {
                     <div className={styles.project__img}>
                       <Image src={proj.image} alt={proj.title} fill style={{ objectFit: "cover" }} />
                       <span className={styles.project__tag}>{proj.tag}</span>
-                      <span className={styles.project__open}>View Project →</span>
                     </div>
                     <div className={styles.project__body}>
                       <h3 className={styles.project__title}>{proj.title}</h3>
@@ -101,7 +99,7 @@ export default function ProjectsPage() {
           <RevealGroup>
             <RevealItem><span className="overline overline--on-dark">Let&apos;s Build Together</span></RevealItem>
             <RevealItem>
-              <h2 id="cta-h2" className="display-md" style={{ marginBottom: "1.5rem", color: "var(--on-white)" }}>
+              <h2 id="cta-h2" className="display-md" style={{ marginBottom: "1.5rem", color: "var(--on-dark)" }}>
                 Want to partner on a project?
               </h2>
             </RevealItem>
@@ -112,9 +110,9 @@ export default function ProjectsPage() {
               </p>
             </RevealItem>
             <RevealItem>
-              <Link href="/contact" className="btn btn-lime">
+              <Link href="/contact" className="btn btn-primary">
                 Get in Touch
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
             </RevealItem>
           </RevealGroup>

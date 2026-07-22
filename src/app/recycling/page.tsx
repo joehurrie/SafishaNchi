@@ -26,7 +26,7 @@ const lifecycle = [
   {
     num: "02",
     title: "Aggregation",
-    desc: "Materials flow into our Central Kisumu Hub where they are weighed, logged, and staged for processing 10+ metric tonnes per week.",
+    desc: "Materials flow into our Central Kisumu Hub, where they are weighed, logged, and staged for processing at over 10 metric tonnes per week.",
   },
   {
     num: "03",
@@ -177,6 +177,8 @@ export default function MaterialsPage() {
       <section className="section zone-dark" aria-labelledby="processing-h2">
         <div className="container">
           <div className={styles.processing__grid}>
+
+            {/* Left: heading + body + spec table */}
             <RevealGroup className={styles.processing__copy}>
               <RevealItem><span className="overline overline--on-dark">Capacity</span></RevealItem>
               <RevealItem>
@@ -184,18 +186,18 @@ export default function MaterialsPage() {
                   Industrial grade<br />processing.
                 </h2>
               </RevealItem>
-            </RevealGroup>
-
-            <RevealGroup>
-              <RevealItem delay={0.1}>
-                <p style={{ color: "var(--on-dark-muted)", fontSize: "1.125rem", lineHeight: 1.7 }}>
-                  Our processing facilities are designed to deliver high-quality recycled materials that meet rigorous industrial standards. By replacing virgin plastics with our clean, sorted, and processed flakes, manufacturers can significantly reduce their carbon footprint, lower emissions, and actively combat plastic pollution in our environment.
+              <RevealItem>
+                <p style={{ color: "var(--on-dark-muted)", fontSize: "1rem", lineHeight: 1.7, marginTop: "var(--sp-4)" }}>
+                  Our facilities deliver high-quality recycled materials meeting rigorous industrial standards, replacing virgin plastics, reducing carbon footprints and combating plastic pollution.
                 </p>
               </RevealItem>
             </RevealGroup>
-            <RevealItem direction="right" className={styles.processing__img}>
+
+            {/* Right: image */}
+            <RevealItem className={styles.processing__img}>
               <Image src="/assets/sacks.png" alt="Plastics ready for processing" fill style={{ objectFit: "cover" }} />
             </RevealItem>
+
           </div>
         </div>
       </section>

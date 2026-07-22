@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import styles from "./Footer.module.css";
 
 const footerNav = [
@@ -32,36 +35,148 @@ const footerNav = [
   },
 ];
 
-export default function Footer() {
-  return (
-    <footer className={styles.footer}>
-      <div className={`container ${styles.footer__inner}`}>
-        {/* Top grid */}
-        <div className={styles.footer__grid}>
-          {/* Brand col */}
-          <div className={styles.footer__brand}>
-            <Link href="/" className={styles.logo} aria-label="Safisha Nchi">
-              <Image src="/assets/logo.png" alt="" width={72} height={72} className={styles.logo__image} />
-              <span className={styles.logo__text}>Safisha Nchi</span>
-            </Link>
-            <p className={styles.footer__tagline}>
-              Clean The Country
-            </p>
-            <div className={styles.footer__contact}>
-              <a href="tel:+254740113368">+254 727 107 994</a>
-              <a href="mailto:info@safishanchi.co.ke">info@safishanchi.co.ke</a>
+const quickLinks = [
+  {
+    label: "Home",
+    href: "/",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+    ),
+  },
+  {
+    label: "Recycling",
+    href: "/materials",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        {/* Universal recycling symbol — three rotating arrows */}
+        <path d="M12 2L9.5 6H7a1 1 0 0 0-.87 1.5l2 3.46L6.27 13H4a1 1 0 0 0-.87 1.5l4 6.93A1 1 0 0 0 8 22h8a1 1 0 0 0 .87-.57l4-6.93A1 1 0 0 0 20 13h-2.27l-1.86-2.04 2-3.46A1 1 0 0 0 17 6h-2.5L12 2zm0 3.24L13.5 8h-3L12 5.24zM8.62 10h6.76l1.5 2.6-1.23 1.35-.65-.95H9l-.65.95-1.23-1.35L8.62 10zM7 15h10l-2.5 4.33h-5L7 15z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2.68h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5l.19-.58z" />
+      </svg>
+    ),
+  },
+];
 
+export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("Failed to subscribe");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <footer className={styles.footer__wrap}>
+      <div className={styles.footer__card}>
+
+        {/* ── Top Row: Logo + Brand + Quick icon links ── */}
+        <div className={styles.top__row}>
+          {/* Logo + brand name */}
+          <Link href="/" className={styles.brand} aria-label="Safisha Nchi home">
+            <Image
+              src="/assets/logo.png"
+              alt="Safisha Nchi"
+              width={180}
+              height={180}
+              className={styles.logo__img}
+            />
+            <div className={styles.brand__text}>
+              <span className={styles.brand__name}>Safisha Nchi</span>
+              <span className={styles.brand__tagline}>Clean The Country</span>
+            </div>
+          </Link>
+
+          {/* Minimal icon-only quick links */}
+          <div className={styles.quick__links}>
+            {quickLinks.map((q) => (
+              <Link key={q.label} href={q.href} className={styles.quick__link} aria-label={q.label} title={q.label}>
+                {q.icon}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Middle: Newsletter + Contact cols + Nav cols ── */}
+        <div className={styles.middle__row}>
+
+          {/* Newsletter */}
+          <div className={styles.newsletter}>
+            <h3 className={styles.newsletter__heading}>Stay updated</h3>
+            <p className={styles.newsletter__desc}>Subscribe to news and updates regarding our waste management services.</p>
+            {status === "success" ? (
+              <p className={styles.newsletter__success}>
+                ✓ You&apos;re subscribed! We&apos;ll be in touch soon.
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit} className={styles.newsletter__form}>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email address"
+                  className={styles.newsletter__input}
+                  required
+                  disabled={status === "submitting"}
+                  aria-label="Email address"
+                  id="footer-email"
+                />
+                <button
+                  type="submit"
+                  className={styles.newsletter__btn}
+                  aria-label="Sign up"
+                  disabled={status === "submitting"}
+                >
+                  {status === "submitting" ? "Sending…" : "Sign Up"}
+                  {status !== "submitting" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M7 17L17 7M7 7h10v10" />
+                    </svg>
+                  )}
+                </button>
+              </form>
+            )}
+            {status === "error" && (
+              <p className={styles.newsletter__error}>
+                Something went wrong. Please try again.
+              </p>
+            )}
+            <div className={styles.contact__info}>
+              <a href="tel:+254727107994" className={styles.contact__link}>+254 727 107 994</a>
+              <a href="mailto:info@safishanchi.com" className={styles.contact__link}>info@safishanchi.com</a>
             </div>
           </div>
 
-          {/* Nav cols */}
+          {/* Nav columns */}
           {footerNav.map((col) => (
-            <div key={col.title} className={styles.footer__col}>
-              <h4 className={styles.footer__col__title}>{col.title}</h4>
+            <div key={col.title} className={styles.nav__col}>
+              <h4 className={styles.nav__col__title}>{col.title}</h4>
               <ul>
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href}>{link.label}</Link>
+                    <Link href={link.href} className={styles.nav__link}>{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -69,14 +184,17 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className={styles.footer__bottom}>
-          <span>© {new Date().getFullYear()} Safisha Nchi Limited. All rights reserved.</span>
-          <div className={styles.footer__legal}>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+        {/* ── Bottom bar ── */}
+        <div className={styles.bottom__bar}>
+          <span className={styles.copyright}>
+            © {new Date().getFullYear()} Safisha Nchi Limited. All rights reserved.
+          </span>
+          <div className={styles.legal}>
+            <a href="#" className={styles.legal__link}>Privacy Policy</a>
+            <a href="#" className={styles.legal__link}>Terms of Service</a>
           </div>
         </div>
+
       </div>
     </footer>
   );

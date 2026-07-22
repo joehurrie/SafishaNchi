@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./page.module.css";
 import ContactForm from "@/components/ui/ContactForm";
-import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { RevealGroup, RevealItem, SPRING } from "@/components/ui/Reveal";
 
 const contactDetails = [
   {
@@ -25,8 +25,8 @@ const contactDetails = [
       </svg>
     ),
     label: "Email",
-    value: "info@safishanchi.co.ke",
-    href: "mailto:info@safishanchi.co.ke",
+    value: "info@safishanchi.com",
+    href: "mailto:info@safishanchi.com",
   },
   {
     icon: (
@@ -84,7 +84,7 @@ const interests = [
   },
 ];
 
-const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 
 export default function ContactPage() {
   return (
@@ -105,7 +105,7 @@ export default function ContactPage() {
             <RevealItem><span className="overline overline--lime">Get In Touch</span></RevealItem>
             <RevealItem>
               <h1 id="contact-h1" className={`display-xl ${styles.heroTitle}`} style={{ maxWidth: "800px" }}>
-                A greener <br />Kenya
+                Partner For <br />Impact
               </h1>
             </RevealItem>
             <RevealItem>
@@ -127,18 +127,11 @@ export default function ContactPage() {
           </RevealGroup>
           <div className={styles.interests__grid}>
             {interests.map((item, i) => (
-              <motion.div
-                key={item.title}
-                className={styles.interest__card}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.65, delay: i * 0.1, ease: spring }}
-              >
+              <RevealItem key={item.title} delay={i * 0.1} className={styles.interest__card}>
                 <div className={styles.interest__icon}>{item.icon}</div>
                 <h3 className={styles.interest__title}>{item.title}</h3>
                 <p className={styles.interest__desc}>{item.desc}</p>
-              </motion.div>
+              </RevealItem>
             ))}
           </div>
         </div>
@@ -167,23 +160,20 @@ export default function ContactPage() {
 
               <div className={styles.details__list}>
                 {contactDetails.map((d, i) => (
-                  <motion.a
-                    key={d.label}
-                    href={d.href}
-                    className={styles.detail__item}
-                    target={d.href.startsWith("http") ? "_blank" : undefined}
-                    rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.55, delay: i * 0.1, ease: spring }}
-                  >
-                    <div className={styles.detail__icon}>{d.icon}</div>
-                    <div>
-                      <span className={styles.detail__label}>{d.label}</span>
-                      <span className={styles.detail__value}>{d.value}</span>
-                    </div>
-                  </motion.a>
+                  <RevealItem key={d.label} delay={i * 0.1}>
+                    <a
+                      href={d.href}
+                      className={styles.detail__item}
+                      target={d.href.startsWith("http") ? "_blank" : undefined}
+                      rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
+                      <div className={styles.detail__icon}>{d.icon}</div>
+                      <div>
+                        <span className={styles.detail__label}>{d.label}</span>
+                        <span className={styles.detail__value}>{d.value}</span>
+                      </div>
+                    </a>
+                  </RevealItem>
                 ))}
               </div>
 
@@ -197,12 +187,9 @@ export default function ContactPage() {
             </RevealGroup>
 
             {/* Right: form */}
-            <RevealItem direction="right" className={styles.contact__form__wrap}>
+            <RevealItem className={styles.contact__form__wrap}>
               <div className={styles.form__card}>
                 <h3 className={styles.form__title}>Send us a Message</h3>
-                <p className={styles.form__sub}>
-                  Fill in the form and we&apos;ll get back to you shortly.
-                </p>
                 <ContactForm />
               </div>
             </RevealItem>

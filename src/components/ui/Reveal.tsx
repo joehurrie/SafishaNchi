@@ -1,8 +1,35 @@
 "use client";
 
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, createContext, useContext } from "react";
 import { motion, useInView } from "framer-motion";
 
+// ── Context to detect if RevealItem is inside a RevealGroup ────
+const RevealGroupContext = createContext<boolean>(false);
+
+// ── SINGLE SOURCE OF TRUTH for all page animations ─────────────
+// These values match the recycling page — the approved standard.
+export const SPRING: [number, number, number, number] = [0.16, 1, 0.3, 1];
+export const DURATION = 0.7;
+export const STAGGER = 0.1;
+export const Y_OFFSET = 24;
+export const X_OFFSET = 28;
+export const VIEWPORT_MARGIN = "-60px";
+
+// ── Shared helpers ─────────────────────────────────────────────
+function getInitial(direction: "up" | "left" | "right" | "none") {
+  return {
+    opacity: 0,
+    y: direction === "up" ? Y_OFFSET : 0,
+    x: direction === "left" ? -X_OFFSET : direction === "right" ? X_OFFSET : 0,
+    scale: direction === "none" ? 0.97 : 1,
+  };
+}
+
+const VISIBLE = { opacity: 1, y: 0, x: 0, scale: 1 };
+
+// ══════════════════════════════════════════════════════════════
+//  Reveal — standalone, triggered by own InView
+// ══════════════════════════════════════════════════════════════
 interface RevealProps {
   children: ReactNode;
   delay?: number;
@@ -11,61 +38,50 @@ interface RevealProps {
   once?: boolean;
 }
 
-// Spring easing for premium, professional feel
-const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
-
 export default function Reveal({
   children,
   delay = 0,
   direction = "up",
   className,
-  once = false,
+  once = true,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, margin: "-50px" });
-
-  const initial = {
-    opacity: 0,
-    y: direction === "up" ? 30 : 0,
-    x: direction === "left" ? -30 : direction === "right" ? 30 : 0,
-    scale: direction === "none" ? 0.98 : 1, // Subtle scale if no direction
-  };
+  const isInView = useInView(ref, { once, margin: VIEWPORT_MARGIN });
+  const initial = getInitial(direction);
 
   return (
     <motion.div
       ref={ref}
       className={className}
       initial={initial}
-      animate={isInView ? { opacity: 1, y: 0, x: 0, scale: 1 } : initial}
-      transition={{
-        duration: 0.9,
-        delay,
-        ease: spring,
-      }}
+      animate={isInView ? VISIBLE : initial}
+      transition={{ duration: DURATION, delay, ease: SPRING }}
     >
       {children}
     </motion.div>
   );
 }
 
-// Optional wrapper for staggered children using variants
+// ══════════════════════════════════════════════════════════════
+//  RevealGroup — staggered container
+// ══════════════════════════════════════════════════════════════
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      staggerChildren: STAGGER,
+      delayChildren: 0.05,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: Y_OFFSET },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.85, ease: spring },
+    transition: { duration: DURATION, ease: SPRING },
   },
 };
 
@@ -79,21 +95,26 @@ export function RevealGroup({
   once?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, margin: "-50px" });
+  const isInView = useInView(ref, { once, margin: VIEWPORT_MARGIN });
 
   return (
-    <motion.div
-      ref={ref}
-      className={className}
-      variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-    >
-      {children}
-    </motion.div>
+    <RevealGroupContext.Provider value={true}>
+      <motion.div
+        ref={ref}
+        className={className}
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        {children}
+      </motion.div>
+    </RevealGroupContext.Provider>
   );
 }
 
+// ══════════════════════════════════════════════════════════════
+//  RevealItem — child of RevealGroup OR standalone
+// ══════════════════════════════════════════════════════════════
 export function RevealItem({
   children,
   className,
@@ -105,30 +126,28 @@ export function RevealItem({
   delay?: number;
   direction?: "up" | "left" | "right" | "none";
 }) {
-  // When used standalone (with delay/direction), use own inView
+  const inGroup = useContext(RevealGroupContext);
+  // Standalone mode: not inside a RevealGroup OR has explicit delay or non-default direction
+  const standalone = !inGroup || delay !== undefined || direction !== "up";
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: VIEWPORT_MARGIN });
 
-  if (delay !== undefined || direction !== "up") {
-    const initial = {
-      opacity: 0,
-      y: direction === "up" ? 28 : 0,
-      x: direction === "left" ? -28 : direction === "right" ? 28 : 0,
-    };
+  if (standalone) {
+    const initial = getInitial(direction);
     return (
       <motion.div
         ref={ref}
         className={className}
         initial={initial}
-        animate={isInView ? { opacity: 1, y: 0, x: 0 } : initial}
-        transition={{ duration: 0.85, delay: delay ?? 0, ease: spring }}
+        animate={isInView ? VISIBLE : initial}
+        transition={{ duration: DURATION, delay: delay ?? 0, ease: SPRING }}
       >
         {children}
       </motion.div>
     );
   }
 
-  // Default: use parent RevealGroup variants
+  // Group mode: participates in parent RevealGroup stagger
   return (
     <motion.div variants={itemVariants} className={className}>
       {children}

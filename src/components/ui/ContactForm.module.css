@@ -1,14 +1,26 @@
 /* ===== CONTACT FORM ===== */
+.connect__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+@media (max-width: 540px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-}
-
-.form__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-5);
+  gap: var(--sp-4);
 }
 
 .form__group {
@@ -23,7 +35,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--text-faint);
 }
 
 .form__group input,
@@ -31,7 +43,7 @@
 .select__wrapper select {
   font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   background: var(--bg-main);
   border: 1.5px solid var(--border-mid);
   border-radius: var(--r-sm);
@@ -49,6 +61,7 @@
 .form__group input::placeholder,
 .form__group textarea::placeholder {
   color: var(--text-faint);
+  opacity: 0.8;
   font-size: clamp(1rem, 1.2vw, 1.1rem);
 }
 
@@ -85,8 +98,7 @@
 
 /* Submit */
 .submit__btn {
-  align-self: flex-start;
-  min-width: 180px;
+  width: 100%;
   justify-content: center;
 }
 

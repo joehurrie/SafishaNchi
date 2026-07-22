@@ -63,7 +63,7 @@ export default function ContactForm() {
         <h3>Message Sent</h3>
         <p>Thank you for reaching out. Our team will get back to you within 24–48 hours.</p>
         <button
-          className="btn btn-outline--dark"
+          className="btn btn-primary"
           onClick={() => setStatus("idle")}
           style={{ marginTop: "0.5rem" }}
         >
@@ -74,67 +74,54 @@ export default function ContactForm() {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+    <form className={styles.connect__form} onSubmit={handleSubmit} noValidate>
       {status === "error" && (
         <div style={{ padding: "1rem", backgroundColor: "#ffebee", color: "#c62828", borderRadius: "8px", marginBottom: "1rem" }}>
           <strong>Error:</strong> {errorMessage}
         </div>
       )}
-      <div className={styles.form__grid}>
-        <div className={styles.form__group}>
-          <label htmlFor="cf-name">Full Name</label>
-          <input type="text" id="cf-name" name="name" required placeholder="Jane Doe" autoComplete="name" />
+      <div className={styles.form__row}>
+        <div className="form-field">
+          <label className="form-label" htmlFor="cf-name">Full Name</label>
+          <input className="form-input" type="text" id="cf-name" name="name" required placeholder="Jane Mwangi" autoComplete="name" />
         </div>
-        <div className={styles.form__group}>
-          <label htmlFor="cf-email">Email Address</label>
-          <input type="email" id="cf-email" name="email" required placeholder="jane@example.com" autoComplete="email" />
+        <div className="form-field">
+          <label className="form-label" htmlFor="cf-email">Email Address</label>
+          <input className="form-input" type="email" id="cf-email" name="email" required placeholder="jane@company.co.ke" autoComplete="email" />
         </div>
-        <div className={styles.form__group}>
-          <label htmlFor="cf-phone">Phone (Optional)</label>
-          <input type="tel" id="cf-phone" name="phone" placeholder="+254 700 000 000" autoComplete="tel" />
-        </div>
-        <div className={styles.form__group}>
-          <label htmlFor="cf-interest">Area of Interest</label>
-          <div className={styles.select__wrapper}>
-            <select id="cf-interest" name="interest" required defaultValue="">
-              <option value="" disabled>Select an option</option>
-              {options.map((opt) => (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
-            {/* Thin-stroke chevron */}
-            <svg
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              className={styles.select__icon}
-            >
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </div>
-        </div>
-        <div className={styles.form__group} style={{ gridColumn: "1 / -1" }}>
-          <label htmlFor="cf-message">Message</label>
-          <textarea
-            id="cf-message"
-            name="message"
-            required
-            placeholder="How can we partner together?"
-            rows={5}
-          />
-        </div>
+      </div>
+
+      <div className="form-field">
+        <label className="form-label" htmlFor="cf-interest">Area of Interest</label>
+        <select className="form-input" id="cf-interest" name="interest" required defaultValue="">
+          <option value="" disabled>Select an option…</option>
+          {options.map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="form-field">
+        <label className="form-label" htmlFor="cf-message">Message</label>
+        <textarea
+          className="form-input"
+          id="cf-message"
+          name="message"
+          required
+          placeholder="Tell us about your waste challenge or how you'd like to partner…"
+          rows={4}
+        />
       </div>
 
       <button
         type="submit"
-        className={`btn btn-primary ${styles.submit__btn}`}
+        className="btn btn-primary"
+        style={{ width: "100%", justifyContent: "center" }}
         disabled={status === "submitting"}
       >
         {status === "submitting" ? "Sending…" : "Send Message"}
         {status !== "submitting" && (
-          <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         )}

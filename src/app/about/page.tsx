@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./page.module.css";
-import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { RevealGroup, RevealItem, SPRING } from "@/components/ui/Reveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import PartnerMarquee from "@/components/ui/PartnerMarquee";
 
@@ -24,15 +24,18 @@ const timeline = [
 ];
 
 const coreValues = [
+
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+        <path d="M12 8v4l3 3" />
       </svg>
     ),
-    title: "Economic Empowerment",
-    desc: "We empower waste pickers and local communities by providing reliable markets for recyclable materials, increasing incomes, creating green jobs, and promoting inclusive economic growth. ",
+    title: "Environmental Stewardship",
+    desc: "Combating plastic pollution in the Lake Victoria region creating a conducive environment for over 40 million residents in Kisumu and across Kenya. With future plans to expand to neighbouring countries of Uganda and Tanzania for collection and supply of recycled raw materials",
   },
+
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -45,13 +48,13 @@ const coreValues = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-        <path d="M12 8v4l3 3" />
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
       </svg>
     ),
-    title: "Environmental Stewardship",
-    desc: "Combating plastic pollution in Lake Victoria to creating a conducive environment for over 40 million residents in Kisumu and across Kenya.",
+    title: "Economic Empowerment",
+    desc: "We empower waste pickers and local communities by providing reliable markets for recyclable materials, increasing incomes, creating green jobs, and promoting inclusive economic growth. ",
   },
+
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -86,7 +89,7 @@ const stats = [
   { target: 5, suffix: "+", lbl: "Years Operating" },
 ];
 
-const spring: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 
 
 
@@ -104,12 +107,12 @@ export default function AboutPage() {
             <RevealItem><span className="overline overline--lime">About Us</span></RevealItem>
             <RevealItem>
               <h1 id="about-h1" className={`display-xl ${styles.heroTitle}`} style={{ maxWidth: "800px" }}>
-                Waste is <br />  Oportunity
+                Waste as an <br />Opportunity
               </h1>
             </RevealItem>
             <RevealItem>
               <p className={`body-lg ${styles.heroSubtitle}`} style={{ maxWidth: "54ch", marginTop: "1.5rem" }}>
-                Building community-powered circular infrastructure in Kenya turning waste into opportunity.
+               Building community-powered circular infrastructure in Kenya, turning waste into resources and livelihoods.
               </p>
             </RevealItem>
           </RevealGroup>
@@ -153,7 +156,7 @@ export default function AboutPage() {
                   <div className={styles.missionNew__block}>
                     <h3 className={styles.missionNew__label}>Vision</h3>
                     <p className={styles.missionNew__text}>
-                      A world where waste is transformed into opportunity,creating cleaner communities, healthier ecosystems, and sustainable livelihoods for present and future generations
+                      A world where waste is transformed into opportunity, creating cleaner communities, healthier ecosystems, and sustainable livelihoods for present and future generations.
                     </p>
                   </div>
                 </RevealItem>
@@ -169,7 +172,7 @@ export default function AboutPage() {
               </RevealGroup>
             </div>
 
-            <RevealItem direction="right">
+            <RevealItem>
               <div className={styles.missionNew__quoteCard}>
                 <div className={styles.missionNew__avatarWrap}>
                   <Image
@@ -338,11 +341,11 @@ export default function AboutPage() {
             </RevealItem>
             <RevealItem>
               <p className="body-sm" style={{ marginTop: "1rem", maxWidth: "100%" }}>
-                Spearheaded by Executive Director and Co-Founder <strong>Norah Gakii Nyagah</strong>, and supported by Technical Sub-Consultant <strong>Andrew Njenga Kimani</strong> — a dedicated team of environmentalists, engineers, and community organizers working toward a cleaner Kenya.
+                Spearheaded by Executive Director and Co-Founder <strong>Norah Gakii Nyagah</strong>.
               </p>
             </RevealItem>
           </RevealGroup>
-          <RevealItem direction="none" className={styles.team__photo}>
+          <RevealItem className={styles.team__photo}>
             <Image src="/assets/team5.jpeg" alt="Safisha Nchi Team" fill sizes="(max-width: 768px) 100vw, 80vw" style={{ objectFit: "cover", }} />
             <div className={styles.team__caption}>
               <p>Founder Norah Gakii Nyagah with team at the Kisumu Central Hub</p>

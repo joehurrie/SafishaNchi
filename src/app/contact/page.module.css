@@ -92,13 +92,13 @@
   font-family: var(--font-sans);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--text-secondary);
   margin-bottom: var(--sp-2);
   letter-spacing: -0.01em;
 }
 .interest__desc {
   font-size: clamp(1rem, 1.2vw, 1.1rem);
-  color: var(--text-muted);
+  color: var(--text-faint);
   line-height: 1.65;
 }
 
@@ -115,13 +115,17 @@
 }
 .contact__headline {
   margin-block: var(--sp-3) var(--sp-5);
+  color: var(--primary);
+}
+.contact__desc {
+  color: var(--text-faint);
 }
 
-/* Detail items */
+/* Detail items — minimal footer-style */
 .details__list {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
+  gap: 0;
   margin-bottom: var(--sp-8);
 }
 
@@ -129,37 +133,29 @@
   display: flex;
   align-items: center;
   gap: var(--sp-4);
-  padding: var(--sp-4) var(--sp-5);
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--border);
   text-decoration: none;
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  color: var(--text-secondary);
 }
-.detail__item:hover {
-  border-color: var(--forest);
-  box-shadow: var(--sh-sm);
+
+.detail__item:first-child {
+  border-top: 1px solid var(--border);
 }
 
 .detail__icon {
-  width: 46px;
-  height: 46px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--canvas-alt);
-  border-radius: 50%;
-  color: var(--text);
+  color: var(--primary);
   flex-shrink: 0;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
-.detail__item:hover .detail__icon {
-  background: var(--lime);
-  color: var(--forest-dark);
-}
+
 .detail__icon svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   stroke: currentColor;
   fill: none;
 }
@@ -167,19 +163,20 @@
 .detail__label {
   display: block;
   font-family: var(--font-body);
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.12em;
   color: var(--text-faint);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
+
 .detail__value {
   display: block;
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--text-secondary);
 }
 
 /* Hours */
@@ -194,12 +191,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-faint);
+  color: var(--primary);
   margin-bottom: var(--sp-3);
 }
 .hours__text {
   font-size: clamp(1rem, 1.2vw, 1.1rem);
-  color: var(--text-muted);
+  color: var(--text-faint);
   line-height: 1.6;
 }
 
@@ -208,25 +205,18 @@
 
 .form__card {
   background: var(--white);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--r-lg);
-  padding: 2.25rem 2.5rem;
+  border-radius: var(--r-xl);
+  padding: var(--card-pad-lg);
   box-shadow: var(--sh-md);
 }
 
 .form__title {
   font-family: var(--font-sans);
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.4rem;
-  color: var(--text);
-}
-.form__sub {
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-6);
+  letter-spacing: -0.018em;
 }
 
 /* ===== MAP SECTION ===== */
@@ -249,7 +239,8 @@
 .map__primary__overlay {
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--primary) 80%, transparent);
+  background: var(--primary);
+  opacity: 0.92;
   z-index: 1;
 }
 
@@ -277,10 +268,11 @@
 .map__brand__tagline {
   font-family: var(--font-sans);
   font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-  font-weight: 500;
-  color: var(--white);
+  font-weight: 600;
+  color: #fff;
   margin-top: var(--sp-4);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .map__overlay {
