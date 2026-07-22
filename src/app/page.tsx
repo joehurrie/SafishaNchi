@@ -114,12 +114,12 @@ export default function Home() {
               </div>
             </RevealItem>
           </RevealGroup>
+        </div>
 
-          {/* Scroll indicator */}
-          <div className={styles.hero__scroll} aria-hidden="true">
-            <div className={styles.scroll__bar} />
-            <span>Scroll</span>
-          </div>
+        {/* Scroll indicator — outside container so it positions relative to the full hero section */}
+        <div className={styles.hero__scroll} aria-hidden="true">
+          <div className={styles.scroll__bar} />
+          <span>Scroll</span>
         </div>
       </section>
 

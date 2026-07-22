@@ -208,19 +208,21 @@ export default function ExpertiseGrid() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [cols, setCols] = useState(3);
   const toggle = (id: string) => {
+    const previouslyOpen = openId;
     const willOpen = openId !== id;
     setOpenId((prev) => (prev === id ? null : id));
 
     if (willOpen) {
-      // Scroll the card itself into view, which ensures the panel below it is also visible.
-      // This avoids race conditions waiting for AnimatePresence to mount the panel.
+      // If switching from one panel to another, the previous panel must exit first (280ms).
+      // Wait long enough for layout to settle before scrolling.
+      const delay = previouslyOpen && previouslyOpen !== id ? 350 : 60;
       setTimeout(() => {
         const cardEl = document.getElementById(`expertise-card-${id}`);
         if (!cardEl) return;
         const navHeight = 72; // approx sticky nav height in px
         const top = cardEl.getBoundingClientRect().top + window.scrollY - navHeight - 16;
         window.scrollTo({ top, behavior: "smooth" });
-      }, 50);
+      }, delay);
     }
   };
 

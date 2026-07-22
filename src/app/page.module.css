@@ -67,7 +67,7 @@
   align-items: center;
   gap: .5rem;
   z-index: 3;
-  bottom: clamp(100px, 15vh, 140px);
+  bottom: calc(80px + 1.5rem); /* Just above the stats strip (~80px) */
 }
 
 .hero__scroll span {
@@ -694,7 +694,7 @@
   }
 
   .hero__scroll {
-    bottom: 2rem;
+    bottom: 1rem;
     right: 1.25rem;
   }
 
