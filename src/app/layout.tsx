@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -39,17 +40,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const isMaintenanceMode = headersList.get("x-maintenance-mode") === "true";
+
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body suppressHydrationWarning>
-        <Navbar />
+        {!isMaintenanceMode && <Navbar />}
         <main>{children}</main>
-        <Footer />
+        {!isMaintenanceMode && <Footer />}
       </body>
     </html>
   );
