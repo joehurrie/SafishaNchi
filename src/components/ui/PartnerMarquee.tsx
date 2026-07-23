@@ -10,7 +10,7 @@ const partners = [
   { name: "New Life Mission", src: "/assets/logos/new-life-mission-aid.jpg" },
   { name: "Human Brights", src: "/assets/logos/human-bight-logo.jpg" },
   { name: "Norwegian Retailers", src: "/assets/logos/norwegian-logo.png" },
-  { name: "KAWR", src: "/assets/kawr.jpg" },
+  { name: "KAWR", src: "/assets/logos/KAWR.jpg" },
   { name: "Linkon AS", src: "/assets/logos/linkon-logo.png" },
   { name: "Pakpro", src: "/assets/pakpro-logo.png" },
 ];
