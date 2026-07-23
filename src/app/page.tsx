@@ -104,7 +104,7 @@ export default function Home() {
             </RevealItem>
             <RevealItem>
               <div className={styles.hero__actions}>
-                <Link href="/materials" className="btn btn-primary">
+                <Link href="/recycling" className="btn btn-primary">
                   How We Operate
                   <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
