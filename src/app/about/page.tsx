@@ -329,7 +329,7 @@ export default function AboutPage() {
         <PartnerMarquee />
       </section>
 
-      {/* 8. TEAM — light, full-bleed photo */}
+      {/* 8. TEAM — 3 Column Grid */}
       <section className="section zone-canvas" aria-labelledby="team-h2">
         <div className="container">
           <RevealGroup>
@@ -341,16 +341,42 @@ export default function AboutPage() {
             </RevealItem>
             <RevealItem>
               <p className="body-sm" style={{ marginTop: "1rem", maxWidth: "100%" }}>
-                Spearheaded by Executive Director and Co-Founder <strong>Norah Gakii Nyagah</strong>.
+                This is our team, this is the team that is driving advancements at Safisha Nchi.
               </p>
             </RevealItem>
           </RevealGroup>
-          <RevealItem className={styles.team__photo}>
-            <Image src="/assets/team5.jpeg" alt="Safisha Nchi Team" fill sizes="(max-width: 768px) 100vw, 80vw" style={{ objectFit: "cover", }} />
-            <div className={styles.team__caption}>
-              <p>Founder Norah Gakii Nyagah with team at the Kisumu Central Hub</p>
-            </div>
-          </RevealItem>
+
+          <RevealGroup className={styles.team__grid}>
+            <RevealItem className={styles.team__member} delay={0.1}>
+              <div className={styles.team__photo}>
+                <Image src="/assets/NorahNyagah.png" alt="Nora Nyaga - CEO and Founder" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+              </div>
+              <div>
+                <h3>Nora Nyaga</h3>
+                <p>CEO & Founder</p>
+              </div>
+            </RevealItem>
+
+            <RevealItem className={styles.team__member} delay={0.2}>
+              <div className={styles.team__photo}>
+                <Image src="/assets/DavidNelson.png" alt="David Nelson - Director" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+              </div>
+              <div>
+                <h3>David Nelson</h3>
+                <p>Director</p>
+              </div>
+            </RevealItem>
+
+            <RevealItem className={styles.team__member} delay={0.3}>
+              <div className={styles.team__photo}>
+                <Image src="/assets/VioletAwinja.png" alt="Violet Awinja - Operations Manager" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+              </div>
+              <div>
+                <h3>Violet Awinja</h3>
+                <p>Operations Manager</p>
+              </div>
+            </RevealItem>
+          </RevealGroup>
         </div>
       </section>
     </>

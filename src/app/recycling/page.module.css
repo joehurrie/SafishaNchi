@@ -356,6 +356,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   box-shadow: none;
+  width: 100%;
 }
 
 .processing__img img {
@@ -446,7 +447,8 @@
   }
 
   .processing__img {
-    min-height: auto;
+    min-height: 250px;
+    width: 100%;
   }
 }
 

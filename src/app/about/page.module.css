@@ -496,45 +496,47 @@
 }
 
 /* ===== TEAM ===== */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-8);
+  margin-top: var(--sp-12);
+}
+
+.team__member {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  text-align: center;
+}
+
+.team__member h3 {
+  font-family: var(--font-sans);
+  color: var(--primary);
+  margin-bottom: var(--sp-1);
+}
+
+.team__member p {
+  color: #000000;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
 .team__photo {
   position: relative;
-  aspect-ratio: 16/7;
+  aspect-ratio: 4/5;
   border-radius: var(--r-xl);
   overflow: hidden;
-  margin-top: var(--sp-12);
-  box-shadow: var(--sh-xl);
-  /* Add this to prevent overflow on any screen */
-  max-width: 100%;
+  width: 100%;
 }
 
-/* Small devices (e.g., phones, tablets up to 768px) */
 @media (max-width: 768px) {
-  .team__photo {
-    max-width: 100%;
-    /* or use 90% for fluid width */
-    margin-left: auto;
-    /* center the element */
-    margin-right: auto;
-    /* Optionally reduce top margin on small screens */
-    margin-top: var(--sp-6);
+  .team__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-12);
   }
-}
-
-.team__caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(25, 130, 109, 0.88), transparent);
-  padding: 4rem 2rem 2rem;
-}
-
-.team__caption p {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -835,9 +837,5 @@
 
   .humanCost__imgWrap {
     height: 260px;
-  }
-
-  .team__photo {
-    height: 300px;
   }
 }
