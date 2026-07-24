@@ -112,7 +112,7 @@ export default function AboutPage() {
             </RevealItem>
             <RevealItem>
               <p className={`body-lg ${styles.heroSubtitle}`} style={{ maxWidth: "54ch", marginTop: "1.5rem" }}>
-               Building community-powered circular infrastructure in Kenya, turning waste into resources and livelihoods.
+                Building community-powered circular infrastructure in Kenya, turning waste into resources and livelihoods.
               </p>
             </RevealItem>
           </RevealGroup>
@@ -339,11 +339,7 @@ export default function AboutPage() {
                 The team behind Safisha Nchi.
               </h2>
             </RevealItem>
-            <RevealItem>
-              <p className="body-sm" style={{ marginTop: "1rem", maxWidth: "100%" }}>
-                This is our team, this is the team that is driving advancements at Safisha Nchi.
-              </p>
-            </RevealItem>
+
           </RevealGroup>
 
           <RevealGroup className={styles.team__grid}>
@@ -352,7 +348,7 @@ export default function AboutPage() {
                 <Image src="/assets/NorahNyagah.png" alt="Nora Nyaga - CEO and Founder" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
               </div>
               <div>
-                <h3>Nora Nyaga</h3>
+                <h3>Norah Nyaga</h3>
                 <p>CEO & Founder</p>
               </div>
             </RevealItem>
@@ -362,7 +358,7 @@ export default function AboutPage() {
                 <Image src="/assets/DavidNelson.png" alt="David Nelson - Director" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
               </div>
               <div>
-                <h3>David Nelson</h3>
+                <h3>David Nelsen</h3>
                 <p>Director</p>
               </div>
             </RevealItem>
