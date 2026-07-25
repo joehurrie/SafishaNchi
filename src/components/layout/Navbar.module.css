@@ -66,6 +66,12 @@
   border-radius: 6px;
 }
 
+.logo__text_group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
 .logo__text {
   font-family: var(--font-sans);
   font-size: 1.1rem;
@@ -74,10 +80,26 @@
   color: var(--bg-dark);
   transition: color var(--dur) var(--ease);
   white-space: nowrap;
+  line-height: 1;
 }
 
-.navbar--transparent .logo__text { color: white; }
-.navbar--scrolled .logo__text    { color: var(--bg-dark); }
+.logo__tagline {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--bg-dark);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  transition: color var(--dur) var(--ease);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.navbar--transparent .logo__text,
+.navbar--transparent .logo__tagline { color: white; }
+.navbar--scrolled .logo__text,
+.navbar--scrolled .logo__tagline    { color: var(--bg-dark); }
 
 /* ── Nav links ── */
 .nav-links {

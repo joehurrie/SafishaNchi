@@ -56,9 +56,10 @@ export default function Navbar() {
           <div className={styles.logo__mark} aria-hidden="true">
             <Image src="/assets/logo.png" alt="" width={72} height={72} className={styles.logo__image} />
           </div>
-          <span className={styles.logo__text}>
-            Safisha Nchi
-          </span>
+          <div className={styles.logo__text_group}>
+            <span className={styles.logo__text}>Safisha Nchi</span>
+            <span className={styles.logo__tagline}>Clean The Country</span>
+          </div>
         </Link>
 
         {/* Desktop nav links and CTA */}
