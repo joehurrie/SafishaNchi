@@ -73,7 +73,7 @@ export default function Footer() {
             />
             <div className={styles.brand__text}>
               <span className={styles.brand__name}>Safisha Nchi</span>
-              <span className={styles.brand__tagline}>Clean The Country</span>
+              <span className={styles.brand__tagline}>&quot;Clean The Country&quot;</span>
             </div>
           </Link>
         </div>

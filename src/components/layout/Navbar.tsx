@@ -58,7 +58,7 @@ export default function Navbar() {
           </div>
           <div className={styles.logo__text_group}>
             <span className={styles.logo__text}>Safisha Nchi</span>
-            <span className={styles.logo__tagline}>Clean The Country</span>
+            <span className={styles.logo__tagline}>&quot;Clean The Country&quot;</span>
           </div>
         </Link>
 
