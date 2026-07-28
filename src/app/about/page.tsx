@@ -348,18 +348,18 @@ export default function AboutPage() {
                 <Image src="/assets/NorahNyagah.png" alt="Nora Nyaga - CEO and Founder" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
               </div>
               <div>
-                <h3>Norah Nyaga</h3>
+                <h3>Norah Nyagah</h3>
                 <p>CEO & Founder</p>
               </div>
             </RevealItem>
 
             <RevealItem className={styles.team__member} delay={0.2}>
               <div className={styles.team__photo}>
-                <Image src="/assets/DavidNelson.png" alt="David Nelson - Director" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                <Image src="/assets/DavidNelson.png" alt="David Nilsen - Co-Founder" fill sizes="(max-width: 768px) 50vw, 33vw" style={{ objectFit: "cover", }} />
               </div>
               <div>
-                <h3>David Nelsen</h3>
-                <p>Director</p>
+                <h3>David Nilsen</h3>
+                <p>Co-Founder</p>
               </div>
             </RevealItem>
 

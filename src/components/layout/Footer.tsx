@@ -10,7 +10,7 @@ const footerNav = [
     title: "Navigate",
     links: [
       { label: "Home", href: "/" },
-      { label: "Materials", href: "/materials" },
+      { label: "Recycling Process", href: "/recycling" },
       { label: "About Us", href: "/about" },
       { label: "Projects", href: "/projects" },
       { label: "Contact", href: "/contact" },
