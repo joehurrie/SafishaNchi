@@ -13,6 +13,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://safishanchi.com"),
   title: {
     default: "Safisha Nchi | Waste Management & Recycling Company in Kenya",
     template: "%s | Safisha Nchi",
@@ -33,6 +34,13 @@ export const metadata: Metadata = {
       "Safisha Nchi is a professional Waste Management and Recycling Company in Kenya, transforming waste into high-value resources like pellets for manufacturing.",
     type: "website",
     url: "https://safishanchi.com",
+    siteName: "Safisha Nchi",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Safisha Nchi | Waste Management & Recycling Company in Kenya",
+    description:
+      "Safisha Nchi is a professional Waste Management and Recycling Company in Kenya, transforming waste into high-value resources like pellets for manufacturing.",
   },
   icons: {
     icon: "/assets/logo.png",
