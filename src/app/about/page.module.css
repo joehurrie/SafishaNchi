@@ -507,7 +507,7 @@
 .team__member {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
+  gap: var(--sp-3);
   text-align: center;
 }
 
@@ -527,7 +527,7 @@
 
 .team__photo {
   position: relative;
-  aspect-ratio: 4/5;
+  aspect-ratio: 1/1;
   border-radius: var(--r-xl);
   overflow: hidden;
   width: 100%;

@@ -33,7 +33,7 @@ const coreValues = [
       </svg>
     ),
     title: "Environmental Stewardship",
-    desc: "Combating plastic pollution in the Lake Victoria region creating a conducive environment for over 40 million residents in Kisumu and across Kenya. With future plans to expand to neighbouring countries of Uganda and Tanzania for collection and supply of recycled raw materials",
+    desc: "Combating plastic pollution in the Lake Victoria region creating a conducive environment for over 40 million residents in Kisumu and across Kenya. With future plans to reach more ountries in Africa.",
   },
 
   {
@@ -99,7 +99,7 @@ export default function AboutPage() {
       {/* 1. HERO */}
       <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="about-h1">
         <div className={styles.hero__bg}>
-          <Image src="/assets/project1.JPG" alt="Safisha Nchi team at work" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 20%" }} />
+          <Image src="/assets/emmisions3.jpeg" alt="Safisha Nchi team at work" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 20%" }} />
           <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>

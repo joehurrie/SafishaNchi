@@ -33,8 +33,7 @@ export default function ProjectsPage() {
             </RevealItem>
             <RevealItem>
               <p className={`body-lg ${styles.heroSub}`}>
-                Our operational scale spans 1 main recycling site and 7 mini
-                collection hubs across the Kisumu region.
+                Building recycling networks that transform waste into resources across Kenya and beyond East Africa.
               </p>
             </RevealItem>
           </RevealGroup>
