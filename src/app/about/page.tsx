@@ -33,7 +33,7 @@ const coreValues = [
       </svg>
     ),
     title: "Environmental Stewardship",
-    desc: "Combating plastic pollution in the Lake Victoria region creating a conducive environment for over 40 million residents in Kisumu and across Kenya. With future plans to reach more ountries in Africa.",
+    desc: "Combating plastic pollution in the Lake Victoria region creating a conducive environment for over 40 million residents in Kisumu and across Kenya. Our future plans include reaching more countries in Africa.",
   },
 
   {
