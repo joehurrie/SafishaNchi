@@ -16,7 +16,7 @@ export default function ProjectsPage() {
       <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="projects-h1">
         <div className={styles.hero__bg}>
           <Image
-            src="/assets/project.JPG"
+            src="/assets/landfill4.jpg"
             alt="Community waste collection and recycling operations"
             fill priority sizes="100vw"
             style={{ objectFit: "cover", objectPosition: "center 30%" }}

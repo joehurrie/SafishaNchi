@@ -27,12 +27,16 @@ export async function POST(request: Request) {
 
     const url = new URL(request.url);
     const logoUrl = `${url.origin}/assets/logo.png`;
-    const recipientEmail = process.env.CONTACT_EMAIL || process.env.SMTP_USER;
+    const rawEmails = process.env.CONTACT_EMAIL || '';
+    const emailList = rawEmails.split(',').map(e => e.trim()).filter(Boolean);
+    const primaryEmail = emailList.length > 0 ? emailList[0] : process.env.SMTP_USER;
+    const bccEmails = emailList.slice(1).join(', ');
 
     // Email content for Newsletter Subscription Notification
     const mailOptions = {
-      from: `"Safisha Nchi Newsletter" <${process.env.SMTP_USER}>`,
-      to: recipientEmail,
+      from: `"Newsletter" <${process.env.SMTP_USER}>`,
+      to: primaryEmail,
+      bcc: bccEmails,
       replyTo: email,
       subject: `New Newsletter Subscriber: ${email}`,
       html: `

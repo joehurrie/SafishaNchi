@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/maintenance/'],
     },
-    sitemap: 'https://safishanchi.com/sitemap.xml',
+    sitemap: 'https://safishanchi.co.ke/sitemap.xml',
   }
 }

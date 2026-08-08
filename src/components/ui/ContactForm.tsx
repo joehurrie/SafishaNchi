@@ -39,8 +39,19 @@ export default function ContactForm() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to send message.");
+        let errorMessage = "Failed to send message.";
+        try {
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorMessage;
+          } else {
+            errorMessage = `Server error (${response.status}). Please try again later.`;
+          }
+        } catch (parseError) {
+          errorMessage = "An unexpected error occurred while parsing the response.";
+        }
+        throw new Error(errorMessage);
       }
 
       setStatus("success");
@@ -89,6 +100,11 @@ export default function ContactForm() {
           <label className="form-label" htmlFor="cf-email">Email Address</label>
           <input className="form-input" type="email" id="cf-email" name="email" required placeholder="jane@company.co.ke" autoComplete="email" />
         </div>
+      </div>
+
+      <div className="form-field">
+        <label className="form-label" htmlFor="cf-phone">Phone Number</label>
+        <input className="form-input" type="tel" id="cf-phone" name="phone" placeholder="+254 700 000000" autoComplete="tel" />
       </div>
 
       <div className="form-field">

@@ -31,7 +31,7 @@ const impactCards: ImpactCardData[] = [
     metric: "Tonnes",
     detail:
       "360+ metric tonnes of post-consumer plastics, glass, and fibre recovered from communities material that would otherwise enter waterways or open dumps.",
-    img: "/assets/bales2.jpeg",
+    img: "/assets/landfillnew2.jpg",
     imgAlt: "Baled plastics at Safisha Nchi processing hub",
   },
   {
@@ -42,7 +42,7 @@ const impactCards: ImpactCardData[] = [
     metric: "People",
     detail:
       "Over 150 informal waste pickers integrated into our formal collection network, receiving transparent pricing, PPE, health training, and financial literacy support.",
-    img: "/assets/wastepicker.png",
+    img: "/assets/landfill_new5.jpg",
     imgAlt: "Waste pickers at community buy-back centre",
   },
   {
@@ -64,7 +64,7 @@ const impactCards: ImpactCardData[] = [
     metric: "CO₂",
     detail:
       "Recycling 360+ tonnes of material avoids the equivalent of 270 tonnes of CO₂, compared to virgin material production and open landfill decomposition.",
-    img: "/assets/emmisions3.jpeg",
+    img: "/assets/Co2_new.jpg",
     imgAlt: "Community tree planting and environmental cleanup",
   },
 ];
@@ -235,7 +235,7 @@ export default function Home() {
       <section className={styles.banner} aria-label="Community empowerment through recycling">
         <div className={styles.banner__img}>
           <Image
-            src="/assets/sitetour.JPG"
+            src="/assets/buybacknew.JPG"
             alt="Community waste collection drives in Kisumu informal settlements"
             fill
             style={{ objectFit: "cover", objectPosition: "center 40%" }}

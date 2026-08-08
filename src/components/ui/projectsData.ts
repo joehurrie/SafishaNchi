@@ -10,7 +10,7 @@ export const projectsData: ProjectItem[] = [
     id: "kisumu-project",
     tag: "Completed Project",
     title: "The Kisumu Operational Facility (2022–2024)",
-    image: "/assets/bales1.jpeg",
+    image: "/assets/sortingsite_new.jpg",
     overview:
       "The Kisumu Project was Safisha Nchi’s foundational proof-of-concept operation. Over a three-year period, the company deployed a targeted operational facility in Kisumu to establish a robust, localized waste collection, buy-back, and processing ecosystem. This direct intervention yielded concrete, field-verified results across both environmental and socioeconomic metrics, proving the viability of the company's decentralized model.",
     stakeholders: ["County Government of Kisumu", "NEMA", "Local Communities", "Independent Waste Pickers"],
@@ -86,7 +86,7 @@ export const projectsData: ProjectItem[] = [
     id: "carbon-emission",
     tag: "Ongoing Project",
     title: "Landfill Carbon emission Measurement-project",
-    image: "/assets/emmisions1.jpeg",
+    image: "/assets/Co2_new.jpg",
     overview:
       "Safisha Nchi is embarking on a pioneering initiative to quantify the direct greenhouse gas (GHG) emissions avoided through its waste management operations. This project involves systematic monitoring and calculation of methane (CH4) and carbon dioxide (CO2) displacement resulting from recycling activities, utilizing established international methodologies to generate verifiable carbon credits. So far we have been able to visit the following dumpsites to evaluate the impact of our operations in Kenyas Dandora, Thika and Kitengela landfills. Additionally, with a team of experts we are working on setting up a system to measure the amount of carbon dioxide avoided through our operations at Kisumu.",
     stakeholders: ["Pakro", "NEMA", "Local Communities", "Civil Societies"],

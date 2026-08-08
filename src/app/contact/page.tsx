@@ -93,7 +93,7 @@ export default function ContactPage() {
       <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="contact-h1">
         <div className={styles.hero__bg}>
           <Image
-            src="/assets/happy.jpeg"
+            src="/assets/team_new.jpg"
             alt="Staff and community members at Safisha Nchi"
             fill priority sizes="100vw"
             style={{ objectFit: "cover", objectPosition: "center 30%" }}

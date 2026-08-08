@@ -99,7 +99,7 @@ export default function AboutPage() {
       {/* 1. HERO */}
       <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="about-h1">
         <div className={styles.hero__bg}>
-          <Image src="/assets/emmisions3.jpeg" alt="Safisha Nchi team at work" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 20%" }} />
+          <Image src="/assets/landfillnew2.jpg" alt="Safisha Nchi team at work" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 20%" }} />
           <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
@@ -176,7 +176,7 @@ export default function AboutPage() {
               <div className={styles.missionNew__quoteCard}>
                 <div className={styles.missionNew__avatarWrap}>
                   <Image
-                    src="/assets/Norah.png"
+                    src="/assets/norah_new.jpg"
                     alt="Norah Nyagah"
                     fill
                     className={styles.missionNew__avatar}

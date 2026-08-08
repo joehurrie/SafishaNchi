@@ -25,19 +25,23 @@ export async function POST(request: Request) {
       },
     });
 
-    const url = new URL(request.url);
-    const logoUrl = `${url.origin}/assets/logo.png`;
+
+
+    const rawEmails = process.env.CONTACT_EMAIL || '';
+    const emailList = rawEmails.split(',').map(e => e.trim()).filter(Boolean);
+    const primaryEmail = emailList.length > 0 ? emailList[0] : process.env.SMTP_USER;
+    const bccEmails = emailList.slice(1).join(', ');
 
     // Email content setup
     const mailOptions = {
-      from: `"${name}" <${process.env.SMTP_USER}>`, // Send via authenticated user to avoid spam filters
-      to: process.env.CONTACT_EMAIL, // Admin's receiving email
+      from: `"New Inquiry" <${process.env.SMTP_USER}>`, // Send via authenticated user to avoid spam filters
+      to: primaryEmail,
+      bcc: bccEmails,
       replyTo: email,
       subject: `New Inquiry via Safisha Nchi: ${interest}`,
       html: `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f7f3; padding: 20px; border-radius: 8px;">
           <div style="text-align: center; margin-bottom: 20px; padding: 20px 0; background-color: #0a3d2b; border-radius: 6px;">
-            <img src="${logoUrl}" alt="Safisha Nchi" style="width: 80px; height: auto;" />
             <h1 style="color: #ffffff; margin: 10px 0 0 0; font-size: 22px; font-weight: 600; letter-spacing: -0.02em;">Safisha Nchi</h1>
           </div>
           

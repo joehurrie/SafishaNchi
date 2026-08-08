@@ -81,7 +81,7 @@ export default function MaterialsPage() {
       {/* 1. HERO */}
       <section className={`section-100 zone-dark ${styles.hero}`} aria-labelledby="materials-h1">
         <div className={styles.hero__bg}>
-          <Image src="/assets/pellets.png" alt="Recycling processing operations" fill priority style={{ objectFit: "cover" }} />
+          <Image src="/assets/bailer_new.jpg" alt="Recycling processing operations" fill priority style={{ objectFit: "cover" }} />
           <div className={styles.hero__overlay} />
         </div>
         <div className={`container ${styles.hero__inner}`}>
