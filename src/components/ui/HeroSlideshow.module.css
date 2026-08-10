@@ -1,0 +1,113 @@
+/* ================================================================
+   HeroSlideshow.module.css
+   ================================================================ */
+
+.slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ── Slides ─────────────────────────────────────────────────── */
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  /* scale slightly to give a gentle Ken-Burns feel */
+  transform: scale(1.06);
+  transition: opacity 1.2s ease, transform 8s ease;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.slide__active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.slide__exit {
+  opacity: 0;
+  transform: scale(1.04);
+  z-index: 0;
+  /* fast fade-out */
+  transition: opacity 0.8s ease, transform 8s ease;
+}
+
+/* ── Overlay veil ───────────────────────────────────────────── */
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    135deg,
+    rgba(25, 130, 109, 0.82) 0%,
+    rgba(25, 130, 109, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Dot navigation ─────────────────────────────────────────── */
+.dots {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease, width 0.35s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.dot__active {
+  background: var(--lime, #b5e839);
+  width: 24px;
+  border-radius: 4px;
+  transform: none;
+}
+
+/* ── Progress bar ───────────────────────────────────────────── */
+.progress__track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 4;
+}
+
+.progress__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--lime, #b5e839);
+  animation: progressFill linear forwards;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ── Responsive tweaks ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dots {
+    bottom: 1.5rem;
+  }
+}

@@ -345,7 +345,7 @@ export default function AboutPage() {
           <RevealGroup className={styles.team__grid}>
             <RevealItem className={styles.team__member} delay={0.1}>
               <div className={styles.team__photo}>
-                <Image src="/assets/NorahNyagah.png" alt="Nora Nyaga - CEO and Founder" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                <Image src="/assets/NorahNyagah.png" alt="Norah Gakii Nyagah, CEO and Founder of Safisha Nchi Ltd." fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
               </div>
               <div>
                 <h3>Norah Nyagah</h3>
@@ -355,7 +355,7 @@ export default function AboutPage() {
 
             <RevealItem className={styles.team__member} delay={0.2}>
               <div className={styles.team__photo}>
-                <Image src="/assets/DavidNelson.png" alt="David Nilsen - Co-Founder" fill sizes="(max-width: 768px) 50vw, 33vw" style={{ objectFit: "cover", }} />
+                <Image src="/assets/DavidNelson.png" alt="David Nilsen, Co-Founder of Safisha Nchi Ltd." fill sizes="(max-width: 768px) 50vw, 33vw" style={{ objectFit: "cover" }} />
               </div>
               <div>
                 <h3>David Nilsen</h3>
@@ -365,7 +365,7 @@ export default function AboutPage() {
 
             <RevealItem className={styles.team__member} delay={0.3}>
               <div className={styles.team__photo}>
-                <Image src="/assets/VioletAwinja.png" alt="Violet Awinja - Operations Manager" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
+                <Image src="/assets/VioletAwinja.png" alt="Violet Awinja, Operations Manager at Safisha Nchi Ltd." fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "cover" }} />
               </div>
               <div>
                 <h3>Violet Awinja</h3>

@@ -1,1 +1,23 @@
-{"name":"","short_name":"","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+  "name": "Safisha Nchi",
+  "short_name": "Safisha Nchi",
+  "description": "Waste Management & Recycling Company in Kenya — turning waste into resources.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a3d2b",
+  "theme_color": "#0a3d2b",
+  "icons": [
+    {
+      "src": "/favicon_io/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon_io/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import ExpertiseGrid from "@/components/ui/ExpertiseGrid";
 import PartnerMarquee from "@/components/ui/PartnerMarquee";
 import ProjectsShowcase from "@/components/ui/ProjectsShowcase";
 import ContactForm from "@/components/ui/ContactForm";
+import HeroSlideshow from "@/components/ui/HeroSlideshow";
 import { RevealGroup, RevealItem, SPRING } from "@/components/ui/Reveal";
 
 // ─── Static data ────────────────────────────────────────────────
@@ -79,15 +80,7 @@ export default function Home() {
           1. HERO
       ═══════════════════════════════════════════ */}
       <section className={styles.hero} aria-labelledby="hero-h1">
-        <div className={styles.hero__bg}>
-          <Image
-            src="/assets/img.png"
-            alt="Safisha Nchi waste management and recycling operations, Kisumu Kenya"
-            fill priority
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
-          <div className={styles.hero__veil} />
-        </div>
+        <HeroSlideshow />
 
         <div className={`container ${styles.hero__body}`}>
           <RevealGroup className={styles.hero__copy}>
@@ -231,11 +224,12 @@ export default function Home() {
 
       {/* ═══════════════════════════════════════════
           6. FULL-BLEED BANNER
+
       ═══════════════════════════════════════════ */}
       <section className={styles.banner} aria-label="Community empowerment through recycling">
         <div className={styles.banner__img}>
           <Image
-            src="/assets/buybacknew.jpg"
+            src="/assets/sitetour.jpg"
             alt="Community waste collection drives in Kisumu informal settlements"
             fill
             style={{ objectFit: "cover", objectPosition: "center 40%" }}
