@@ -229,7 +229,7 @@ export default function Home() {
       <section className={styles.banner} aria-label="Community empowerment through recycling">
         <div className={styles.banner__img}>
           <Image
-            src="/assets/sitetour.jpg"
+            src="/assets/sitetour.JPG"
             alt="Community waste collection drives in Kisumu informal settlements"
             fill
             style={{ objectFit: "cover", objectPosition: "center 40%" }}
