@@ -92,7 +92,7 @@ export default function Home() {
             </RevealItem>
             <RevealItem>
               <p className={styles.hero__sub}>
-                We turn waste into resources, creating livelihoods for communities while protecting Kenya&apos;s environment.
+                We turn waste into resources, creating livelihoods for communities while protecting the environment.
               </p>
             </RevealItem>
             <RevealItem>
