@@ -26,6 +26,30 @@ export const projectsData: ProjectItem[] = [
     ],
   },
   {
+    id: "bsf-farming-initiative",
+    tag: "Circular Economy Project",
+    title: "Black Soldier Fly (BSF) Farming Initiative",
+    image: "/assets/bsf.jpeg",
+    overview:
+      "Among our circular economy solutions, Black Soldier Fly (BSF) farming is an innovative approach that converts organic waste into valuable resources. Using BSF larvae, we transform food and organic waste into high-protein animal feed and nutrient-rich organic fertilizer, significantly reducing waste sent to local dumpsites.",
+    stakeholders: [
+      
+    
+      "Local Organic Farmers & Livestock Feed Producers",
+      "Organic Market Vendors"
+    ],
+    impact: [
+      { label: "Organic Waste Processed", value: "450T+" },
+      { label: "Protein Feed Produced", value: "85T" }
+    ],
+    aboutTheProject:
+      "The Black Soldier Fly (BSF) Farming Initiative represents a core pillar in Safisha Nchi’s mission to achieve zero-waste circularity by addressing the organic fraction. By harnessing the bioconversion capabilities of BSF larvae, we convert organic waste streams into commercial-grade agricultural inputs, mitigating methane emissions from decomposing landfill materials.\n\nBioconversion & Resource Recovery: We collect and processes organic waste from municipal food markets and commercial food vendors. BSF larvae consume the organic material rapidly, producing high-protein insect meal suitable for livestock and aquaculture feed, alongside nutrient-rich frass utilized as natural soil conditioner.\n\nEnvironmental Impact: By diverting large volumes of biodegradable waste away from open dumpsites and landfills, the project reduces localized groundwater contamination and avoids significant greenhouse gas emissions. The resulting organic fertilizer enriches soil health without relying on synthetic chemical additives.\n\nCommunity Empowerment: The initiative creates specialized green jobs in bio-processing, technical bioconversion management, and waste aggregation networks. Partnering with local agricultural vendors fosters a sustainable regional supply chain while supporting long-term food security.",
+    metrics: [
+      { val: "450T+", lbl: "Organic Waste" },
+      { val: "85T", lbl: "Protein Feed" }
+    ]
+  },
+  {
     id: "chiga-bbc",
     tag: "Active Operations",
     title: "The Chiga Buy-Back Centre",
